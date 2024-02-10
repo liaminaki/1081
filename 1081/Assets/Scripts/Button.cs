@@ -10,17 +10,24 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 {
     [SerializeField] private TextMeshProUGUI _buttonText;
     [SerializeField] private Image _img;
+    [SerializeField] private SpriteRenderer _icon;
     [SerializeField] private Sprite _default, _pressed, _onHover;
     [SerializeField] private AudioClip _defaultClip, _pressedClip, _onHoverClip;
     [SerializeField] private AudioSource _source;
     private RectTransform textTransform;
+    private RectTransform iconTransform;
     private bool onPointerDown = false;
     private bool onPointerExit = false;
+    private float moveDistance = 8f;
 
     private void Start() {
 
         if (_buttonText != null)
             textTransform = _buttonText.GetComponent<RectTransform>(); 
+
+        if (_icon != null)
+            iconTransform = _icon.GetComponent<RectTransform>(); 
+
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -31,7 +38,10 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
         
         // Move the text down
         if (_buttonText != null)
-            textTransform.localPosition -= new Vector3(0f, 8f, 0f);
+            textTransform.localPosition -= new Vector3(0f, moveDistance, 0f);
+        
+        if (_icon != null)
+            iconTransform.localPosition -= new Vector3(0f, moveDistance/2, 0f);
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -48,7 +58,10 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
         // Move the text back up
         if (_buttonText != null)
-            textTransform.localPosition += new Vector3(0f, 8f, 0f);
+            textTransform.localPosition += new Vector3(0f, moveDistance, 0f);
+        
+        if (_icon != null)
+            iconTransform.localPosition += new Vector3(0f, moveDistance/2, 0f);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
