@@ -6,8 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
-{
+public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler {
     [SerializeField] private TextMeshProUGUI _buttonText;
     [SerializeField] private Image _img;
     [SerializeField] private SpriteRenderer _icon;
