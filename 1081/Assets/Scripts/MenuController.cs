@@ -31,5 +31,17 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void Play() {
+
+        if (_mainMenuAnim != null) {
+            // Play the specified animation
+            _mainMenuAnim.GetComponent<Animator>().Play("ToChapterSelect");
+        }
+        
+        else {
+            Debug.LogWarning("Animation component missing.");
+        }
+    }
+
 
 }
