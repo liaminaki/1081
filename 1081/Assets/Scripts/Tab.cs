@@ -7,26 +7,26 @@ using TMPro;
 
 public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
-    [SerializeField] private TabGroup tabGroup; 
+    [SerializeField] private TabGroup _tabGroup; 
     private Image img;
     private TMP_Text pageTitle;
 
     void Start() {
         img = GetComponent<Image>();
         pageTitle = GetComponentInChildren<TMP_Text>();
-        tabGroup.AddToList(this);
+        _tabGroup.AddToList(this);
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        tabGroup.OnTabSelected(this);
+        _tabGroup.OnTabSelected(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        tabGroup.OnTabEnter(this);
+        _tabGroup.OnTabEnter(this);
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        tabGroup.OnTabExit(this);
+        _tabGroup.OnTabExit(this);
     }
 
     public Image GetImage() {
@@ -37,7 +37,7 @@ public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
         img.sprite = image;
     }
 
-     public void SetColor(Color color) {
+    public void SetColor(Color color) {
         if (pageTitle != null) {
             pageTitle.color = color;
         }

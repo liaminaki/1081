@@ -8,19 +8,19 @@ using TMPro;
 
 public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler {
     [SerializeField] private TextMeshProUGUI _buttonText;
+    [SerializeField] private Color _activeColor, _inactiveColor;
     [SerializeField] private Image _img;
     [SerializeField] private SpriteRenderer _icon;
     [SerializeField] private Sprite _default, _pressed, _onHover;
     [SerializeField] private AudioClip _defaultClip, _pressedClip, _onHoverClip;
     [SerializeField] private AudioSource _source;
-    private RectTransform textTransform;
-    private RectTransform iconTransform;
-    private bool onPointerDown = false;
-    private bool onPointerExit = false;
+
+    private RectTransform textTransform, iconTransform;
+    private bool onPointerDown = false, onPointerExit = false, active = true;
     private float moveDistance = 8f;
 
     private void Start() {
-
+        
         if (_buttonText != null)
             textTransform = _buttonText.GetComponent<RectTransform>(); 
 
@@ -30,46 +30,83 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        onPointerDown = true;
+        
+        if(active) {
 
-        _img.sprite = _pressed;
-        _source.PlayOneShot(_pressedClip);
-        
-        // Move the text down
-        if (_buttonText != null)
-            textTransform.localPosition -= new Vector3(0f, moveDistance, 0f);
-        
-        if (_icon != null)
-            iconTransform.localPosition -= new Vector3(0f, moveDistance/2, 0f);
+            onPointerDown = true;
+
+            _img.sprite = _pressed;
+            _source.PlayOneShot(_pressedClip);
+            
+            // Move the text down
+            if (_buttonText != null)
+                textTransform.localPosition -= new Vector3(0f, moveDistance, 0f);
+            
+            if (_icon != null)
+                iconTransform.localPosition -= new Vector3(0f, moveDistance/2, 0f);
+
+        }
+
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        onPointerExit = false;
 
-        _img.sprite = _onHover;
-        _source.PlayOneShot(_onHoverClip);
+        if (active) {
+
+            onPointerExit = false;
+
+            _img.sprite = _onHover;
+            _source.PlayOneShot(_onHoverClip);
+
+        }
+
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        onPointerDown = false;
 
-        _img.sprite = onPointerExit ? _default : _onHover;
+        if (active) {
 
-        // Move the text back up
-        if (_buttonText != null)
-            textTransform.localPosition += new Vector3(0f, moveDistance, 0f);
-        
-        if (_icon != null)
-            iconTransform.localPosition += new Vector3(0f, moveDistance/2, 0f);
+            onPointerDown = false;
+
+            _img.sprite = onPointerExit ? _default : _onHover;
+
+            // Move the text back up
+            if (_buttonText != null)
+                textTransform.localPosition += new Vector3(0f, moveDistance, 0f);
+            
+            if (_icon != null)
+                iconTransform.localPosition += new Vector3(0f, moveDistance/2, 0f);
+
+        }
+
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        onPointerExit = true;
 
-        // Ensure that img remains the same on pointer exit while on pointer down
-        _img.sprite = !onPointerDown ? _default : _img.sprite; 
+        if (active) {
+            onPointerExit = true;
 
-        _source.PlayOneShot(_defaultClip);
+            // Ensure that img remains the same on pointer exit while on pointer down
+            _img.sprite = !onPointerDown ? _default : _img.sprite; 
+
+            _source.PlayOneShot(_defaultClip);
+        
+        }
+
+    }
+
+    public void Activate() {
+        
+        active = true;
+        _buttonText.color = _activeColor;
+
+    }
+
+    public void Deactivate() {
+       
+        active = false;
+        _buttonText.color = _inactiveColor;
+
     }
 
 }
