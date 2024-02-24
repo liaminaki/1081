@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Skin : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
+    [SerializeField] private GameObject _skinReference; // Reference to the GameObject representing the skin
     [SerializeField] private CharSelection _skins; 
     [SerializeField] private SpriteRenderer _skinRenderer;
     [SerializeField] private Sprite _default, _hover, _selected;
@@ -41,5 +42,15 @@ public class Skin : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void SetSelectedImage() {
         _skinRenderer.sprite = _selected;
     }
+
+    public void Activate() {
+        _skinReference.SetActive(true);
+    }
+
+    public void Deactivate() {
+        _skinReference.SetActive(false);
+    }
+
+
    
 }

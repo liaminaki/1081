@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CharSelection : MonoBehaviour {
-
+    [SerializeField] private GameObject  _moveSkinCardAnim;
     [SerializeField] private List<Skin> _skins;
-    [SerializeField] private Button _button;
+    [SerializeField] private Button _nextButton;
 
     private Skin selectedSkin; 
     private int selectedSkinIndex;
@@ -14,13 +14,16 @@ public class CharSelection : MonoBehaviour {
 
     private void Start() {
         PlayerPrefs.SetInt("SelectedSkinIndex", -1);
+
+        ActivateAllSkins();
+
         LoadSkin();
         UpdateSkins();
 
         Debug.Log("Selected Skin Index: " + selectedSkinIndex);
 
         if (selectedSkin == null) {
-            _button.Deactivate();
+            _nextButton.Deactivate();
         }
 
     }
@@ -39,21 +42,24 @@ public class CharSelection : MonoBehaviour {
         if (selectedSkin == null || skin != selectedSkin) {
             skin.SetHoverImage();
         }
+
     }
 
     public void OnSkinExit(Skin skin) {
         UpdateSkins();
+
     }
 
     public void OnSkinSelected(Skin skin) {
         selectedSkin = skin;
         selectedSkinIndex = _skins.IndexOf(skin);
 
-        _button.Activate();
+        _nextButton.Activate();
         skin.SetSelectedImage();
         
         UpdateSkins(); 
         SaveSkin(); // Decide whether skin should be saved after selecting or after clicking Next button
+
     }
 
     public void UpdateSkins() {
@@ -62,6 +68,7 @@ public class CharSelection : MonoBehaviour {
             if (selectedSkin != null && skin == selectedSkin) { continue; }
             skin.SetDefaultImage();
         }
+
     }
 
     public void SaveSkin() {
@@ -83,6 +90,28 @@ public class CharSelection : MonoBehaviour {
             }
         }
 
+    }
+
+    public void ActivateAllSkins() {
+        foreach (Skin skin in _skins) {
+            skin.Activate();
+        }
+
+    }
+
+    public void DeactivateUnselectedSkin() {
+        
+        foreach (Skin skin in _skins) {
+
+            if (selectedSkin != null && skin != selectedSkin) {
+                skin.Deactivate();
+            }
+        }
+    }
+
+    public void OnNextButtonClick() {
+        DeactivateUnselectedSkin();
+        _moveSkinCardAnim.GetComponent<Animator>().Play("MoveSkinCardToLeft");
     }
 
 }

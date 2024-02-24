@@ -5,12 +5,12 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject  _mainMenuAnim;
-    [SerializeField] private GameObject _characterSelectionPanel;
+    [SerializeField] private Canvas _characterCustomizationCanvas;
     // [SerializeField] private GameObject _characterNamingPanel;
     [SerializeField] private PanelController _panelController;
 
     public void Start() {
-        _panelController.Deactivate(_characterSelectionPanel);
+        _characterCustomizationCanvas.enabled = true;
     }
 
     public void ToRight() {
@@ -46,7 +46,7 @@ public class MenuController : MonoBehaviour
 
             // Check if player already customized their character
             if (PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") == -1) { 
-                _panelController.Activate(_characterSelectionPanel);
+                _characterCustomizationCanvas.enabled = true;
             }
 
         }
