@@ -9,8 +9,15 @@ public class CharSelection : MonoBehaviour {
     [SerializeField] private Button _button;
 
     private Skin selectedSkin; 
+    private int selectedSkinIndex;
+
 
     private void Start() {
+        
+        LoadSkin();
+        UpdateSkins();
+
+        Debug.Log(selectedSkinIndex);
 
         if (selectedSkin == null) {
             _button.Deactivate();
@@ -30,7 +37,7 @@ public class CharSelection : MonoBehaviour {
     public void OnSkinEnter(Skin skin) {
         UpdateSkins();
         if (selectedSkin == null || skin != selectedSkin) {
-            skin.SetSelectedImage();
+            skin.SetHoverImage();
         }
     }
 
@@ -40,10 +47,13 @@ public class CharSelection : MonoBehaviour {
 
     public void OnSkinSelected(Skin skin) {
         selectedSkin = skin;
-        _button.Activate();
-        UpdateSkins(); 
-        skin.SetSelectedImage();
+        selectedSkinIndex = _skins.IndexOf(skin);
 
+        _button.Activate();
+        skin.SetSelectedImage();
+        
+        UpdateSkins(); 
+        SaveSkin(); // Decide whether skin should be saved after selecting or after clicking Next button
     }
 
     public void UpdateSkins() {
@@ -53,5 +63,26 @@ public class CharSelection : MonoBehaviour {
             skin.SetDefaultImage();
         }
     }
-    
+
+    public void SaveSkin() {
+
+        PlayerPrefs.SetInt("SelectedSkinIndex", selectedSkinIndex);
+        selectedSkinIndex = PlayerPrefs.GetInt("SelectedSkinIndex");
+
+    }
+
+    public void LoadSkin() {
+       
+        if (PlayerPrefs.HasKey("SelectedSkinIndex"))
+        {
+            selectedSkinIndex = PlayerPrefs.GetInt("SelectedSkinIndex");
+            if (selectedSkinIndex >= 0 && selectedSkinIndex < _skins.Count)
+            {
+                selectedSkin = _skins[selectedSkinIndex];
+                OnSkinSelected(selectedSkin);
+            }
+        }
+
+    }
+
 }

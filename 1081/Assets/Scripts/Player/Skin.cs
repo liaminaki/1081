@@ -8,7 +8,7 @@ public class Skin : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     [SerializeField] private CharSelection _skins; 
     [SerializeField] private SpriteRenderer _skinRenderer;
-    [SerializeField] private Sprite _default, _selected;
+    [SerializeField] private Sprite _default, _hover, _selected;
 
     void Start() {
         _skins.AddToList(this);
@@ -32,6 +32,10 @@ public class Skin : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void SetDefaultImage() {
         _skinRenderer.sprite = _default;
+    }
+
+    public void SetHoverImage() {
+        _skinRenderer.sprite = _hover;
     }
 
     public void SetSelectedImage() {
