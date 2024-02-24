@@ -10,22 +10,22 @@ public class PanelController : MonoBehaviour
     //     Deactivate(_panelToControl);
     // }
     
-    // Method to enable the canvas
+    // Method to enable the panel
     public void Activate(GameObject _panelToControl) {
         if (_panelToControl != null)
         {
             _panelToControl.SetActive(true);
-            Debug.Log("Activated");
+            Debug.Log(_panelToControl.name + " Panel Activated");
         }
     }
 
-    // Method to disable the canvas
+    // Method to disable the panel
     public void Deactivate(GameObject _panelToControl)
     {
         if (_panelToControl != null)
         {
             _panelToControl.SetActive(false);
-            Debug.Log("Deactivated");
+            Debug.Log(_panelToControl.name + " Panel Deactivated");
         }
     }
 

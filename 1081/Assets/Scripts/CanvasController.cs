@@ -15,7 +15,7 @@ public class CanvasController : MonoBehaviour
         if (_canvasToControl != null)
         {
             _canvasToControl.enabled = true;
-            Debug.Log("Enabled");
+            Debug.Log(_canvasToControl.name + " Canvas Enabled");
         }
     }
 
@@ -25,7 +25,7 @@ public class CanvasController : MonoBehaviour
         if (_canvasToControl != null)
         {
             _canvasToControl.enabled = false;
-            Debug.Log("Disabled");
+            Debug.Log(_canvasToControl.name + " Canvas Disabled");
         }
     }
 

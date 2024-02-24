@@ -36,7 +36,9 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
             onPointerDown = true;
 
             _img.sprite = _pressed;
-            _source.PlayOneShot(_pressedClip);
+
+            if (_pressedClip != null)
+                _source.PlayOneShot(_pressedClip);
             
             // Move the text down
             if (_buttonText != null)
@@ -56,7 +58,9 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
             onPointerExit = false;
 
             _img.sprite = _onHover;
-            _source.PlayOneShot(_onHoverClip);
+
+            if (_pressedClip != _onHoverClip)
+                _source.PlayOneShot(_onHoverClip);
 
         }
 
@@ -89,7 +93,8 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
             // Ensure that img remains the same on pointer exit while on pointer down
             _img.sprite = !onPointerDown ? _default : _img.sprite; 
 
-            _source.PlayOneShot(_defaultClip);
+            if (_defaultClip != null)
+                _source.PlayOneShot(_defaultClip);
         
         }
 

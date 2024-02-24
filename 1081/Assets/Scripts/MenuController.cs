@@ -11,7 +11,6 @@ public class MenuController : MonoBehaviour
 
     public void Start() {
         _panelController.Deactivate(_characterSelectionPanel);
-        Debug.Log("Deactivated??");
     }
 
     public void ToRight() {

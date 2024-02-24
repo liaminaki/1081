@@ -13,11 +13,11 @@ public class CharSelection : MonoBehaviour {
 
 
     private void Start() {
-        
+        PlayerPrefs.SetInt("SelectedSkinIndex", -1);
         LoadSkin();
         UpdateSkins();
 
-        Debug.Log(selectedSkinIndex);
+        Debug.Log("Selected Skin Index: " + selectedSkinIndex);
 
         if (selectedSkin == null) {
             _button.Deactivate();
@@ -65,7 +65,7 @@ public class CharSelection : MonoBehaviour {
     }
 
     public void SaveSkin() {
-
+        
         PlayerPrefs.SetInt("SelectedSkinIndex", selectedSkinIndex);
         selectedSkinIndex = PlayerPrefs.GetInt("SelectedSkinIndex");
 
