@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharSelection : MonoBehaviour {
     [SerializeField] private GameObject  _moveSkinCardAnim;
     [SerializeField] private List<Skin> _skins;
     [SerializeField] private Button _nextButton;
+    [SerializeField] private GameObject  _charNamingPanel, _charSelectionPanel; 
+    [SerializeField] private TMP_Text _warningText;
 
     private Skin selectedSkin; 
     private int selectedSkinIndex;
 
 
     private void Start() {
+
         PlayerPrefs.SetInt("SelectedSkinIndex", -1);
+
+        // Initialize warning text to empty
+        _warningText.text = "";
 
         ActivateAllSkins();
 
@@ -59,6 +66,9 @@ public class CharSelection : MonoBehaviour {
         
         UpdateSkins(); 
         SaveSkin(); // Decide whether skin should be saved after selecting or after clicking Next button
+
+        // Reset warning text
+        _warningText.text = "";
 
     }
 
@@ -107,11 +117,32 @@ public class CharSelection : MonoBehaviour {
                 skin.Deactivate();
             }
         }
+
     }
 
     public void OnNextButtonClick() {
-        DeactivateUnselectedSkin();
-        _moveSkinCardAnim.GetComponent<Animator>().Play("MoveSkinCardToLeft");
+            
+        if (selectedSkinIndex > -1) {
+            
+            // DeactivateUnselectedSkin();
+        
+            // Move selected skin card
+            // _moveSkinCardAnim.GetComponent<Animator>().Play("MoveSkinCardToLeft");
+            
+            // Deactivate Character selection panel 
+            _charSelectionPanel.SetActive(false);
+
+            // Activate Character naming panel
+            _charNamingPanel.SetActive(true);
+
+        }
+        
+        else {
+
+            _warningText.text = "Please select a character.";
+
+        }
+            
     }
 
 }

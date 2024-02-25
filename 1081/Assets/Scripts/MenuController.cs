@@ -5,12 +5,11 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject  _mainMenuAnim;
-    [SerializeField] private Canvas _characterCustomizationCanvas;
-    // [SerializeField] private GameObject _characterNamingPanel;
-    [SerializeField] private PanelController _panelController;
-
+    [SerializeField] private Canvas _charCustomCanvas;
+    [SerializeField] private GameObject _charSelectionPanel, _charNamingPanel;
+    
     public void Start() {
-        _characterCustomizationCanvas.enabled = true;
+        _charCustomCanvas.enabled = false;
     }
 
     public void ToRight() {
@@ -46,7 +45,15 @@ public class MenuController : MonoBehaviour
 
             // Check if player already customized their character
             if (PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") == -1) { 
-                _characterCustomizationCanvas.enabled = true;
+                
+                // Display Character Customization
+                _charCustomCanvas.enabled = true;
+
+                // Deactivate Character naming panel
+                _charNamingPanel.SetActive(false);
+
+                // Activate Character selection panel 
+                _charSelectionPanel.SetActive(true);
             }
 
         }
@@ -55,6 +62,7 @@ public class MenuController : MonoBehaviour
             Debug.LogWarning("Animation component missing.");
         }
     }
+
 
     
 

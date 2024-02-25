@@ -11,7 +11,7 @@ public class PanelController : MonoBehaviour
     // }
     
     // Method to enable the panel
-    public void Activate(GameObject _panelToControl) {
+    public void Activate() {
         if (_panelToControl != null)
         {
             _panelToControl.SetActive(true);
@@ -20,7 +20,7 @@ public class PanelController : MonoBehaviour
     }
 
     // Method to disable the panel
-    public void Deactivate(GameObject _panelToControl)
+    public void Deactivate()
     {
         if (_panelToControl != null)
         {

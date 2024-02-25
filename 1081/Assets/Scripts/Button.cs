@@ -7,6 +7,7 @@ using TMPro;
 
 
 public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler {
+    [SerializeField] private UnityEngine.UI.Button _buttonComponent;
     [SerializeField] private TextMeshProUGUI _buttonText;
     [SerializeField] private Color _activeColor, _inactiveColor;
     [SerializeField] private Image _img;
@@ -20,6 +21,7 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     private float moveDistance = 8f;
 
     private void Start() {
+        _buttonComponent = GetComponent<UnityEngine.UI.Button>();
         
         if (_buttonText != null)
             textTransform = _buttonText.GetComponent<RectTransform>(); 
@@ -103,14 +105,22 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
     public void Activate() {
         
         active = true;
-        _buttonText.color = _activeColor;
+
+        if (_buttonText != null)
+            _buttonText.color = _activeColor;
+        
+        // _buttonComponent.enabled = true;
 
     }
 
     public void Deactivate() {
        
         active = false;
-        _buttonText.color = _inactiveColor;
+
+        if (_buttonText != null)
+            _buttonText.color = _inactiveColor;
+        
+        // _buttonComponent.enabled = false;
 
     }
 
