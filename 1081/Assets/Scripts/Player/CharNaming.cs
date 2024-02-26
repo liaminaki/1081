@@ -8,22 +8,18 @@ public class CharNaming : MonoBehaviour {
     private string playerPrefsKey = "CharacterName";
     private int characterLimit = 20;
     [SerializeField] private Button _backButton, _doneButton;
-    // [SerializeField] private GameObject  _moveSkinCardAnim;  
-    [SerializeField] private GameObject  _charNamingPanel, _charSelectionPanel; 
-    [SerializeField] private Canvas _charCustomCanvas;
-    // [SerializeField] private CharSelection _skins;
+    [SerializeField] private GameObject  _moveSkinCardAnim;  
+    [SerializeField] private GameObject  _charNamingPanel, _charSelectionPanel, _skinCards, _selectedSkinInShop; 
+    [SerializeField] private Canvas _charCustomCanvas, _shopCanvas;
+    [SerializeField] private CharSelection _skins;
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private TMP_Text _warningText;
-    [SerializeField] private SelectedSkin _selectedSkin;
+    private bool wasInStore = false;
     
 
     public void Start() {
 
-        _selectedSkin.LoadSkin();
-
-        // if (_skins != null) {
-        //     _skins = GetComponent<CharSelection>();
-        // }
+        // _selectedSkin.LoadSkin();
         
         if (_inputField != null && _warningText != null) {   
             
@@ -42,8 +38,8 @@ public class CharNaming : MonoBehaviour {
     }
 
     public void Update() {
-
-        _selectedSkin.LoadSkin();
+        
+        // _selectedSkin.LoadSkin();
         ControlButtons();
 
     }
@@ -109,11 +105,12 @@ public class CharNaming : MonoBehaviour {
 
         else {
             
-            // // Display all skin options
-            // _skins.ActivateAllSkins();
+            // Display all skin options
+            _skins.ActivateAllSkins();
 
             // Move skin card to original position in character selection
             // _moveSkinCardAnim.GetComponent<Animator>().Play("MoveSkinCardBackToOrig");
+            MoveSelectedSkin(0f);
             
             // Deactivate Character naming panel
             _charNamingPanel.SetActive(false);
@@ -161,10 +158,24 @@ public class CharNaming : MonoBehaviour {
 
         else {
             _charCustomCanvas.enabled = false;
-            
-            _selectedSkin.Deactivate();
+            _skinCards.SetActive(false);
+
+            if (wasInStore) {
+                _shopCanvas.enabled = true;
+                _selectedSkinInShop.SetActive(true);
+            }
             
         }
+
+    }
+
+    public void SetWasInStore(bool value) {
+        this.wasInStore = value;
+    }
+
+    public void MoveSelectedSkin(float newXPosition) {
+
+        _skins.MoveSelectedSkin(newXPosition);
 
     }
 

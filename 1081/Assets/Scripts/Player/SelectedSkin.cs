@@ -10,10 +10,16 @@ public class SelectedSkin : MonoBehaviour {
     private int selectedSkinIndex;
 
     public void Start() {
-        
+       
         LoadSkin();
-        _skinRenderer.enabled = true;
+        // _skinRenderer.enabled = true;
         
+    }
+
+    public void Update() {
+
+        LoadSkin();
+
     }
 
     public void LoadSkin() {
@@ -23,10 +29,16 @@ public class SelectedSkin : MonoBehaviour {
             
             if (selectedSkinIndex >= 0 && selectedSkinIndex < _skins.Count) {
                 _skinRenderer.sprite = _skins[selectedSkinIndex];
-                Debug.Log("Skin Changed");
+
             }
 
         }
+
+    }
+
+    public void Activate() {
+
+        _skinRenderer.enabled = true;
 
     }
 

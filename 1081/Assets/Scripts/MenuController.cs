@@ -6,10 +6,14 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject  _mainMenuAnim;
     [SerializeField] private Canvas _charCustomCanvas;
-    [SerializeField] private GameObject _charSelectionPanel, _charNamingPanel;
+    [SerializeField] private GameObject _charSelectionPanel, _charNamingPanel, _skinCards, _selectedSkinInShop;
     
     public void Start() {
+        // PlayerPrefs.SetInt("SelectedSkinIndex", -1); // For testing character selection, remove in final
+
         _charCustomCanvas.enabled = false;
+        _skinCards.SetActive(false);
+        _selectedSkinInShop.SetActive(false);
     }
 
     public void ToRight() {
@@ -42,20 +46,9 @@ public class MenuController : MonoBehaviour
         if (_mainMenuAnim != null) {
             // Play the specified animation
             _mainMenuAnim.GetComponent<Animator>().Play("ToChapterSelect");
-
-            // Check if player already customized their character
-            if (PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") == -1) { 
-                
-                // Display Character Customization
-                _charCustomCanvas.enabled = true;
-
-                // Deactivate Character naming panel
-                _charNamingPanel.SetActive(false);
-
-                // Activate Character selection panel 
-                _charSelectionPanel.SetActive(true);
-            }
-
+            
+            if (IsCharacterSelected() && IsCharacterNameSet())
+                OpenCharCustomization();
         }
         
         else {
@@ -64,7 +57,29 @@ public class MenuController : MonoBehaviour
     }
 
 
+    public void OpenCharCustomization () {
+
+        // Display Character Customization
+        _charCustomCanvas.enabled = true;
+
+        // Activate Skin Card Panel
+        _skinCards.SetActive(true);
+
+        // Deactivate Character naming panel
+        _charNamingPanel.SetActive(false);
+
+        // Activate Character selection panel 
+        _charSelectionPanel.SetActive(true);
+
+    }
     
+    public bool IsCharacterNameSet() {
+        return PlayerPrefs.HasKey("CharacterName") && PlayerPrefs.GetString("CharacterName") != null;
+    }
+
+    public bool IsCharacterSelected() {
+        return PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") == -1;
+    }
 
 
 }

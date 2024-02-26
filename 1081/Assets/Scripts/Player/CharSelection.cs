@@ -10,14 +10,16 @@ public class CharSelection : MonoBehaviour {
     [SerializeField] private Button _nextButton;
     [SerializeField] private GameObject  _charNamingPanel, _charSelectionPanel; 
     [SerializeField] private TMP_Text _warningText;
+    [SerializeField] private GameObject _skinCard;
 
     private Skin selectedSkin; 
-    private int selectedSkinIndex;
+    private int selectedSkinIndex = -1;
 
 
-    private void Start() {
+    public void Start() {
 
-        PlayerPrefs.SetInt("SelectedSkinIndex", -1);
+        // Set original position of skin cards
+        MoveSelectedSkin(0f);
 
         // Initialize warning text to empty
         _warningText.text = "";
@@ -31,6 +33,7 @@ public class CharSelection : MonoBehaviour {
 
         if (selectedSkin == null) {
             _nextButton.Deactivate();
+            Debug.LogWarning("Next button deactivated.");
         }
 
     }
@@ -122,12 +125,12 @@ public class CharSelection : MonoBehaviour {
 
     public void OnNextButtonClick() {
             
-        if (selectedSkinIndex > -1) {
+        if (selectedSkinIndex != -1) {
             
-            // DeactivateUnselectedSkin();
+            DeactivateUnselectedSkin();
         
             // Move selected skin card
-            // _moveSkinCardAnim.GetComponent<Animator>().Play("MoveSkinCardToLeft");
+            MoveSelectedSkin(-100f);
             
             // Deactivate Character selection panel 
             _charSelectionPanel.SetActive(false);
@@ -143,6 +146,39 @@ public class CharSelection : MonoBehaviour {
 
         }
             
+    }
+
+    public void MoveSelectedSkin(float newXPosition) {
+
+        // Check if the skin card is assigned
+        if (_skinCard != null) {
+            
+            // Get the RectTransform component of the skin card
+            RectTransform skinCardTransform = _skinCard.GetComponent<RectTransform>();
+            
+            if (skinCardTransform != null) {
+                // Get the current position of the RectTransform
+                Vector3 currentPosition = skinCardTransform.anchoredPosition;
+
+                // Set the new X position
+                currentPosition.x = newXPosition;
+
+                // Apply the new position to the RectTransform
+                skinCardTransform.anchoredPosition = currentPosition;
+
+                Debug.Log("Moved "+ newXPosition);
+            }
+            
+            else {
+                Debug.LogError("Skin card does not have a RectTransform component!");
+            }
+        
+        }
+        
+        else {
+            Debug.LogError("Skin card is not assigned!");
+        }
+
     }
 
 }
