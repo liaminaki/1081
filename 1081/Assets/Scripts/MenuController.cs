@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     
     public void Start() {
         // PlayerPrefs.SetInt("SelectedSkinIndex", -1); // For testing character selection, remove in final
+        // PlayerPrefs.SetString("CharacterName", "");
 
         _charCustomCanvas.enabled = false;
         _skinCards.SetActive(false);
@@ -44,16 +45,42 @@ public class MenuController : MonoBehaviour
     public void Play() {
 
         if (_mainMenuAnim != null) {
+            
             // Play the specified animation
             _mainMenuAnim.GetComponent<Animator>().Play("ToChapterSelect");
+
             
-            if (IsCharacterSelected() && IsCharacterNameSet())
-                OpenCharCustomization();
+            // Start a coroutine to wait until the animation is complete.
+            StartCoroutine(WaitForAnimation());
+
+            /* 
+                When executing coroutine it doesn't wait for it to finish.
+                Code after line above will execute immediately after the coroutine starts, 
+                without waiting for the animation to complete.
+                Hence, supposed code are placed in WaitForAnimation().
+            */
+                
         }
         
         else {
             Debug.LogWarning("Animation component missing.");
         }
+    }
+
+    private IEnumerator WaitForAnimation() {
+        
+        // Wait until the end of the current frame
+        yield return new WaitForEndOfFrame();
+
+        // Wait until the specified animation is complete
+        yield return new WaitForSeconds(_mainMenuAnim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        
+
+        // Check if player has customized their character
+        if (!IsCharacterSelected() || !IsCharacterNameSet()) { 
+            OpenCharCustomization();
+        }
+
     }
 
 
@@ -74,11 +101,11 @@ public class MenuController : MonoBehaviour
     }
     
     public bool IsCharacterNameSet() {
-        return PlayerPrefs.HasKey("CharacterName") && PlayerPrefs.GetString("CharacterName") != null;
+        return PlayerPrefs.HasKey("CharacterName") && !string.IsNullOrEmpty(PlayerPrefs.GetString("CharacterName"));
     }
 
     public bool IsCharacterSelected() {
-        return PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") == -1;
+        return PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") > -1;
     }
 
 
