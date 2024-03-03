@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
-{
-    [SerializeField] private GameObject  _mainMenuAnim;
+{   
+    [SerializeField] private Animator _mainMenuAnimator;
     [SerializeField] private Canvas _charCustomCanvas;
     [SerializeField] private GameObject _charSelectionPanel, _charNamingPanel, _skinCards, _selectedSkinInShop;
     
@@ -12,16 +13,25 @@ public class MenuController : MonoBehaviour
         // PlayerPrefs.SetInt("SelectedSkinIndex", -1); // For testing character selection, remove in final
         // PlayerPrefs.SetString("CharacterName", "");
 
+        // Play splash screen if not from chapter selection
+        if (SceneStateManager.PreviousScene != "ChapterSelectionScene") {
+            _mainMenuAnimator.Play("SplashScreen");
+        }
+
+        // Clear the previous scene information to prevent it from persisting across scenes
+        SceneStateManager.PreviousScene = null;
+
+        // Canvas states initializations
         _charCustomCanvas.enabled = false;
         _skinCards.SetActive(false);
         _selectedSkinInShop.SetActive(false);
     }
 
+    // Play to right transition
     public void ToRight() {
         
-        if (_mainMenuAnim != null) {
-            // Play the specified animation
-            _mainMenuAnim.GetComponent<Animator>().Play("ToRight");
+        if (_mainMenuAnimator != null) {
+            _mainMenuAnimator.Play("ToRight");
         }
         
         else {
@@ -30,11 +40,13 @@ public class MenuController : MonoBehaviour
     
     }
 
+    // Play to left transition
     public void ToLeft() {
         
-        if (_mainMenuAnim != null) {
-            // Play the specified animation
-            _mainMenuAnim.GetComponent<Animator>().Play("ToLeft");
+        if (_mainMenuAnimator != null) {
+            
+            _mainMenuAnimator.Play("ToLeft");
+            Debug.Log("Played to left!");
         }
         
         else {
@@ -44,10 +56,10 @@ public class MenuController : MonoBehaviour
 
     public void Play() {
 
-        if (_mainMenuAnim != null) {
+        if (_mainMenuAnimator != null) {
             
             // Play the specified animation
-            _mainMenuAnim.GetComponent<Animator>().Play("ToChapterSelect");
+            _mainMenuAnimator.Play("ToChapterSelection");
 
             
             // Start a coroutine to wait until the animation is complete.
@@ -73,13 +85,21 @@ public class MenuController : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         // Wait until the specified animation is complete
-        yield return new WaitForSeconds(_mainMenuAnim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(_mainMenuAnimator.GetCurrentAnimatorStateInfo(0).length);
         
 
         // Check if player has customized their character
         if (!IsCharacterSelected() || !IsCharacterNameSet()) { 
             OpenCharCustomization();
         }
+
+        GoToChapterSelection();
+        
+    }
+
+    public void GoToChapterSelection () {
+
+        SceneManager.LoadScene("ChapterSelectionScene");
 
     }
 
