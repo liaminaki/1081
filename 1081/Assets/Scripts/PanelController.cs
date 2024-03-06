@@ -9,7 +9,7 @@ public class PanelController : MonoBehaviour
     // public void Start() {
     //     Deactivate(_panelToControl);
     // }
-    
+
     // Method to enable the panel
     public void Activate() {
         if (_panelToControl != null)

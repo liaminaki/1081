@@ -26,6 +26,7 @@ public class CanvasController : MonoBehaviour
         {
             _canvasToControl.enabled = false;
             Debug.Log(_canvasToControl.name + " Canvas Disabled");
+
         }
     }
 
