@@ -25,13 +25,6 @@ public class PlayerCoins : MonoBehaviour {
 
             //Set the coint amount to the Text component
             _playerCoins.text = savedCoins.ToString();
-
-        }
-        else
-        {
-            //"PlayerCoins" key was not found, set default to 200
-            int defaultCoins = 200;
-            _playerCoins.text = defaultCoins.ToString();
         }
     }
 }

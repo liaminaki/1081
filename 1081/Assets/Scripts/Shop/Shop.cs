@@ -12,11 +12,13 @@ public class Shop : MonoBehaviour
     {
         //Load player coins from PlayerPrefs, defaulting to 200 if not found
         playerCoins = PlayerPrefs.GetInt(playerCoinsKey, 200);
+        SavePlayerCoins();
     }
     
     //Function to save player coins to PlayerPrefs
     private void SavePlayerCoins()
     {
+        //sets the new player coins
         PlayerPrefs.SetInt(playerCoinsKey, playerCoins);
         PlayerPrefs.Save();
     }
