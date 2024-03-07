@@ -161,6 +161,7 @@ public class CharNaming : MonoBehaviour {
             _skinCards.SetActive(false);
 
             if (wasInStore) {
+                Debug.Log(_shopCanvas.name + " Abled");
                 _shopCanvas.enabled = true;
                 _selectedSkinInShop.SetActive(true);
             }
