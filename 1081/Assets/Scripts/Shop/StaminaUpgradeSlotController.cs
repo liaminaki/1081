@@ -11,6 +11,11 @@ public class StaminaUpgradeSlotController : MonoBehaviour
     {
         IterateSlots();
     }
+
+    public void Update()
+    {
+        IterateSlots();
+    }
     public void AddToList(StaminaSlots slots)
     {
 
@@ -25,33 +30,40 @@ public class StaminaUpgradeSlotController : MonoBehaviour
     {
         if (_filledSlots != null)
         {
-            int count = 5;
-            if (staminaUpgrade)
+            if (PlayerPrefs.GetInt("StaminaLevel") >= 5)
             {
-                Debug.Log("nisud siya para mo upgrade");
-                for (int i = 0; i < count; i++)
-                {
-                    if (i < PlayerPrefs.GetInt("StaminaLevel"))
-                    {
-                        _filledSlots[i].gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        _filledSlots[i].gameObject.SetActive(true);
-                    }
-                }
+                Debug.Log("Maximum Level Reached");
             }
             else
             {
-                for (int i = 0; i < count; i++)
+                int count = 5;
+                if (staminaUpgrade)
                 {
-                    if (i < PlayerPrefs.GetInt("StaminaLevel"))
+                    Debug.Log("nisud siya para mo upgrade");
+                    for (int i = 0; i < count; i++)
                     {
-                        _filledSlots[i].gameObject.SetActive(false);
+                        if (i < PlayerPrefs.GetInt("StaminaLevel"))
+                        {
+                            _filledSlots[i].gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            _filledSlots[i].gameObject.SetActive(true);
+                        }
                     }
-                    else
+                }
+                else
+                {
+                    for (int i = 0; i < count; i++)
                     {
-                        _filledSlots[i].gameObject.SetActive(true);
+                        if (i < PlayerPrefs.GetInt("StaminaLevel"))
+                        {
+                            _filledSlots[i].gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            _filledSlots[i].gameObject.SetActive(true);
+                        }
                     }
                 }
             }

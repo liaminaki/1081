@@ -11,6 +11,11 @@ public class ShieldUpgradeSlotController : MonoBehaviour
     {
         IterateSlots();
     }
+    public void Update()
+    {
+        IterateSlots();
+    }
+
     public void AddToList(ShieldSlots slots)
     {
 
@@ -24,33 +29,39 @@ public class ShieldUpgradeSlotController : MonoBehaviour
     {
         if (_filledSlots != null)
         {
-            int count = 5;
-            if (shieldUpgrade)
+            if (PlayerPrefs.GetInt("ShieldLevel") >=5)
             {
-                Debug.Log("nisud here para mo upgrade");
-                for (int i = 0; i < count; i++)
-                {
-                    if (i < PlayerPrefs.GetInt("ShieldLevel"))
-                    {
-                        _filledSlots[i].gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        _filledSlots[i].gameObject.SetActive(true);
-                    }
-                }
+                Debug.Log("Maximum Level Reached");
             }
             else
             {
-                for (int i = 0; i < count; i++)
+                int count = 5;
+                if (shieldUpgrade)
                 {
-                    if (i < PlayerPrefs.GetInt("ShieldLevel"))
+                    for (int i = 0; i < count; i++)
                     {
-                        _filledSlots[i].gameObject.SetActive(false);
+                        if (i < PlayerPrefs.GetInt("ShieldLevel"))
+                        {
+                            _filledSlots[i].gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            _filledSlots[i].gameObject.SetActive(true);
+                        }
                     }
-                    else
+                }
+                else
+                {
+                    for (int i = 0; i < count; i++)
                     {
-                        _filledSlots[i].gameObject.SetActive(true);
+                        if (i < PlayerPrefs.GetInt("ShieldLevel"))
+                        {
+                            _filledSlots[i].gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            _filledSlots[i].gameObject.SetActive(true);
+                        }
                     }
                 }
             }
