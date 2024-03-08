@@ -32,11 +32,11 @@ public class ShieldUpgradeSlotController : MonoBehaviour
                 {
                     if (i < PlayerPrefs.GetInt("ShieldLevel"))
                     {
-                        _filledSlots[i].gameObject.SetActive(true);
+                        _filledSlots[i].gameObject.SetActive(false);
                     }
                     else
                     {
-                        _filledSlots[i].gameObject.SetActive(false);
+                        _filledSlots[i].gameObject.SetActive(true);
                     }
                 }
             }
@@ -46,11 +46,11 @@ public class ShieldUpgradeSlotController : MonoBehaviour
                 {
                     if (i < PlayerPrefs.GetInt("ShieldLevel"))
                     {
-                        _filledSlots[i].gameObject.SetActive(true);
+                        _filledSlots[i].gameObject.SetActive(false);
                     }
                     else
                     {
-                        _filledSlots[i].gameObject.SetActive(false);
+                        _filledSlots[i].gameObject.SetActive(true);
                     }
                 }
             }
