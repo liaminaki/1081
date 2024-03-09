@@ -20,19 +20,13 @@ public class ShieldDisplay : MonoBehaviour
 
     public void LoadShieldNumber()
     {
-        if (PlayerPrefs.HasKey("NoOfShield"))
+        if (PlayerPrefs.HasKey("ShieldNumber"))
         {
             //get the number of shield from PlayerPrefs
-            int shieldNumber = PlayerPrefs.GetInt("NoOfShield");
+            int shieldNumber = PlayerPrefs.GetInt("ShieldNumber");
 
             //set the shield number to the Text component
             _playerShield.text = "You have : " + shieldNumber.ToString();
-        }
-        else
-        {
-            //load default shield number;
-            int defaultShield = 0;
-            _playerShield.text = "You have : " + defaultShield.ToString();
         }
     }
 }
