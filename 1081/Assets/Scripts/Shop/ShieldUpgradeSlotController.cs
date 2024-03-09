@@ -29,7 +29,7 @@ public class ShieldUpgradeSlotController : MonoBehaviour
     {
         if (_filledSlots != null)
         {
-            if (PlayerPrefs.GetInt("ShieldLevel") >=5)
+            if (PlayerPrefs.GetInt("ShieldLevel") > 5)
             {
                 Debug.Log("Maximum Level Reached");
             }
@@ -75,13 +75,5 @@ public class ShieldUpgradeSlotController : MonoBehaviour
     public void SetWasUpgradeShield(bool value)
     {
         this.shieldUpgrade = value;
-        if (shieldUpgrade)
-        {
-            Debug.Log("nitrue siya");
-        }
-        else
-        {
-            Debug.Log("false siya");
-        }
     }
 }

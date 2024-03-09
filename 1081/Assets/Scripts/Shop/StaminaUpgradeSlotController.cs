@@ -30,7 +30,7 @@ public class StaminaUpgradeSlotController : MonoBehaviour
     {
         if (_filledSlots != null)
         {
-            if (PlayerPrefs.GetInt("StaminaLevel") >= 5)
+            if (PlayerPrefs.GetInt("StaminaLevel") > 5)
             {
                 Debug.Log("Maximum Level Reached");
             }
@@ -39,7 +39,6 @@ public class StaminaUpgradeSlotController : MonoBehaviour
                 int count = 5;
                 if (staminaUpgrade)
                 {
-                    Debug.Log("nisud siya para mo upgrade");
                     for (int i = 0; i < count; i++)
                     {
                         if (i < PlayerPrefs.GetInt("StaminaLevel"))
