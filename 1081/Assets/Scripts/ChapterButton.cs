@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class ChapterButton : MonoBehaviour {
 
+    [SerializeField] private Button _button;
     [SerializeField] private bool _unlocked; // Default value is false
     public GameObject QuestionMark; // Indicate if chapter is locked
     public GameObject[] Stars;
@@ -22,8 +23,7 @@ public class ChapterButton : MonoBehaviour {
         // PlayerPrefs.DeleteKey("Chapter5Stars");
        
         UpdateChapterStatus();
-        UpdateChapterButton(); //TODO: Move to start
-        // UpdateLevelStatus();
+        UpdateChapterButton(); 
     }
 
     private void UpdateChapterStatus() {
@@ -33,7 +33,11 @@ public class ChapterButton : MonoBehaviour {
 
         // Unlock chapter only if previous chapter stars is at least one
         if (PlayerPrefs.GetInt("Chapter" + prevChapterNum + "Stars") > 0 || ChapterNum == 1) {
-            _unlocked = true;
+            UnlockChapter();
+        }
+
+        else {
+            LockChapter();
         }
 
     }
@@ -74,13 +78,25 @@ public class ChapterButton : MonoBehaviour {
         }
     }
 
+    public void UnlockChapter() {
+        _unlocked = true;
+        _button.Activate();
+        _button.SetInteractable(true);
+    }
+
+    public void LockChapter() {
+        _unlocked = false;
+        _button.Deactivate();
+        _button.SetInteractable(false);
+    }
+
     // Move to the corresponding Scene to play when chapter button is clicked
-    public void GoTo(string chapterNumber)
-    {
-        if(_unlocked)
-        {
+    public void GoTo(string chapterNumber) {
+
+        if(_unlocked) {
             SceneManager.LoadScene(chapterNumber);
         }
+
     }
 
 }
