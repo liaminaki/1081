@@ -124,4 +124,15 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
     }
 
+    public bool IsActive() {
+
+        return active;
+    }
+
+    public void SetInteractable(bool boolean) {
+
+        _buttonComponent.interactable = boolean;
+
+    }
+
 }
