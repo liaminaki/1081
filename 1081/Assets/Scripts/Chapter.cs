@@ -19,15 +19,26 @@ public class Chapter : MonoBehaviour {
         // PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", 0);
 
         currentStarsNum = starsNum;
+        int prevStarsNum = PlayerPrefs.GetInt("Chapter" + ChapterNum + "Stars");
+
+        // Increment number of chapters unlocked
+        // Condition indicates this is farthest unlocked chapter being played
+        if (prevStarsNum == 0 && currentStarsNum > 0) {
+            
+            int chaptersUnlocked = PlayerPrefs.GetInt("ChaptersUnlocked");
+            Debug.Log("old chaptersUnlocked" + chaptersUnlocked);
+            PlayerPrefs.SetInt("ChaptersUnlocked", ++chaptersUnlocked);
+            
+            Debug.Log(ChapterNum);
+            Debug.Log("new chaptersUnlocked" + PlayerPrefs.GetInt("ChaptersUnlocked"));
+        }
 
         // Saves only if current stars number is greater that saved stars number
-        if(currentStarsNum > PlayerPrefs.GetInt("Chapter" + ChapterNum + "Stars"))
+        if(currentStarsNum > prevStarsNum)
         {   
             // Save stars number
             PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", starsNum);
         }
-
-        Debug.Log(PlayerPrefs.GetInt("Chapter" + ChapterNum + "Stars", starsNum));
 
         // OnBackClick();
     }

@@ -7,10 +7,27 @@ using UnityEngine.SceneManagement;
 public class ChapterSelection : MonoBehaviour {
 
     [SerializeField] private Animator _chapterSelectionAnimator;
+    private int chaptersUnlocked;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+
+        LoadChaptersUnlocked();
+
+        if (chaptersUnlocked == 0)
+            PlayerPrefs.SetInt("ChaptersUnlocked", 1);
+        
+        // Debug.Log(chaptersUnlocked);
+
+        _chapterSelectionAnimator.SetInteger("ChaptersUnlocked", chaptersUnlocked);
+
+        // Play transition if not from chapter selection
+        if (SceneStateManager.PreviousScene == "MainMenuScene") {
+           _chapterSelectionAnimator.Play("FromMenu");
+        }
+
+        // Clear the previous scene information to prevent it from persisting across scenes
+        SceneStateManager.PreviousScene = null;
         
     }
 
@@ -43,4 +60,13 @@ public class ChapterSelection : MonoBehaviour {
         SceneManager.LoadScene("MainMenuScene");
 
     }
+
+    // Load numbers of chapters unlocked
+    private void LoadChaptersUnlocked() {
+        
+        chaptersUnlocked = PlayerPrefs.GetInt("ChaptersUnlocked");
+
+    }
+
+
 }

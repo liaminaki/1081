@@ -57,6 +57,9 @@ public class MenuController : MonoBehaviour
     public void Play() {
 
         if (_mainMenuAnimator != null) {
+
+            // Set main menu as previous scene
+            SceneStateManager.PreviousScene = "MainMenuScene";
             
             // Play the specified animation
             _mainMenuAnimator.Play("ToChapterSelection");

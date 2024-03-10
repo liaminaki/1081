@@ -21,6 +21,7 @@ public class ChapterButton : MonoBehaviour {
         // PlayerPrefs.DeleteKey("Chapter3Stars");
         // PlayerPrefs.DeleteKey("Chapter4Stars");
         // PlayerPrefs.DeleteKey("Chapter5Stars");
+        // PlayerPrefs.DeleteKey("ChaptersUnlocked");
        
         UpdateChapterStatus();
         UpdateChapterButton(); 
