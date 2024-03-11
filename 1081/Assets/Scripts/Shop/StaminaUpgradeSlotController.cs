@@ -32,7 +32,7 @@ public class StaminaUpgradeSlotController : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("StaminaLevel") > 5)
             {
-                Debug.Log("Maximum Level Reached");
+                //Debug.Log("Maximum Level Reached");
             }
             else
             {
