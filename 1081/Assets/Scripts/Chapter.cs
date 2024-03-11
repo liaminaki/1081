@@ -26,11 +26,12 @@ public class Chapter : MonoBehaviour {
         if (prevStarsNum == 0 && currentStarsNum > 0) {
             
             int chaptersUnlocked = PlayerPrefs.GetInt("ChaptersUnlocked");
-            Debug.Log("old chaptersUnlocked" + chaptersUnlocked);
+            // Debug.Log("old chaptersUnlocked when pressed" + chaptersUnlocked);
             PlayerPrefs.SetInt("ChaptersUnlocked", ++chaptersUnlocked);
+            NewChapterUnlocked();
             
-            Debug.Log(ChapterNum);
-            Debug.Log("new chaptersUnlocked" + PlayerPrefs.GetInt("ChaptersUnlocked"));
+            // Debug.Log(ChapterNum);
+            // Debug.Log("new chaptersUnlocked when pressed" + PlayerPrefs.GetInt("ChaptersUnlocked"));
         }
 
         // Saves only if current stars number is greater that saved stars number
@@ -40,7 +41,14 @@ public class Chapter : MonoBehaviour {
             PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", starsNum);
         }
 
-        // OnBackClick();
+        OnBackClick();
+    }
+
+    // Indicate that there is new chapter that is unlocked
+    public void NewChapterUnlocked() {
+
+        PlayerPrefs.SetInt("NewChapterUnlocked", 1);
+        
     }
 
 }
