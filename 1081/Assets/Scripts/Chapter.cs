@@ -27,9 +27,12 @@ public class Chapter : MonoBehaviour {
             
             int chaptersUnlocked = PlayerPrefs.GetInt("ChaptersUnlocked");
             // Debug.Log("old chaptersUnlocked when pressed" + chaptersUnlocked);
-            PlayerPrefs.SetInt("ChaptersUnlocked", ++chaptersUnlocked);
-            NewChapterUnlocked();
-            
+
+            if (chaptersUnlocked < 5) {
+                PlayerPrefs.SetInt("ChaptersUnlocked", ++chaptersUnlocked);
+                NewChapterUnlocked();
+            }
+               
             // Debug.Log(ChapterNum);
             // Debug.Log("new chaptersUnlocked when pressed" + PlayerPrefs.GetInt("ChaptersUnlocked"));
         }
@@ -47,7 +50,7 @@ public class Chapter : MonoBehaviour {
     // Indicate that there is new chapter that is unlocked
     public void NewChapterUnlocked() {
 
-        PlayerPrefs.SetInt("NewChapterUnlocked", 1);
+        PlayerPrefs.SetInt("IsNewChapterUnlocked", 1);
         
     }
 

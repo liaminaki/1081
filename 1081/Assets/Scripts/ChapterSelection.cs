@@ -8,35 +8,12 @@ public class ChapterSelection : MonoBehaviour {
 
     [SerializeField] private Animator _chapterSelectionAnimator;
     private int chaptersUnlocked;
-    private int newChapterUnlocked;
+    private int isNewChapterUnlocked;
+
+    public ChapterButton Chapter1Button;
 
     // Start is called before the first frame update
     void Start() {
-        
-        LoadNewChapterUnlocked();
-        LoadChaptersUnlocked();
-
-        if (chaptersUnlocked == 0) {
-            chaptersUnlocked = 1;
-            PlayerPrefs.SetInt("ChaptersUnlocked", 1);
-
-            _chapterSelectionAnimator.Play("Strings0-1");
-        }
-
-        // Play strings animation 
-        if (newChapterUnlocked == 1) {
-
-            _chapterSelectionAnimator.SetInteger("ChaptersUnlocked", chaptersUnlocked-1);
-            _chapterSelectionAnimator.SetInteger("UnlockChapter", chaptersUnlocked);
-
-            // Reset newChapterUnlocked
-            PlayerPrefs.SetInt("NewChapterUnlocked", 0);
-
-        }
-
-        else if (chaptersUnlocked > 0) {
-            _chapterSelectionAnimator.SetInteger("ChaptersUnlocked", chaptersUnlocked);
-        }
 
         // Play transition if not from chapter selection
         if (SceneStateManager.PreviousScene == "MainMenuScene") {
@@ -45,6 +22,40 @@ public class ChapterSelection : MonoBehaviour {
 
         // Clear the previous scene information to prevent it from persisting across scenes
         SceneStateManager.PreviousScene = null;
+        
+        LoadIsNewChapterUnlocked();
+        LoadChaptersUnlocked();
+
+        if (chaptersUnlocked == 0) {
+            Chapter1Button.LockChapter();
+
+            PlayerPrefs.SetInt("ChaptersUnlocked", 1);
+            PlayerPrefs.SetInt("IsNewChapterUnlocked", 1);
+
+            LoadIsNewChapterUnlocked();
+            LoadChaptersUnlocked();
+
+            Chapter1Button.RemoveQMarkThenUnlock();
+
+        }
+
+        // Play strings animation when a new chapter is unlocked
+        if (isNewChapterUnlocked == 1) {
+
+            Debug.Log(chaptersUnlocked);
+
+            _chapterSelectionAnimator.SetInteger("ChaptersUnlocked", chaptersUnlocked-1);
+            _chapterSelectionAnimator.SetInteger("UnlockChapter", chaptersUnlocked);
+
+            if (chaptersUnlocked != 2)
+                // Reset isNewChapterUnlocked
+                PlayerPrefs.SetInt("IsNewChapterUnlocked", 0);
+
+        }
+
+        else if (chaptersUnlocked > 0) {
+            _chapterSelectionAnimator.SetInteger("ChaptersUnlocked", chaptersUnlocked);
+        }
         
     }
 
@@ -85,9 +96,9 @@ public class ChapterSelection : MonoBehaviour {
 
     }
 
-    private void LoadNewChapterUnlocked() {
+    private void LoadIsNewChapterUnlocked() {
         
-        newChapterUnlocked = PlayerPrefs.GetInt("NewChapterUnlocked");
+        isNewChapterUnlocked = PlayerPrefs.GetInt("IsNewChapterUnlocked");
 
     }
 
