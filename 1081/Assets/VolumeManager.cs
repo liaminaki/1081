@@ -13,6 +13,8 @@ public class VolumeManager : MonoBehaviour
 
     public void setVolume(float vol){
         _audio.SetFloat("vol", vol);
+        PlayerPrefs.SetFloat("VolumeLevel", vol);
+        // selectedSkinIndex = PlayerPrefs.GetInt("SelectedSkinIndex");
     }
 
     public void On(){

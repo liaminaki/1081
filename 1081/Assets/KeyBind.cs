@@ -61,7 +61,7 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         {
             // Change the sprite to hoverSprite when the mouse enters
             image.sprite = hoverSprite;
-            transform.localScale = originalScale * 1.05f;
+            transform.localScale = originalScale * 1.02f;
         }
     }
 
@@ -98,7 +98,7 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         isSelected = true;
 
         // Increase the scale to make the object a bit bigger
-        transform.localScale = originalScale * 1.05f; // Adjust the scale factor as needed
+        transform.localScale = originalScale * 1.07f; // Adjust the scale factor as needed
 
         // Update the currently selected instance
         currentlySelected = this;
