@@ -90,13 +90,17 @@ public class MenuController : MonoBehaviour
         // Wait until the specified animation is complete
         yield return new WaitForSeconds(_mainMenuAnimator.GetCurrentAnimatorStateInfo(0).length);
         
+        bool isCharCustomizationOpen = false;
 
         // Check if player has customized their character
         if (!IsCharacterSelected() || !IsCharacterNameSet()) { 
             OpenCharCustomization();
+
+            isCharCustomizationOpen = true;
         }
 
-        GoToChapterSelection();
+        if (!isCharCustomizationOpen)
+            GoToChapterSelection();
         
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharNaming : MonoBehaviour {
     private string playerPrefsKey = "CharacterName";
@@ -157,6 +158,7 @@ public class CharNaming : MonoBehaviour {
         }
 
         else {
+
             _charCustomCanvas.enabled = false;
             _skinCards.SetActive(false);
 
@@ -168,6 +170,10 @@ public class CharNaming : MonoBehaviour {
             
         }
 
+        if (SceneStateManager.PreviousScene == "MainMenuScene") {
+            GoToChapterSelection();
+        }
+
     }
 
     public void SetWasInStore(bool value) {
@@ -177,6 +183,12 @@ public class CharNaming : MonoBehaviour {
     public void MoveSelectedSkin(float newXPosition) {
 
         _skins.MoveSelectedSkin(newXPosition);
+
+    }
+
+    public void GoToChapterSelection () {
+
+        SceneManager.LoadScene("ChapterSelectionScene");
 
     }
 
