@@ -31,7 +31,7 @@ public class ShieldUpgradeSlotController : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("ShieldLevel") > 5)
             {
-                Debug.Log("Maximum Level Reached");
+                //Debug.Log("Maximum Level Reached");
             }
             else
             {
