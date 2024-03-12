@@ -7878,7 +7878,6 @@ GameObject:
   m_Component:
   - component: {fileID: 604215366}
   - component: {fileID: 604215367}
-  - component: {fileID: 604215368}
   m_Layer: 5
   m_Name: BrightnessSlider
   m_TagString: Untagged
@@ -7959,20 +7958,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &604215368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604215365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f32edae5b958fff46a0d9700ef1f5e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  darknessSlider: {fileID: 0}
-  darkOverlay: {fileID: 0}
 --- !u!1 &609309662
 GameObject:
   m_ObjectHideFlags: 0
@@ -11551,7 +11536,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.75
+  m_FillAmount: 0.875
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -13128,7 +13113,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1023442347}
   m_HandleRect: {fileID: 2035843946}
   m_Direction: 0
-  m_MinValue: -30
+  m_MinValue: -70
   m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 0
@@ -13162,6 +13147,7 @@ MonoBehaviour:
   _audio: {fileID: 24100000, guid: 50d76e7e11f86a74a886159416f847b7, type: 2}
   ON: {fileID: 0}
   OFF: {fileID: 0}
+  volumeSlider: {fileID: 1085998728}
 --- !u!1 &1093247770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3125675919693778255, guid: 9edabab2b9cd14d3aa91dc437f4eee28, type: 3}
@@ -15105,6 +15091,7 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: 4cf3fe6bf22b9864394d877f1a82c934, type: 3}
   hoverSprite: {fileID: 21300000, guid: b27f0bd39e68de24794829975b0e80b9, type: 3}
   selectedSprite: {fileID: 21300000, guid: 0687fe5ccb2871348ad88edf471ec69d, type: 3}
+  imageId: 1
 --- !u!1001 &1377499755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19768,6 +19755,7 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: f333bd3f5a49ce7438bb80f2c5386cc6, type: 3}
   hoverSprite: {fileID: 21300000, guid: 027657dfb5f4bfd4186562fac04df79f, type: 3}
   selectedSprite: {fileID: 21300000, guid: 7650ba19ac5f80e44b9b58922011822f, type: 3}
+  imageId: 2
 --- !u!1 &1890488780
 GameObject:
   m_ObjectHideFlags: 0

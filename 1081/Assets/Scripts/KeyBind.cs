@@ -8,6 +8,8 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public Sprite hoverSprite;
     public Sprite selectedSprite;
 
+    public int imageId; // Unique identifier for each image
+
     private Image image;
     private bool isSelected = false;
     private Vector3 originalScale;
@@ -48,9 +50,11 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         // Store the original scale for later use
         originalScale = transform.localScale;
 
-        // Select the first image by default
-        if (currentlySelected == null)
+        // Load the selected image state from PlayerPrefs during Start
+        int savedImageId = PlayerPrefs.GetInt("SelectedImageId", -1);
+        if (savedImageId == imageId)
         {
+            // If the savedImageId matches the current imageId, select the image
             SelectImage();
         }
     }
@@ -89,8 +93,12 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         // transform.localScale = originalScale * 1.05f; // Adjust the scale factor as needed
     }
 
-      private void SelectImage()
+    private void SelectImage()
     {
+        // Save the selected image state to PlayerPrefs using a unique key
+        PlayerPrefs.SetInt("SelectedImageId", imageId);
+        PlayerPrefs.Save();
+
         // Change the sprite to selectedSprite
         image.sprite = selectedSprite;
 
@@ -106,6 +114,10 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     private void DeselectImage()
     {
+        // Remove the selected image state from PlayerPrefs
+        PlayerPrefs.DeleteKey("SelectedImageId");
+        PlayerPrefs.Save();
+
         // Change the sprite back to normalSprite
         image.sprite = normalSprite;
 

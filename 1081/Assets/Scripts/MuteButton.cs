@@ -38,7 +38,7 @@ public class MuteButton : MonoBehaviour
 
     private void AdjustVolume()
     {
-        float targetVolume = isMuted ? -30f : 0.7f;
+        float targetVolume = isMuted ? -70f : 0.7f;
         volumeSlider.value = targetVolume;
         // Set the volume to 0 if muted, otherwise set it to a desirable amount (e.g., 0.7)
         AudioListener.volume = isMuted ? 0f : 0.7f;
