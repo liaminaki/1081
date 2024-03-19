@@ -137,6 +137,7 @@ public class CharNaming : MonoBehaviour {
 
             // Deactivate Done button
             _doneButton.Deactivate();
+            // _doneButton.SetInteractable(false);
 
         }
 
@@ -146,6 +147,7 @@ public class CharNaming : MonoBehaviour {
 
             // Activate Done button 
             _doneButton.Activate();
+            // _doneButton.SetInteractable(true);
 
         }
 
@@ -167,12 +169,13 @@ public class CharNaming : MonoBehaviour {
                 _shopCanvas.enabled = true;
                 _selectedSkinInShop.SetActive(true);
             }
+
+            if (SceneStateManager.PreviousScene == "MainMenuScene") {
+                GoToChapterSelection();
+            }
             
         }
-
-        if (SceneStateManager.PreviousScene == "MainMenuScene") {
-            GoToChapterSelection();
-        }
+       
 
     }
 
