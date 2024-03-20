@@ -10,14 +10,13 @@ public class CharNaming : MonoBehaviour {
     private int characterLimit = 20;
     [SerializeField] private Button _backButton, _doneButton;
     [SerializeField] private GameObject  _moveSkinCardAnim;  
-    [SerializeField] private GameObject  _charNamingPanel, _charSelectionPanel, _skinCards, _selectedSkinInShop; 
+    [SerializeField] private GameObject  _charNamingPanel, _charSelectionPanel, _skinCards;
+    [SerializeField] private SelectedSkin _selectedSkinInShop; 
     [SerializeField] private Canvas _charCustomCanvas, _shopCanvas;
     [SerializeField] private CharSelection _skins;
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private TMP_Text _warningText;
-    private bool wasInStore = false;
     
-
     public void Start() {
 
         // _selectedSkin.LoadSkin();
@@ -36,6 +35,8 @@ public class CharNaming : MonoBehaviour {
         else {
             Debug.LogError("InputField or WarningText is not assigned in the inspector.");
         }
+
+        Debug.Log("New");
     }
 
     public void Update() {
@@ -164,23 +165,18 @@ public class CharNaming : MonoBehaviour {
             _charCustomCanvas.enabled = false;
             _skinCards.SetActive(false);
 
-            if (wasInStore) {
-                Debug.Log(_shopCanvas.name + " Abled");
-                _shopCanvas.enabled = true;
-                _selectedSkinInShop.SetActive(true);
-            }
-
             if (SceneStateManager.PreviousScene == "MainMenuScene") {
                 GoToChapterSelection();
             }
+
+            else {
+                Debug.Log(_shopCanvas.name + " Abled");
+                _shopCanvas.enabled = true;
+                _selectedSkinInShop.Activate();
+            }
             
         }
-       
 
-    }
-
-    public void SetWasInStore(bool value) {
-        this.wasInStore = value;
     }
 
     public void MoveSelectedSkin(float newXPosition) {

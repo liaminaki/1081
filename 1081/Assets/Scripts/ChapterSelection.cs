@@ -103,14 +103,16 @@ public class ChapterSelection : MonoBehaviour {
     }
 
     public void Reset() {
-        PlayerPrefs.DeleteKey("Chapter1Stars");
-        PlayerPrefs.DeleteKey("Chapter2Stars");
-        PlayerPrefs.DeleteKey("Chapter3Stars");
-        PlayerPrefs.DeleteKey("Chapter4Stars");
-        PlayerPrefs.DeleteKey("Chapter5Stars");
-        PlayerPrefs.DeleteKey("ChaptersUnlocked");
-        PlayerPrefs.DeleteKey("IsNewChapterUnlocked");
-        PlayerPrefs.DeleteKey("NewChapterUnlocked");
+        // PlayerPrefs.DeleteKey("Chapter1Stars");
+        // PlayerPrefs.DeleteKey("Chapter2Stars");
+        // PlayerPrefs.DeleteKey("Chapter3Stars");
+        // PlayerPrefs.DeleteKey("Chapter4Stars");
+        // PlayerPrefs.DeleteKey("Chapter5Stars");
+        // PlayerPrefs.DeleteKey("ChaptersUnlocked");
+        // PlayerPrefs.DeleteKey("IsNewChapterUnlocked");
+        // PlayerPrefs.DeleteKey("NewChapterUnlocked");
+
+        PlayerPrefs.DeleteAll();
     }
 
 }
