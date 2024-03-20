@@ -145,7 +145,7 @@ public class ChapterButton : MonoBehaviour {
         //  Display score in terms of number of filled stars
         
         for(int i = 0; i < PlayerPrefs.GetInt("Chapter" + ChapterNum + "Stars"); i++) {
-            Stars[i].GetComponent<Image>().sprite = FilledStar;
+            Stars[i].GetComponent<SpriteRenderer>().sprite = FilledStar;
         }
 
         /* 
