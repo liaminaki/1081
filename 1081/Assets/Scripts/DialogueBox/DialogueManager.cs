@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Playables;
 
 /*  
     Show/Hide Dialogue Box
@@ -13,6 +14,9 @@ public class DialogueManager : MonoBehaviour
 {   
     // Singleton to allow access anywhere in the game
     public static DialogueManager Instance;
+
+    // Timeline container
+    public PlayableDirector playableDirector;
  
     public Image characterIcon;
     public TextMeshProUGUI characterName;
@@ -34,9 +38,20 @@ public class DialogueManager : MonoBehaviour
  
         lines = new Queue<DialogueLine>();
     }
+
+    private void Start() {
+        // Ensure that the PlayableDirector reference is assigned
+        if (playableDirector == null)
+        {
+            Debug.LogError("PlayableDirector reference is not assigned!");
+            return;
+        }
+    }
  
     public void StartDialogue(Dialogue dialogue)
     {
+        PauseTimeline();
+
         isDialogueActive = true;
  
         animator.Play("show");
@@ -87,5 +102,22 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         animator.Play("hide");
+
+        ResumeTimeline();
+    }
+
+    // Function to pause the Timeline
+    void PauseTimeline()
+    {
+        // Pause the Timeline by setting its speed to 0
+        playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(0);
+    }
+
+    // Function to resume the Timeline
+    void ResumeTimeline()
+    {
+        // Resume the Timeline by setting its speed back to 1
+        playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
+        
     }
 }

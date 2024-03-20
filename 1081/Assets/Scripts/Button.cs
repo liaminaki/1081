@@ -135,4 +135,9 @@ public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPo
 
     }
 
+    public void SetVisibility(bool boolean) {
+
+        gameObject.SetActive(boolean);
+    }
+
 }
