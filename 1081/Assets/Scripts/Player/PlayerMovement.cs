@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void OnMovement(InputValue value)
+    public void OnMovement(InputAction.CallbackContext ctxt)
     {
-        movement = value.Get<Vector2>();
+        movement = ctxt.ReadValue<Vector2>();
 
         if (movement.x != 0 || movement.y != 0)
         {
