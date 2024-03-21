@@ -12,11 +12,12 @@ public class PopupController : MonoBehaviour {
     [SerializeField] private AudioClip hideSound;
 
     void Start() {
-        gameObject.SetActive(false);
+        OffPopup();
     }
 
     public void Show() {
         gameObject.SetActive(true);
+        _animator.Play("show");
 
         // Play the show sound effect
         if (_audioSource != null && showSound != null) {
@@ -31,7 +32,21 @@ public class PopupController : MonoBehaviour {
         if (_audioSource != null && hideSound != null) {
             _audioSource.PlayOneShot(hideSound);
         }
+
+        // Start a coroutine to delay deactivation
+        StartCoroutine(DeactivateAfterAnimation());
     }
+
+    // Coroutine to deactivate the GameObject after animation finishes
+    private IEnumerator DeactivateAfterAnimation()
+    {
+        // Wait for the length of the "hide" animation
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Deactivate the GameObject
+        gameObject.SetActive(false);
+    }
+
 
     public void OffPopup() {
         gameObject.SetActive(false);
