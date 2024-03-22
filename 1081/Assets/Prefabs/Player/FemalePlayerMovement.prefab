@@ -157,7 +157,19 @@ MonoBehaviour:
     m_ActionId: 1b924b44-f46b-44e5-a323-9272dfa47c04
     m_ActionName: InGame/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5155081745492265347}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 65534f9d-06cf-4d5a-a769-a9154db025ca
     m_ActionName: InGame/Sprint[/Keyboard/space]
   - m_PersistentCalls:

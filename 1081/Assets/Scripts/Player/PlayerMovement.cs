@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator animator;
+    private bool isSprinting = false;
 
     private void Awake()
     {
@@ -25,18 +26,53 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("X", movement.x);
             animator.SetFloat("Y", movement.y);
-
-            animator.SetBool("IsWalking", true);
         }
         else
         {
             animator.SetBool("IsWalking", false);
+            animator.SetBool("IsSprinting", false);
         }
     }
 
+    public void OnSprint(InputAction.CallbackContext ctxt)
+    {
+        if (ctxt.action.triggered && ctxt.ReadValue<float>() > 0)
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+            animator.SetBool("IsSprinting", false);
+        }
+    }
+
+
     private void FixedUpdate()
     {
-
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        if (isSprinting)
+        {
+            if (movement.x != 0 || movement.y != 0)
+            {
+                animator.SetBool("IsSprinting", true);
+                rb.MovePosition(rb.position + movement * (speed * 2) * Time.fixedDeltaTime);
+            }
+            else
+            {
+                animator.SetBool("IsSprinting", false);
+            }
+        }
+        else
+        {
+            if (movement.x != 0 || movement.y != 0)
+            {
+                animator.SetBool("IsWalking", true);
+                rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
+            }
+        }
     }
 }
