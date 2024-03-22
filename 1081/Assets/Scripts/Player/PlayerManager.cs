@@ -11,6 +11,5 @@ public class PlayerManager : MonoBehaviour
     {
         characterIndex = PlayerPrefs.GetInt("SelectedSkinIndex", 0);
         Instantiate(playerPrefabs[characterIndex]);
-
     }
 }
