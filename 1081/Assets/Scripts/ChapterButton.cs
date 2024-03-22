@@ -13,7 +13,7 @@ public class ChapterButton : MonoBehaviour {
     public GameObject[] Stars;
     public int ChapterNum;
     public Sprite FilledStar;
-
+    public Animator animator;
     private Animator qMarkAnimator;
     private int isNewChapterUnlocked;
     private int chaptersUnlocked;
@@ -170,10 +170,24 @@ public class ChapterButton : MonoBehaviour {
     public void GoTo(string chapterNumber) {
 
         if(_unlocked) {
-            SceneManager.LoadScene(chapterNumber);
+            animator.Play("ToChapter");
+            
+            // Start a coroutine to delay scene loading
+            StartCoroutine(LoadSceneAfterAnimation(chapterNumber));
         }
-
     }
+
+    // Coroutine to delay scene loading after animation finishes
+    private IEnumerator LoadSceneAfterAnimation(string sceneName)
+    {
+        // Wait for the length of the "ToChapter" animation
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        // Load the scene
+        SceneManager.LoadScene(sceneName);
+    }
+
+    
+
 
     // Check if this chapter is the newly unlocked chapter
     private bool IsTheNewChapterUnlocked() {
