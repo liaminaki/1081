@@ -5,24 +5,74 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private int speed = 5;
-
+    [SerializeField] private float speed = 3f;
+    
     private Vector2 movement;
     private Rigidbody2D rb;
+    private Animator animator;
+    private bool isSprinting = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    private void OnMovement(InputValue value)
+    public void OnMovement(InputAction.CallbackContext ctxt)
     {
-        movement = value.Get<Vector2>();
+        movement = ctxt.ReadValue<Vector2>();
+
+        if (movement.x != 0 || movement.y != 0)
+        {
+            animator.SetFloat("X", movement.x);
+            animator.SetFloat("Y", movement.y);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsSprinting", false);
+        }
     }
+
+    public void OnSprint(InputAction.CallbackContext ctxt)
+    {
+        if (ctxt.action.triggered && ctxt.ReadValue<float>() > 0)
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+            animator.SetBool("IsSprinting", false);
+        }
+    }
+
 
     private void FixedUpdate()
     {
-
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        if (isSprinting)
+        {
+            if (movement.x != 0 || movement.y != 0)
+            {
+                animator.SetBool("IsSprinting", true);
+                rb.MovePosition(rb.position + movement * (speed * 2) * Time.fixedDeltaTime);
+            }
+            else
+            {
+                animator.SetBool("IsSprinting", false);
+            }
+        }
+        else
+        {
+            if (movement.x != 0 || movement.y != 0)
+            {
+                animator.SetBool("IsWalking", true);
+                rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
+            }
+        }
     }
 }
