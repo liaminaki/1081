@@ -16,8 +16,29 @@ public class MuteButton : MonoBehaviour
     {
         buttonImage = GetComponent<Image>();
         UpdateButtonImage();
+        CheckInitialSliderValue();
+        volumeSlider.onValueChanged.AddListener(Muter);
     }
 
+    private void CheckInitialSliderValue()
+    {
+        if (Mathf.Approximately(volumeSlider.value, volumeSlider.minValue))
+        {
+            isMuted = true;
+            UpdateButtonImage();
+        }
+    }
+    public void Muter(float vol){
+        if (Mathf.Approximately(vol, volumeSlider.minValue)) // If the slider is at the left end
+        {
+            isMuted = true;
+            UpdateButtonImage(); // Set volume to 0
+        }
+        else{
+            isMuted = false;
+            UpdateButtonImage(); // Set volume to 0
+        }
+    }
     // Update is called once per frame
      public void OnButtonClick()
     {
