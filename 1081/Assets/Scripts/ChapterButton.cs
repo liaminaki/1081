@@ -171,7 +171,7 @@ public class ChapterButton : MonoBehaviour {
 
         if(_unlocked) {
             animator.Play("ToChapter");
-            
+
             // Start a coroutine to delay scene loading
             StartCoroutine(LoadSceneAfterAnimation(chapterNumber));
         }
@@ -181,7 +181,7 @@ public class ChapterButton : MonoBehaviour {
     private IEnumerator LoadSceneAfterAnimation(string sceneName)
     {
         // Wait for the length of the "ToChapter" animation
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(4.4f);
         // Load the scene
         SceneManager.LoadScene(sceneName);
     }
