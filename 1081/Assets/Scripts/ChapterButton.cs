@@ -96,10 +96,21 @@ public class ChapterButton : MonoBehaviour {
         // Check if a new chapter is unlocked and the new chapter is this same chapter
         else {
             
-            RemoveQMarkThenUnlock();
+            // Call the delayed function
+            StartCoroutine(DelayedRemoveQMarkThenUnlock());
             
         }
             
+    }
+
+    // Function to remove question mark then unlock, with a delay
+    private IEnumerator DelayedRemoveQMarkThenUnlock()
+    {
+        // Wait for 3.5 seconds
+        yield return new WaitForSeconds(3.5f);
+
+        // Call the function to remove the question mark and unlock
+        RemoveQMarkThenUnlock();
     }
 
     public void RemoveQMarkThenUnlock() {
