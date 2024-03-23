@@ -30,7 +30,7 @@ public class CutsceneController : MonoBehaviour
     private IEnumerator AddSkipButton() {
         
         // Delay for 2 seconds
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
 
         Debug.Log(cutscenesPlayed);
         Debug.Log(CurrentCutScnId);
