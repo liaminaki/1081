@@ -360,6 +360,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7a29df4509c494b58a6a96af8b7e39ec, type: 2}
     - {fileID: 11400000, guid: abb4a9ec21e214f95a6ab819b0411b24, type: 2}
     - {fileID: 11400000, guid: 79f140c4ddc9c4455ba8200b7439d73d, type: 2}
+    - {fileID: 11400000, guid: e0a954f6b2b2049459b6b9f2b5fa95e5, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -395,6 +396,20 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: CutsceneController, Assembly-CSharp
           m_MethodName: IncrCutScenesPlayed
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 959692369}
+          m_TargetAssemblyTypeName: CutsceneController, Assembly-CSharp
+          m_MethodName: GoTo
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1122,7 +1137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020699275246144122, guid: 92867f19f032c476b9f00fec8f440fb2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SkipTo
+      value: GoTo
       objectReference: {fileID: 0}
     - target: {fileID: 4020699275246144122, guid: 92867f19f032c476b9f00fec8f440fb2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
