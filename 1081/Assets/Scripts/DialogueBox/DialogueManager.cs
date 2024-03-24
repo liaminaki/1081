@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     
     // For opening and closing animation
     public Animator animator;
+    private string language = "";
  
     private void Awake()
     {
@@ -46,6 +47,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("PlayableDirector reference is not assigned!");
             return;
         }
+
+        LoadSelectedLanguage();
     }
  
     public void StartDialogue(Dialogue dialogue)
@@ -89,9 +92,23 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(DialogueLine dialogueLine)
     {
         dialogueArea.text = "";
+        string line = "";
+        
+        switch (language)
+        {
+            case "ENGLISH":
+                line = dialogueLine.LineInEnglish;
+                break;
+            case "CEBUANO":
+                line = dialogueLine.LineInCebuano;
+                break;
+            case "FILIPINO":
+                line = dialogueLine.LineInFilipino;
+                break;
+        }
 
         // Display text by character like typing animation
-        foreach (char letter in dialogueLine.line.ToCharArray())
+        foreach (char letter in line.ToCharArray())
         {
             dialogueArea.text += letter;
             yield return new WaitForSeconds(typingSpeed);
@@ -119,5 +136,10 @@ public class DialogueManager : MonoBehaviour
         // Resume the Timeline by setting its speed back to 1
         playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
         
+    }
+
+    private void LoadSelectedLanguage()
+    {
+        language = PlayerPrefs.GetString("Language");
     }
 }

@@ -10,7 +10,7 @@ public class LanguageDropdown : MonoBehaviour
     private void Start()
     {
         // Load the saved language selection if it exists
-        LoadSavedLanguage();
+        LoadSelectedLanguage();
         int savedIndex = FindLanguageIndex(language);
         
         if (savedIndex != -1)
@@ -54,7 +54,7 @@ public class LanguageDropdown : MonoBehaviour
 
     }
 
-    private void LoadSavedLanguage()
+    private void LoadSelectedLanguage()
     {
         language = PlayerPrefs.GetString("Language");
     }

@@ -19,8 +19,12 @@ public class DialogueLine
     public DialogueCharacter character;
     
     // Set the number of lines and the maximum number of characters
-    [TextArea(3, 10)]
-    public string line;
+    [TextArea(3, 60)]
+    public string LineInEnglish;
+    [TextArea(3, 60)]
+    public string LineInCebuano;
+    [TextArea(3, 60)]
+    public string LineInFilipino;
 }
  
 [System.Serializable]
