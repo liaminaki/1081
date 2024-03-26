@@ -13,7 +13,7 @@ public class ChapterButton : MonoBehaviour {
     public GameObject[] Stars;
     public int ChapterNum;
     public Sprite FilledStar;
-
+    public Animator animator;
     private Animator qMarkAnimator;
     private int isNewChapterUnlocked;
     private int chaptersUnlocked;
@@ -96,10 +96,21 @@ public class ChapterButton : MonoBehaviour {
         // Check if a new chapter is unlocked and the new chapter is this same chapter
         else {
             
-            RemoveQMarkThenUnlock();
+            // Call the delayed function
+            StartCoroutine(DelayedRemoveQMarkThenUnlock());
             
         }
             
+    }
+
+    // Function to remove question mark then unlock, with a delay
+    private IEnumerator DelayedRemoveQMarkThenUnlock()
+    {
+        // Wait for 3.5 seconds
+        yield return new WaitForSeconds(3.5f);
+
+        // Call the function to remove the question mark and unlock
+        RemoveQMarkThenUnlock();
     }
 
     public void RemoveQMarkThenUnlock() {
@@ -170,10 +181,24 @@ public class ChapterButton : MonoBehaviour {
     public void GoTo(string chapterNumber) {
 
         if(_unlocked) {
-            SceneManager.LoadScene(chapterNumber);
-        }
+            animator.Play("ToChapter");
 
+            // Start a coroutine to delay scene loading
+            StartCoroutine(LoadSceneAfterAnimation(chapterNumber));
+        }
     }
+
+    // Coroutine to delay scene loading after animation finishes
+    private IEnumerator LoadSceneAfterAnimation(string sceneName)
+    {
+        // Wait for the length of the "ToChapter" animation
+        yield return new WaitForSeconds(4.4f);
+        // Load the scene
+        SceneManager.LoadScene(sceneName);
+    }
+
+    
+
 
     // Check if this chapter is the newly unlocked chapter
     private bool IsTheNewChapterUnlocked() {

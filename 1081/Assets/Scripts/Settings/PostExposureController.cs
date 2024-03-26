@@ -24,7 +24,7 @@ public class PostExposureController : MonoBehaviour
             Debug.LogError("Color Adjustments not found in the Global Volume!");
         }
 
-        float savedBrightness = PlayerPrefs.GetFloat("Brightness"); // Default value 1.0f if not found
+        float savedBrightness = PlayerPrefs.GetFloat("Brightness", -0.5f); // Default value 1.0f if not found
         postExposureSlider.value = savedBrightness;
 
         // Apply the initial brightness value
@@ -38,7 +38,7 @@ public class PostExposureController : MonoBehaviour
         if (colorAdjustments != null)
         {
             // Debug.Log("yo?");
-            Debug.Log("Value is "+ value);
+            // Debug.Log("Value is "+ value);
             colorAdjustments.postExposure.Override(value);
             SaveBrightness();
         }

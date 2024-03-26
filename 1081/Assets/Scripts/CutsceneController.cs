@@ -12,7 +12,9 @@ public class CutsceneController : MonoBehaviour
     private bool firstTimePlaying = false;
 
     void Start() {
-        SkipButton.gameObject.SetActive(false);
+
+        if (SkipButton != null)
+            SkipButton.gameObject.SetActive(false);
         
         LoadCutscenesPlayed();
         StartCoroutine(AddSkipButton());
@@ -38,8 +40,9 @@ public class CutsceneController : MonoBehaviour
             SkipButton.gameObject.SetActive(true);
 
         else 
-        {
-            SkipButton.gameObject.SetActive(false);
+        {   
+            if (SkipButton != null)
+                SkipButton.gameObject.SetActive(false);
             firstTimePlaying = true;
         }
             
@@ -59,7 +62,7 @@ public class CutsceneController : MonoBehaviour
     }
     
     // Function to load a scene by name
-    public void SkipTo(string scene)
+    public void GoTo(string scene)
     {   
         SceneManager.LoadScene(scene);
     }

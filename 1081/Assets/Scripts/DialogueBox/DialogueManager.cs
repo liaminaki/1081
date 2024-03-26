@@ -12,6 +12,7 @@ using UnityEngine.Playables;
  
 public class DialogueManager : MonoBehaviour
 {   
+    [Header("Dialogue System")]
     // Singleton to allow access anywhere in the game
     public static DialogueManager Instance;
 
@@ -30,6 +31,16 @@ public class DialogueManager : MonoBehaviour
     
     // For opening and closing animation
     public Animator animator;
+    private string language = "";
+
+    [Header("Audio")]
+    public AudioClip typingSound; // Sound to play while typing
+
+    public AudioSource audioSource;
+
+    [Header("Dialogue Skin")]
+    public Sprite Male;
+    public Sprite Female;
  
     private void Awake()
     {
@@ -46,6 +57,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("PlayableDirector reference is not assigned!");
             return;
         }
+
+        LoadSelectedLanguage();
     }
  
     public void StartDialogue(Dialogue dialogue)
@@ -69,7 +82,11 @@ public class DialogueManager : MonoBehaviour
     }
  
     public void DisplayNextDialogueLine()
-    {
+    {   
+        // Stop typing sound after the animation is complete
+        if (typingSound != null && audioSource != null)
+            audioSource.Stop();
+
         if (lines.Count == 0)
         {
             EndDialogue();
@@ -77,9 +94,26 @@ public class DialogueManager : MonoBehaviour
         }
  
         DialogueLine currentLine = lines.Dequeue();
- 
-        characterIcon.sprite = currentLine.character.icon;
-        characterName.text = currentLine.character.name;
+
+
+        // Set saved player details
+        if (currentLine.character.name == "Player") {
+            
+            characterName.text = LoadPlayerName();
+
+            int skin = LoadPlayerSkin();
+
+            if (skin == 0)
+                characterIcon.sprite = Female;
+            else
+                characterIcon.sprite = Male;
+        }
+
+        else {
+            characterIcon.sprite = currentLine.character.icon;
+            characterName.text = currentLine.character.name;
+        }
+        
  
         StopAllCoroutines();
  
@@ -89,13 +123,38 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(DialogueLine dialogueLine)
     {
         dialogueArea.text = "";
+        string line = "";
+        
+        switch (language)
+        {
+            case "ENGLISH":
+                line = dialogueLine.LineInEnglish;
+                break;
+            case "CEBUANO":
+                line = dialogueLine.LineInCebuano;
+                break;
+            case "FILIPINO":
+                line = dialogueLine.LineInFilipino;
+                break;
+        }
+
+         // Play typing sound at the beginning
+        if (typingSound != null && audioSource != null) {
+            audioSource.clip = typingSound;
+            // audioSource.loop = true;
+            audioSource.Play();
+        }
 
         // Display text by character like typing animation
-        foreach (char letter in dialogueLine.line.ToCharArray())
+        foreach (char letter in line.ToCharArray())
         {
             dialogueArea.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+
+         // Stop typing sound after the animation is complete
+        if (typingSound != null && audioSource != null)
+            audioSource.Stop();
     }
  
     void EndDialogue()
@@ -119,5 +178,18 @@ public class DialogueManager : MonoBehaviour
         // Resume the Timeline by setting its speed back to 1
         playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
         
+    }
+
+    private void LoadSelectedLanguage()
+    {
+        language = PlayerPrefs.GetString("Language");
+    }
+
+    private string LoadPlayerName() {
+        return PlayerPrefs.GetString("CharacterName");
+    }
+
+    private int LoadPlayerSkin() {
+        return PlayerPrefs.GetInt("SelectedSkinIndex");
     }
 }

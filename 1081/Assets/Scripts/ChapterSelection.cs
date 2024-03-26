@@ -20,6 +20,10 @@ public class ChapterSelection : MonoBehaviour {
            _chapterSelectionAnimator.Play("FromMenu");
         }
 
+        else if (SceneStateManager.PreviousScene == "GameScene") {
+            _chapterSelectionAnimator.Play("FromGame");
+        }
+
         // Clear the previous scene information to prevent it from persisting across scenes
         SceneStateManager.PreviousScene = null;
         

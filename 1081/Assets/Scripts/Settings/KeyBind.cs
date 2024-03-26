@@ -8,7 +8,7 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public Sprite hoverSprite;
     public Sprite selectedSprite;
 
-    public int imageId; // Unique identifier for each image
+    public int KeyBinds; // Unique identifier for each image
 
     private Image image;
     private bool isSelected = false;
@@ -51,10 +51,10 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         originalScale = transform.localScale;
 
         // Load the selected image state from PlayerPrefs during Start
-        int savedImageId = PlayerPrefs.GetInt("SelectedImageId", -1);
-        if (savedImageId == imageId)
+        int savedKeyBinds = PlayerPrefs.GetInt("SelectedKeyBinds", -1);
+        if (savedKeyBinds == KeyBinds)
         {
-            // If the savedImageId matches the current imageId, select the image
+            // If the savedKeyBinds matches the current KeyBinds, select the image
             SelectImage();
         }
     }
@@ -96,7 +96,7 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     private void SelectImage()
     {
         // Save the selected image state to PlayerPrefs using a unique key
-        PlayerPrefs.SetInt("SelectedImageId", imageId);
+        PlayerPrefs.SetInt("SelectedKeyBinds", KeyBinds);
         PlayerPrefs.Save();
 
         // Change the sprite to selectedSprite
@@ -115,7 +115,7 @@ public class KeyBind : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     private void DeselectImage()
     {
         // Remove the selected image state from PlayerPrefs
-        PlayerPrefs.DeleteKey("SelectedImageId");
+        PlayerPrefs.DeleteKey("SelectedKeyBinds");
         PlayerPrefs.Save();
 
         // Change the sprite back to normalSprite

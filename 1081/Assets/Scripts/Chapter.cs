@@ -9,6 +9,11 @@ public class Chapter : MonoBehaviour {
     private int currentStarsNum = 0;
     public int ChapterNum;
 
+    void Start() {
+        // Set main menu as previous scene
+        SceneStateManager.PreviousScene = "GameScene";
+    }
+
     // Go back to chapter selection scene
     public void OnBackClick() {
         SceneManager.LoadScene("ChapterSelectionScene");
