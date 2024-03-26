@@ -166,7 +166,7 @@ public class CharNaming : MonoBehaviour {
             _skinCards.SetActive(false);
 
             if (SceneStateManager.PreviousScene == "MainMenuScene") {
-                GoToChapterSelection();
+                GoToPrologue();
             }
 
             else {
@@ -185,9 +185,9 @@ public class CharNaming : MonoBehaviour {
 
     }
 
-    public void GoToChapterSelection () {
+    public void GoToPrologue () {
 
-        SceneManager.LoadScene("ChapterSelectionScene");
+        SceneManager.LoadScene("Prologue");
 
     }
 

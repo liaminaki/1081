@@ -14,7 +14,7 @@ public class ChapterSelection : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
+        Debug.Log("Chapter selection running");
         // Play transition if not from chapter selection
         if (SceneStateManager.PreviousScene == "MainMenuScene") {
            _chapterSelectionAnimator.Play("FromMenu");

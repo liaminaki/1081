@@ -2798,28 +2798,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 568773633}
-  - component: {fileID: 568773632}
+  - component: {fileID: 568773634}
   m_Layer: 0
-  m_Name: Cutscene Controller
+  m_Name: Scene Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &568773632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568773631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a83ad00a9634ffbb56052d66b5489b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentCutScnId: 0
-  SkipButton: {fileID: 0}
 --- !u!4 &568773633
 Transform:
   m_ObjectHideFlags: 0
@@ -2835,6 +2821,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &568773634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568773631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c58abedc2cb4d0697b92afcbb07cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &587433926
 GameObject:
   m_ObjectHideFlags: 0
@@ -3859,8 +3857,8 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 568773632}
-          m_TargetAssemblyTypeName: CutsceneController, Assembly-CSharp
+        - m_Target: {fileID: 568773634}
+          m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
           m_MethodName: GoTo
           m_Mode: 5
           m_Arguments:
@@ -4131,7 +4129,7 @@ MonoBehaviour:
     - character:
         name: Bogart
         icon: {fileID: 70576822, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: "Luh.  I didn\u2019t know we have another classmate here."
+      LineInEnglish: Luh.  I did not know we have another classmate here.
       LineInCebuano: Luh. Naa pa diay tay lain classmate diri?
       LineInFilipino: Luh. Mayroon pa pala tayong ibang kaklase?
 --- !u!4 &962284159
@@ -5620,7 +5618,7 @@ PrefabInstance:
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].LineInEnglish
       value: You know what? Election is coming and it will be our first time to vote!
-        Who's your pick for president in this coming election?
+        Who is your pick for president in this coming election?
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInCebuano
@@ -5628,7 +5626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInEnglish
-      value: "Uhhm. I\u2019m still undecided."
+      value: Uhhm. I am still undecided.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].LineInCebuano
@@ -5636,7 +5634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].LineInEnglish
-      value: "I\u2019ll go for gobyernong tapat, angat buhay lahat!"
+      value: I will go for gobyernong tapat, angat buhay lahat!
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[9].LineInCebuano
@@ -5681,7 +5679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[12].LineInEnglish
-      value: "But, wasn\u2019t his father a dictator?"
+      value: But, his father was a dictator, right?
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[13].LineInCebuano
@@ -5838,7 +5836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[12].LineInFilipino
-      value: "Hindi ba\u2019t diktador ang kaniyang ama?"
+      value: Hindi ba diktador ang kaniyang ama?
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[12].character.icon
