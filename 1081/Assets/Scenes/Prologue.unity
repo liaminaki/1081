@@ -3540,7 +3540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &846716909
 Transform:
   m_ObjectHideFlags: 0
@@ -3761,6 +3761,8 @@ PlayableDirector:
     value: {fileID: 1013063373}
   - key: {fileID: 7385359399866187961, guid: 9f443b94e94ba43bc95b18ec6298a1c3, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 8229216922406334797, guid: 9f443b94e94ba43bc95b18ec6298a1c3, type: 2}
+    value: {fileID: 846716910}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &899843156
@@ -4412,7 +4414,7 @@ MonoBehaviour:
       LineInCebuano: Aguy! Kani pagyud!
       LineInFilipino: Ayay! Bakit ito pa?!
     - character:
-        name: Teacher
+        name: Teacher Marites
         icon: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: I want you guys to close your eyes and try to visualize yourself
         in these past events while I discuss them. Okay?
@@ -4434,7 +4436,7 @@ MonoBehaviour:
       LineInCebuano: Ipiyong among mata, Miss?
       LineInFilipino: Ipikit ang mga mata, Miss?
     - character:
-        name: Teacher
+        name: Teacher Marites
         icon: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: Class, again, close your eyes as we experience the past.
       LineInCebuano: Class, ipiyong na inyong mata kay atong isinati ang mga kaagi.
@@ -5935,6 +5937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1716513292}
+  - component: {fileID: 1716513293}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5959,6 +5962,20 @@ Transform:
   - {fileID: 846716909}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1716513293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716513291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238bacaad88c04d21be813400ba1ae2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FemaleSkin: {fileID: 846716908}
+  MaleSkin: {fileID: 1036470521}
 --- !u!1 &1732612352
 GameObject:
   m_ObjectHideFlags: 0
