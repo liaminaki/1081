@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private float speed = 3f;
     private int shieldLevel;
-    // public GameObject[] shieldAnimation;
     
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -56,10 +55,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void OnShield(InputAction.CallbackContext ctxt){
+        //still need to add a logic that decreases the shield count if press
 
         if (ctxt.performed)
         {
-            // PlayerPrefs.SetInt("ShieldLevel", 2);
+            //testing purposes
+            // PlayerPrefs.SetInt("ShieldLevel", 1);
             // PlayerPrefs.Save();
             usingShield = true;
             Debug.Log("Shield Activated");
