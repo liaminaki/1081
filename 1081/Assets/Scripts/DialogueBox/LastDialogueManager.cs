@@ -10,7 +10,7 @@ public class LastDialogueManager : MonoBehaviour
     void Start() {
         gameObject.SetActive(false);
         LoadSelectedLanguage();
-
+        LeaveLastPrologueLine();
     }
 
     private void LoadSelectedLanguage()
