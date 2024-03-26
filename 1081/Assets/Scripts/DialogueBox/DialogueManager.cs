@@ -31,6 +31,10 @@ public class DialogueManager : MonoBehaviour
     // For opening and closing animation
     public Animator animator;
     private string language = "";
+
+    public AudioClip typingSound; // Sound to play while typing
+
+    public AudioSource audioSource;
  
     private void Awake()
     {
@@ -72,7 +76,11 @@ public class DialogueManager : MonoBehaviour
     }
  
     public void DisplayNextDialogueLine()
-    {
+    {   
+        // Stop typing sound after the animation is complete
+        if (typingSound != null && audioSource != null)
+            audioSource.Stop();
+
         if (lines.Count == 0)
         {
             EndDialogue();
@@ -107,12 +115,23 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
+         // Play typing sound at the beginning
+        if (typingSound != null && audioSource != null) {
+            audioSource.clip = typingSound;
+            // audioSource.loop = true;
+            audioSource.Play();
+        }
+
         // Display text by character like typing animation
         foreach (char letter in line.ToCharArray())
         {
             dialogueArea.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+
+         // Stop typing sound after the animation is complete
+        if (typingSound != null && audioSource != null)
+            audioSource.Stop();
     }
  
     void EndDialogue()
