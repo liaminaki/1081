@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _priceTag;
+    [SerializeField] GameObject purchaseFailed;
+    [SerializeField] GameObject purchaseSuccess;
+    [SerializeField] GameObject maxLevel;
+
     private string price;
     private int amount;
 
@@ -30,11 +34,11 @@ public class ShopManager : MonoBehaviour
             }
 
             //uncomment this if funds are not enough during testing 
-            //PlayerPrefs.SetInt("PlayerCoins", 1000);
-            //PlayerPrefs.SetInt("ShieldLevel", 1);
-            //PlayerPrefs.SetInt("StaminaLevel", 1);
-            //PlayerPrefs.SetInt("ShieldNumber", 0);
-            //PlayerPrefs.Save();
+            PlayerPrefs.SetInt("PlayerCoins", 1000);
+            PlayerPrefs.SetInt("ShieldLevel", 1);
+            PlayerPrefs.SetInt("StaminaLevel", 1);
+            PlayerPrefs.SetInt("ShieldNumber", 0);
+            PlayerPrefs.Save();
         }
         else
         {
@@ -73,16 +77,16 @@ public class ShopManager : MonoBehaviour
                     PlayerPrefs.SetInt("ShieldLevel", shieldLevel + 1);
                     PlayerPrefs.Save();
                     // Success: Perform upgrade or other action
-                    Debug.Log("Successfully deducted " + amount + " coins.");
+                    purchaseSuccess.SetActive(true);
                 }
                 else
                 {
-                    Debug.Log("Maximum Shield Level Reached!");
+                    maxLevel.SetActive(true);
                 }
             }
             else
             {
-                Debug.Log("Insufficient Funds!");
+                purchaseFailed.SetActive(true);
             }
         }
         else
@@ -122,16 +126,16 @@ public class ShopManager : MonoBehaviour
                     PlayerPrefs.SetInt("StaminaLevel", staminaLevel + 1);
                     PlayerPrefs.Save();
                     // Success: Perform upgrade or other action
-                    Debug.Log("Successfully deducted " + amount + " coins.");
+                    purchaseSuccess.SetActive(true);
                 }
                 else
                 {
-                    Debug.Log("Maximum Stamina Level Reached!");
+                    maxLevel.SetActive(true);
                 }
             }
             else
             {
-                Debug.Log("Insufficient Funds!");
+                purchaseFailed.SetActive(true);
             }
         }
         else
@@ -169,11 +173,12 @@ public class ShopManager : MonoBehaviour
                 PlayerPrefs.SetInt("ShieldNumber", shieldNumber + 1);
                 PlayerPrefs.Save();
                 // Success: Perform upgrade or other action
-                Debug.Log("Successfully deducted " + amount + " coins.");
+                purchaseSuccess.SetActive(true);
+
             }
             else
             {
-                Debug.Log("Insufficient Funds!");
+                purchaseFailed.SetActive(true);
             }
         }
         else
