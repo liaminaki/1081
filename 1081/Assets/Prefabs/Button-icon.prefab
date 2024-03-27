@@ -171,15 +171,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a1726d948464068ad0da62d59a8266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buttonComponent: {fileID: 0}
   _buttonText: {fileID: 0}
+  _activeColor: {r: 0, g: 0, b: 0, a: 0}
+  _inactiveColor: {r: 0, g: 0, b: 0, a: 0}
   _img: {fileID: 4387609443280816475}
   _icon: {fileID: 9011989041603393207}
   _default: {fileID: 21300000, guid: 7e7035db5d9194e6eb207aae36e8d367, type: 3}
   _pressed: {fileID: 21300000, guid: 11b19701ee1464587965fb4a67202cdf, type: 3}
   _onHover: {fileID: 21300000, guid: 7c53810d676304c11b760825d6efe948, type: 3}
   _defaultClip: {fileID: 0}
-  _pressedClip: {fileID: 0}
-  _onHoverClip: {fileID: 0}
+  _pressedClip: {fileID: 8300000, guid: 8487240f2bae0454f8d5a8d6e9d1dabc, type: 3}
+  _onHoverClip: {fileID: 8300000, guid: cd541e0f10ba9af47a3c49cc391ab5c1, type: 3}
   _source: {fileID: 4909021578912273625}
 --- !u!82 &4909021578912273625
 AudioSource:

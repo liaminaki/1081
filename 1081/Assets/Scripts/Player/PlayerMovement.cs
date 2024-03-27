@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private float speed = 3f;
     private int shieldLevel;
+    private int staminaLevel;
     
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -16,6 +17,22 @@ public class PlayerMovement : MonoBehaviour
     private float shieldTimer = 0f;
     //default shield duration is 5 seconds
     private float shieldDuration = 5f;
+
+
+    //stamina system
+    public float defaultStamina = 10f;
+    public float defaultStaminaRegen = 1f;
+    public float maxStamina;
+    public float currentStamina;
+    public float currentStaminaRegen;
+    public float staminaConsum = 2.5f;
+
+    private void Start(){
+        staminaLevel = PlayerPrefs.GetInt("StaminaLevel");
+        currentStamina = defaultStamina + (2f * (staminaLevel - 1));
+        maxStamina = defaultStamina + (2f * (staminaLevel - 1));
+        currentStaminaRegen = defaultStaminaRegen + (0.5f * (staminaLevel - 1));
+    }
 
     private void Awake()
     {
@@ -45,12 +62,26 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctxt.action.triggered && ctxt.ReadValue<float>() > 0)
         {
-            isSprinting = true;
+            if(currentStamina >2.5f){
+                isSprinting = true;
+            }
         }
         else
         {
             isSprinting = false;
             animator.SetBool("IsSprinting", false);
+        }
+    }
+
+    public void ConsumeStamina(float amount){
+        currentStamina -= amount;
+        currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+    }
+
+    public void RegenerateStamina (float amount){
+        if (currentStamina < maxStamina){
+            currentStamina += amount;
+            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         }
     }
 
@@ -80,13 +111,19 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         shieldTimer -= Time.fixedDeltaTime; // Decrease shield timer
-
         //check if shield is got any seconds left;
         if(shieldTimer <= 0f){
             usingShield = false;
             animator.SetBool("UsingShield", false);
             animator.SetBool("ShieldSprinting", false);
             animator.SetBool("ShieldWalking", false);
+        }
+
+        if (!animator.GetBool("hasEnergy")){
+            if  (currentStamina > 5f)
+                animator.SetBool("hasEnergy", true);
+            else
+                isSprinting = false;
         }
 
         if (usingShield){
@@ -96,8 +133,15 @@ public class PlayerMovement : MonoBehaviour
             if (isSprinting){
                 if (movement.x != 0 || movement.y != 0)
                 {
-                    animator.SetBool("ShieldSprinting", true);
-                    rb.MovePosition(rb.position + movement * (speed*2) * Time.fixedDeltaTime);
+                    if (currentStamina < 2.5f){
+                        animator.SetBool("hasEnergy", false);
+                        animator.SetBool("IsSprinting", false);
+                    }
+                    else{
+                        ConsumeStamina(staminaConsum * Time.deltaTime);
+                        animator.SetBool("ShieldSprinting", true);
+                        rb.MovePosition(rb.position + movement * (speed*2) * Time.fixedDeltaTime);
+                    }
                 }
                 else
                 {
@@ -124,8 +168,15 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (movement.x != 0 || movement.y != 0)
                     {
-                        animator.SetBool("IsSprinting", true);
-                        rb.MovePosition(rb.position + movement * (speed * 2) * Time.fixedDeltaTime);
+                        if (currentStamina < 2.5f){
+                            animator.SetBool("hasEnergy", false);
+                            animator.SetBool("IsSprinting", false);
+                        }
+                        else{
+                            ConsumeStamina(staminaConsum * Time.deltaTime);
+                            animator.SetBool("IsSprinting", true);
+                            rb.MovePosition(rb.position + movement * (speed * 2) * Time.fixedDeltaTime);
+                        }
                     }
                     else
                     {
@@ -145,5 +196,6 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
         }
+        RegenerateStamina(currentStaminaRegen * Time.deltaTime);
     }
 }
