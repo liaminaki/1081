@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _priceTag;
+    [SerializeField] private TMP_Text _shieldPrice;
+    [SerializeField] private TMP_Text _staminaPrice;
     [SerializeField] GameObject purchaseFailed;
     [SerializeField] GameObject purchaseSuccess;
     [SerializeField] GameObject maxLevel;
@@ -13,8 +16,12 @@ public class ShopManager : MonoBehaviour
     private string price;
     private int amount;
 
-    public void Start()
-    {
+    public void Start(){
+        ShieldPrice();
+        StaminaPrice();
+        GetPrice();
+    }
+    public void Update(){
         GetPrice();
     }
 
@@ -34,15 +41,37 @@ public class ShopManager : MonoBehaviour
             }
 
             //uncomment this if funds are not enough during testing 
-            PlayerPrefs.SetInt("PlayerCoins", 1000);
-            PlayerPrefs.SetInt("ShieldLevel", 1);
-            PlayerPrefs.SetInt("StaminaLevel", 1);
-            PlayerPrefs.SetInt("ShieldNumber", 0);
-            PlayerPrefs.Save();
+            // PlayerPrefs.SetInt("PlayerCoins", 1000);
+            // PlayerPrefs.SetInt("ShieldLevel", 1);
+            // PlayerPrefs.SetInt("StaminaLevel", 1);
+            // PlayerPrefs.SetInt("ShieldNumber", 0);
+            // PlayerPrefs.Save();
         }
         else
         {
             Debug.LogError("GameObject reference is null.");
+        }
+    }
+
+    public void ShieldPrice(){
+        int shieldLevel = PlayerPrefs.GetInt("ShieldLevel");
+        int newPrice = 40 + (20*(shieldLevel - 1));
+        if (shieldLevel == 5){
+            _shieldPrice.text = "MAX";
+        }
+        else{
+            _shieldPrice.text = newPrice.ToString();
+        }
+    }
+
+    public void StaminaPrice(){
+        int staminaLevel = PlayerPrefs.GetInt("ShieldLevel");
+        int newPrice = 40 + (20*(staminaLevel - 1));
+        if (staminaLevel == 5){
+            _staminaPrice.text = "MAX";
+        }
+        else{
+            _staminaPrice.text = newPrice.ToString();
         }
     }
 
@@ -57,7 +86,7 @@ public class ShopManager : MonoBehaviour
             }
             catch (FormatException)
             {
-                Debug.LogError("Button text is not a valid integer.");
+                maxLevel.SetActive(true);
                 return;
             }
             catch (OverflowException)
@@ -66,32 +95,40 @@ public class ShopManager : MonoBehaviour
                 return;
             }
 
-            int playerCoins = PlayerPrefs.GetInt("PlayerCoins");
             int shieldLevel = PlayerPrefs.GetInt("ShieldLevel");
-            if (playerCoins >= amount)
+            int playerCoins = PlayerPrefs.GetInt("PlayerCoins");
+
+            if (shieldLevel < 5)
             {
-                if (shieldLevel < 5)
+                if (playerCoins >= amount)
                 {
                     playerCoins -= amount;
+                    // Success: Perform upgrade or other action
+                    purchaseSuccess.SetActive(true);
                     PlayerPrefs.SetInt("PlayerCoins", playerCoins);
                     PlayerPrefs.SetInt("ShieldLevel", shieldLevel + 1);
                     PlayerPrefs.Save();
-                    // Success: Perform upgrade or other action
-                    purchaseSuccess.SetActive(true);
+                    shieldLevel = PlayerPrefs.GetInt("ShieldLevel");
+                    int newPrice = 40 + (20*(shieldLevel - 1));
+                    if(shieldLevel == 5){
+                        _priceTag.text = "MAX";
+                    }
+                    else{
+                        _priceTag.text = newPrice.ToString();
+                    }
                 }
                 else
                 {
-                    maxLevel.SetActive(true);
+                    purchaseFailed.SetActive(true);
                 }
             }
-            else
-            {
-                purchaseFailed.SetActive(true);
+            else{
+                    maxLevel.SetActive(true);
             }
         }
         else
         {
-            Debug.Log("Price is null");
+            maxLevel.SetActive(true);
         }
     }
 
@@ -106,7 +143,7 @@ public class ShopManager : MonoBehaviour
             }
             catch (FormatException)
             {
-                Debug.LogError("Button text is not a valid integer.");
+                maxLevel.SetActive(true);
                 return;
             }
             catch (OverflowException)
@@ -117,30 +154,33 @@ public class ShopManager : MonoBehaviour
 
             int playerCoins = PlayerPrefs.GetInt("PlayerCoins");
             int staminaLevel = PlayerPrefs.GetInt("StaminaLevel");
-            if (playerCoins >= amount)
-            {
-                if (staminaLevel < 5)
-                {
+            if (staminaLevel < 5){
+                if (playerCoins >= amount){
                     playerCoins -= amount;
                     PlayerPrefs.SetInt("PlayerCoins", playerCoins);
                     PlayerPrefs.SetInt("StaminaLevel", staminaLevel + 1);
                     PlayerPrefs.Save();
+                    staminaLevel = PlayerPrefs.GetInt("StaminaLevel");
+                    int newPrice = 40 + (20*(staminaLevel - 1));
+                    if(staminaLevel == 5){
+                        _priceTag.text = "MAX";
+                    }
+                    else{
+                        _priceTag.text = newPrice.ToString();
+                    }
                     // Success: Perform upgrade or other action
                     purchaseSuccess.SetActive(true);
                 }
-                else
-                {
-                    maxLevel.SetActive(true);
+                else{
+                    purchaseFailed.SetActive(true);
                 }
             }
-            else
-            {
-                purchaseFailed.SetActive(true);
+            else{
+                maxLevel.SetActive(true);
             }
         }
-        else
-        {
-            Debug.Log("Price is null");
+        else{
+            maxLevel.SetActive(true);
         }
     }
 

@@ -8066,6 +8066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priceTag: {fileID: 272978606}
+  _shieldPrice: {fileID: 1325442931}
+  _staminaPrice: {fileID: 640195092}
   purchaseFailed: {fileID: 1811622378}
   purchaseSuccess: {fileID: 1944689282}
   maxLevel: {fileID: 1488106831}
@@ -11738,7 +11740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
       propertyPath: m_text
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
       propertyPath: m_margin.z
@@ -11969,7 +11971,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
       propertyPath: m_text
-      value: 100
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
+      propertyPath: m_margin.x
+      value: -13.251381
       objectReference: {fileID: 0}
     - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
       propertyPath: m_margin.z
@@ -13202,6 +13208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priceTag: {fileID: 640195092}
+  _shieldPrice: {fileID: 1325442931}
+  _staminaPrice: {fileID: 640195092}
   purchaseFailed: {fileID: 1811622378}
   purchaseSuccess: {fileID: 1944689282}
   maxLevel: {fileID: 1488106831}
@@ -14490,6 +14498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priceTag: {fileID: 1325442931}
+  _shieldPrice: {fileID: 640195092}
+  _staminaPrice: {fileID: 1325442931}
   purchaseFailed: {fileID: 1811622378}
   purchaseSuccess: {fileID: 1944689282}
   maxLevel: {fileID: 1488106831}
@@ -17091,7 +17101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
       propertyPath: m_text
-      value: 100
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
+      propertyPath: m_margin.x
+      value: -9.545288
       objectReference: {fileID: 0}
     - target: {fileID: 6489423626614530499, guid: 11abbe64795d94090800b266f4067010, type: 3}
       propertyPath: m_margin.z
