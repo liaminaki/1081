@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class PopupController : MonoBehaviour {
 
     [SerializeField] private Animator _animator;
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip showSound;
-    [SerializeField] private AudioClip hideSound;
+    // [SerializeField] private AudioSource _audioSource;
+    // [SerializeField] private AudioClip showSound;
+    // [SerializeField] private AudioClip hideSound;
 
     void Start() {
         OffPopup();
@@ -20,18 +20,18 @@ public class PopupController : MonoBehaviour {
         _animator.Play("show");
 
         // Play the show sound effect
-        if (_audioSource != null && showSound != null) {
-            _audioSource.PlayOneShot(showSound);
-        }
+        // if (_audioSource != null && showSound != null) {
+        //     _audioSource.PlayOneShot(showSound);
+        // }
     }
 
     public void Hide() {
         _animator.Play("hide");
 
         // Play the hide sound effect
-        if (_audioSource != null && hideSound != null) {
-            _audioSource.PlayOneShot(hideSound);
-        }
+        // if (_audioSource != null && hideSound != null) {
+        //     _audioSource.PlayOneShot(hideSound);
+        // }
 
         // Start a coroutine to delay deactivation
         StartCoroutine(DeactivateAfterAnimation());
