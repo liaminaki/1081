@@ -291,24 +291,25 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     });
 
             // If it's a part binding, show the name of the part in the UI.
-            var partName = default(string);
-            if (action.bindings[bindingIndex].isPartOfComposite)
-                partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
+            // var partName = default(string);
+            // if (action.bindings[bindingIndex].isPartOfComposite)
+            //     partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
 
-            // Bring up rebind overlay, if we have one.
+            // // Bring up rebind overlay, if we have one.
             m_RebindOverlay?.SetActive(true);
-            if (m_RebindText != null)
-            {
-                var text = !string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
-                    ? $"{partName}Waiting for {m_RebindOperation.expectedControlType} input..."
-                    : $"{partName}Waiting for input...";
-                m_RebindText.text = text;
-            }
+            // if (m_RebindText != null)
+            // {
+            //     var text = !string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
+            //         ? $"{partName}Waiting for {m_RebindOperation.expectedControlType} input..."
+            //         : $"{partName}Waiting for input...";
+            //     m_RebindText.text = text;
+            // }
 
             // If we have no rebind overlay and no callback but we have a binding text label,
             // temporarily set the binding text label to "<Waiting>".
-            if (m_RebindOverlay == null && m_RebindText == null && m_RebindStartEvent == null && m_BindingText != null)
-                m_BindingText.text = "<Waiting...>";
+            // if (m_RebindOverlay == null && m_RebindText == null && m_RebindStartEvent == null && m_BindingText != null)
+            //     m_BindingText.text = "<Waiting...>";
+             m_BindingText.text = "[Waiting for Input]";
 
             // Give listeners a chance to act on the rebind starting.
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
