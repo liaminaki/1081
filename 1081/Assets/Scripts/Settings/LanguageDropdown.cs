@@ -5,7 +5,7 @@ public class LanguageDropdown : MonoBehaviour
     public TMP_Dropdown dropdown;
     private string language = "";
 
-    public TextMeshProUGUI output;
+    // public TextMeshProUGUI output;
 
     private void Start()
     {
@@ -67,7 +67,7 @@ public class LanguageDropdown : MonoBehaviour
         // Save the selected language to PlayerPrefs
         SaveLanguage(selectedLanguage);
 
-        output.text = selectedLanguage;
+        // output.text = selectedLanguage;
         
     }
     
