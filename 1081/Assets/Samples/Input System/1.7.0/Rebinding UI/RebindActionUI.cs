@@ -14,6 +14,10 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
     /// </summary>
     public class RebindActionUI : MonoBehaviour
     {
+
+        public void Update(){
+            UpdateBindingDisplay();
+        }
         /// <summary>
         /// Reference to the action that is to be rebound.
         /// </summary>
