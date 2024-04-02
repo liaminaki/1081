@@ -27,7 +27,14 @@ public class PlayerMovement : MonoBehaviour
     public float currentStaminaRegen;
     public float staminaConsum = 2.5f;
 
+    // Shield/Coin Manager
+
+    private ShieldManager shieldManager;
+    private CoinCollectionManager coinManager;
+
     private void Start(){
+        shieldManager = FindObjectOfType<ShieldManager>();
+        coinManager = FindObjectOfType<CoinCollectionManager>();
         staminaLevel = PlayerPrefs.GetInt("StaminaLevel");
         currentStamina = defaultStamina + (2f * (staminaLevel - 1));
         maxStamina = defaultStamina + (2f * (staminaLevel - 1));
@@ -197,5 +204,36 @@ public class PlayerMovement : MonoBehaviour
                 }
         }
         RegenerateStamina(currentStaminaRegen * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        int coinCount = PlayerPrefs.GetInt("PlayerCoins", 200);
+        int shieldCount = PlayerPrefs.GetInt("ShieldNumber", 0);
+        if(other.gameObject.CompareTag("Coin"))
+        {   Coin coinScript = other.gameObject.GetComponent<Coin>();
+            int coinID = coinScript.getCoinID();
+            Destroy(other.gameObject);
+            coinCount++;
+            PlayerPrefs.SetInt("PlayerCoins",coinCount);
+            PlayerPrefs.Save();
+            Debug.Log("Coin: " + coinCount);
+            Debug.Log("Collected Coin ID: " + coinID);
+            coinManager.addCoinToList(coinID);
+            // coinManager.ShowCollectedCoinIDs();
+            // coinManager.ResetCollectedCoins();
+        }
+        else 
+        if(other.gameObject.CompareTag("Shield")){
+            Shield shieldScript = other.gameObject.GetComponent<Shield>();
+            int shieldID = shieldScript.getShieldID();
+            Destroy(other.gameObject);
+            shieldCount++;
+            PlayerPrefs.SetInt("ShieldNumber", shieldCount);
+            PlayerPrefs.Save();
+            Debug.Log("Shield: " + shieldCount);
+            Debug.Log("ShieldID is : " + shieldID);
+            shieldManager.addshieldToList(shieldID);
+            // shieldManager.ShowCollectedshieldIDs();
+        }
     }
 }

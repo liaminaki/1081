@@ -9,7 +9,6 @@ public class PlayerManager : MonoBehaviour
     public CinemachineVirtualCamera Vcam;
     public GameObject[] playerPrefabs;
     private int characterIndex;
-
     private void Awake()
     {
         characterIndex = PlayerPrefs.GetInt("SelectedSkinIndex", 0);
