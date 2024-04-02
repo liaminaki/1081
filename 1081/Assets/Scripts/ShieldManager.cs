@@ -6,7 +6,7 @@ public class ShieldManager : MonoBehaviour
     List<int> collectedshieldIDs = new List<int>();
 
     void Start(){
-        // ResetCollectedshields();
+        ResetCollectedshields(); // IUNCOMMENT NI PARA MOBALIK ANG SHIELDS
         loadshieldList();
         DisableCollectedshields();
     }

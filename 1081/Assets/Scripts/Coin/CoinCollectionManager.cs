@@ -6,7 +6,7 @@ public class CoinCollectionManager : MonoBehaviour
     List<int> collectedCoinIDs = new List<int>();
 
     void Start(){
-        // ResetCollectedCoins();
+        ResetCollectedCoins();   // IUNCOMMENT NI PARA MOBALIK ANG COINS
         loadCoinList();
         DisableCollectedCoins();
     }
