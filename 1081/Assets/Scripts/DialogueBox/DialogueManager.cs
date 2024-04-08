@@ -138,6 +138,8 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
+        line = line.Replace("<PlayerName>", LoadPlayerName());
+
          // Play typing sound at the beginning
         if (typingSound != null && audioSource != null) {
             audioSource.clip = typingSound;

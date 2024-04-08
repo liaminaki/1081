@@ -3208,11 +3208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInCebuano
-      value: Welcome sa 1970, <Player name>.
+      value: Welcome sa 1970, <PlayerName>.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInEnglish
-      value: Welcome to 1970, <Player name>.
+      value: Welcome to 1970, <PlayerName>.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInCebuano
@@ -3274,7 +3274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInFilipino
-      value: Welcome sa 1970s, <Player Name>.
+      value: Welcome sa 1970s, <PlayerName>.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
@@ -3282,7 +3282,7 @@ PrefabInstance:
       objectReference: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.name
-      value: Teacher
+      value: Teacher Marites
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInFilipino
@@ -3296,7 +3296,7 @@ PrefabInstance:
       objectReference: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.name
-      value: Teacher
+      value: Teacher Marites
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[3].LineInFilipino
@@ -3323,7 +3323,7 @@ PrefabInstance:
       objectReference: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].character.name
-      value: Teacher
+      value: Teacher Marites
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].LineInFilipino
@@ -3337,7 +3337,7 @@ PrefabInstance:
       objectReference: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].character.name
-      value: Teacher
+      value: Teacher Marites
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3628,7 +3628,7 @@ MonoBehaviour:
       LineInFilipino: Hala! Anong ginagawa ng pulis?! Hindi dapat ganun! Sila dapat
         pumoprotekta sa atin eh!!
     - character:
-        name: Teacher
+        name: Teacher Marites
         icon: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: I understand what you are feeling right now. But, for your safety,
         you need to go.
@@ -3643,10 +3643,10 @@ MonoBehaviour:
       LineInCebuano: Unya ikaw, Teacher?
       LineInFilipino: Paano ka naman, Teacher?
     - character:
-        name: Teacher
+        name: Teacher Marites
         icon: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: 'I need to help the people. Go now and avoid the armed forces.
-        You will see your friend there near the gasoline station. Go with her.
+        You will see your friend near the gasoline station. Go with her.
 
 '
       LineInCebuano: Kinahanglan pa kong motabang sa mga tawo. Lakaw na ug likayi
