@@ -12,8 +12,17 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         characterIndex = PlayerPrefs.GetInt("SelectedSkinIndex", 0);
-        GameObject player = Instantiate(playerPrefabs[characterIndex]);
-        Vcam.m_Follow = player.transform;
+        
+         // Disable the other player prefab
+        int otherIndex = (characterIndex == 0) ? 1 : 0;
+        playerPrefabs[otherIndex].SetActive(false);
+
+        // playerPrefabs[characterIndex].SetActive(true);
+        
+        // GameObject player = Instantiate(playerPrefabs[characterIndex]);
+
+        if (Vcam != null)
+            Vcam.m_Follow = playerPrefabs[characterIndex].transform;
         
     }
 }
