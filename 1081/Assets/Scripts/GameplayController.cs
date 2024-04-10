@@ -17,12 +17,12 @@ public class GameplayController : MonoBehaviour
     }
 
     // Disable coins, shield and player from moving
-    public void Pause() {
+    public void Freeze() {
         Time.timeScale = 0f;
     }
 
     // Enable coins, shield and player from moving
-    public void Resume() {
+    public void Unfreeze() {
         Time.timeScale = 1f;
     }
 
