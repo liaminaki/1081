@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
     public CinemachineVirtualCamera Vcam;
     public GameObject[] playerPrefabs;
     private int characterIndex;
+    private PlayerInput playerInput;
     private void Awake()
     {
         characterIndex = PlayerPrefs.GetInt("SelectedSkinIndex", 0);
@@ -24,5 +25,22 @@ public class PlayerManager : MonoBehaviour
         if (Vcam != null)
             Vcam.m_Follow = playerPrefabs[characterIndex].transform;
         
+        // Get the PlayerInput component from the current player
+        playerInput = playerPrefabs[characterIndex].GetComponent<PlayerInput>();
+
+    }
+
+    // Method to turn on player input
+    public void TurnOnPlayerInput()
+    {
+        if (playerInput != null)
+            playerInput.enabled = true;
+    }
+
+    // Method to turn off player input
+    public void TurnOffPlayerInput()
+    {
+        if (playerInput != null)
+            playerInput.enabled = false;
     }
 }

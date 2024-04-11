@@ -16,18 +16,20 @@ public class GameplayController : MonoBehaviour
         PlayableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
     }
 
-    // Disable coins, shield and player from moving
-    public void Freeze() {
-        Time.timeScale = 0f;
-    }
+    // // Disable coins, shield and player from moving
+    // public void Freeze() {
+    //     Time.timeScale = 0f;
+    //     // PauseTimeline();
+    // }
 
-    // Enable coins, shield and player from moving
-    public void Unfreeze() {
-        Time.timeScale = 1f;
-    }
+    // // Enable coins, shield and player from moving
+    // public void Unfreeze() {
+    //     Time.timeScale = 1f;
+    // }
 
     public void ShowObjective() {
         Objective.Show();
+        PauseTimeline();
     }
 
     public void HideObjective() {

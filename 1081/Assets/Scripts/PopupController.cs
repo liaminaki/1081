@@ -17,7 +17,7 @@ public class PopupController : MonoBehaviour {
 
     public void Show() {
         gameObject.SetActive(true);
-        _animator.Play("show");
+        // _animator.Play("show");
 
         // Play the show sound effect
         // if (_audioSource != null && showSound != null) {
