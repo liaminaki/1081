@@ -41,6 +41,28 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &-8709964587454698430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
+  m_Name: AnimationPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 7400000, guid: 7139075341f9a40d3befa98f1cfd59af, type: 2}
+  m_Position: {x: 0, y: 0, z: 0}
+  m_EulerAngles: {x: 0, y: 0, z: 0}
+  m_UseTrackMatchFields: 1
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 1
+  m_ApplyFootIK: 1
+  m_Loop: 0
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-8598833975253794268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,28 +289,6 @@ MonoBehaviour:
     m_DisplayName: VC - Start
   m_Markers:
     m_Objects: []
---- !u!114 &-4308755951242497250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
-  m_Name: AnimationPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: 7139075341f9a40d3befa98f1cfd59af, type: 2}
-  m_Position: {x: 0, y: 0, z: 0}
-  m_EulerAngles: {x: 0, y: 0, z: 0}
-  m_UseTrackMatchFields: 1
-  m_MatchTargetFields: 63
-  m_RemoveStartOffset: 1
-  m_ApplyFootIK: 1
-  m_Loop: 0
-  m_Version: 1
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-4096947217460657316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,7 +578,7 @@ MonoBehaviour:
     m_Start: 4.499999999999997
     m_ClipIn: 0
     m_Asset: {fileID: -8598833975253794268}
-    m_Duration: 4
+    m_Duration: 3.000000000000001
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3987858719253514741}
     m_EaseInDuration: 0
@@ -670,8 +670,8 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 4.499999999999998
     m_ClipIn: 0
-    m_Asset: {fileID: -4308755951242497250}
-    m_Duration: 4
+    m_Asset: {fileID: -8709964587454698430}
+    m_Duration: 3
     m_TimeScale: 1
     m_ParentTrack: {fileID: 4356172967400624352}
     m_EaseInDuration: 0
