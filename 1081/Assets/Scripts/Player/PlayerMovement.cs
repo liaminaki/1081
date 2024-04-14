@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private float shieldTimer = 0f;
     //default shield duration is 5 seconds
     private float shieldDuration = 5f;
+    public Image staminaBar;
+    // private Coroutine recharge;
 
 
     //stamina system
@@ -83,12 +86,16 @@ public class PlayerMovement : MonoBehaviour
     public void ConsumeStamina(float amount){
         currentStamina -= amount;
         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+        if (currentStamina < 0)
+            currentStamina = 0;
+        staminaBar.fillAmount = currentStamina / maxStamina;
     }
 
     public void RegenerateStamina (float amount){
         if (currentStamina < maxStamina){
             currentStamina += amount;
             currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+            staminaBar.fillAmount = currentStamina / maxStamina;
         }
     }
 
