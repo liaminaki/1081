@@ -184,7 +184,7 @@ public class DialogueManager : MonoBehaviour
 
     private void LoadSelectedLanguage()
     {
-        language = PlayerPrefs.GetString("Language", "ENGLISH");
+        language = PlayerPrefs.GetString("Language");
     }
 
     private string LoadPlayerName() {
