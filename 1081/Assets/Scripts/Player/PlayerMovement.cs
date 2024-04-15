@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public Image staminaBar;
     public Image shieldBar;
     public Image shieldBarBackground;
+    public Image Shield;
     // private Coroutine recharge;
 
 
@@ -55,9 +56,11 @@ public class PlayerMovement : MonoBehaviour
         shieldCount = PlayerPrefs.GetInt("ShieldNumber");
         maxTime = shieldDuration + (2f * (shieldLevel - 1));
         _shieldCount.text = shieldCount.ToString();
+        Shield.gameObject.SetActive(false);
         shieldBar.gameObject.SetActive(false);
         shieldBarBackground.gameObject.SetActive(false);
         _shieldDuration.gameObject.SetActive(false);
+        _staminaTracker.text = string.Format("{0}/{1}", (int)currentStamina, (int)maxStamina);
     }
 
     private void Awake()
@@ -124,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
         if (ctxt.performed)
         {
             if(PlayerPrefs.GetInt("ShieldNumber") > 0){
+                Shield.gameObject.SetActive(true);
                 shieldBar.gameObject.SetActive(true);
                 shieldBarBackground.gameObject.SetActive(true);
                 _shieldDuration.gameObject.SetActive(true);
@@ -155,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
         shieldTimer -= Time.fixedDeltaTime; // Decrease shield timer
         //check if shield is got any seconds left;
         if(shieldTimer <= 0f){
+            Shield.gameObject.SetActive(false);
             shieldBar.gameObject.SetActive(false);
             shieldBarBackground.gameObject.SetActive(false);
             _shieldDuration.gameObject.SetActive(false);
@@ -263,6 +268,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else{
             _shieldDuration.text = "0";
+            Shield.gameObject.SetActive(false);
             shieldBar.gameObject.SetActive(false);
             shieldBarBackground.gameObject.SetActive(false);
             _shieldDuration.gameObject.SetActive(false);
