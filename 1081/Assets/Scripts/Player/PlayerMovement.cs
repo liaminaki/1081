@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         shieldBar.gameObject.SetActive(false);
         shieldBarBackground.gameObject.SetActive(false);
         _shieldDuration.gameObject.SetActive(false);
+        _shieldCount.gameObject.SetActive(false);
         _staminaTracker.text = string.Format("{0}/{1}", (int)currentStamina, (int)maxStamina);
     }
 
@@ -127,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
         if (ctxt.performed)
         {
             if(PlayerPrefs.GetInt("ShieldNumber") > 0){
+                _shieldCount.gameObject.SetActive(true);
                 Shield.gameObject.SetActive(true);
                 shieldBar.gameObject.SetActive(true);
                 shieldBarBackground.gameObject.SetActive(true);
@@ -159,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
         shieldTimer -= Time.fixedDeltaTime; // Decrease shield timer
         //check if shield is got any seconds left;
         if(shieldTimer <= 0f){
+            _shieldCount.gameObject.SetActive(false);
             Shield.gameObject.SetActive(false);
             shieldBar.gameObject.SetActive(false);
             shieldBarBackground.gameObject.SetActive(false);
@@ -272,6 +275,7 @@ public class PlayerMovement : MonoBehaviour
             shieldBar.gameObject.SetActive(false);
             shieldBarBackground.gameObject.SetActive(false);
             _shieldDuration.gameObject.SetActive(false);
+            _shieldCount.gameObject.SetActive(false);
         }
         yield return new WaitForSeconds(1f);
     }
