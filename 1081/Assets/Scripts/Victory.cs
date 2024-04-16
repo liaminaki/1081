@@ -11,12 +11,15 @@ public class Victory : MonoBehaviour
     public PlayerMovement player;
     public TMP_Text elapsedTimeText;
     public TMP_Text collectedCoinsText;
+    public TMP_Text currentTotalCoins;
     public AudioSource src;
-    public AudioClip missionSuccess, stars;
+    // public AudioClip missionSuccess, stars;
+    public EndTrigger end;
     public static bool GameIsPaused = false;
 
     public StarsProgressController starsProgress;
     public GameObject OneStar, TwoStars, ThreeStars;
+    bool lockSwitch = true;
     void Start()
     {
         victoryScreenUI.SetActive(false);
@@ -25,51 +28,79 @@ public class Victory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha8))
+        if (end.end == true && lockSwitch)
         {
-            Debug.Log("8 has been pressed!");
+            // Debug.Log("8 has been pressed!");
             // victoryScreenUI.SetActive(true);
             // Time.timeScale = 0f;
 
-            if (GameIsPaused)
+            // if (GameIsPaused)
+            // {
+            //     Resume();
+            // }
+            // else
+            // {
+            //     Pause();
+            // }
+            victoryScreenUI.SetActive(true);
+            Time.timeScale = 0f;
+            GameIsPaused = true;
+            elapsedTimeText.text = timerSystem.GetTime();
+            currentTotalCoins.text = PlayerPrefs.GetInt("PlayerCoins").ToString();
+
+            if (starsProgress.possibleStars == 3)
             {
-                Resume();
+                Debug.Log("yo3stars?");
+                ThreeStars.SetActive(true);
             }
-            else
+            else if (starsProgress.possibleStars == 2)
             {
-                Pause();
+                TwoStars.SetActive(true);
+            }
+            else if (starsProgress.possibleStars == 1)
+            {
+                OneStar.SetActive(true);
             }
 
+            timerUI.SetActive(false);
+            collectedCoinsText.text = "+" + player.currentCoins.ToString();
+            AddCoinsToPlayerPrefs(player.currentCoins);
+            lockSwitch = false;
         }
     }
-    public void Resume()
-    {
-        victoryScreenUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
+    // public void Resume()
+    // {
+    //     victoryScreenUI.SetActive(false);
+    //     Time.timeScale = 1f;
+    //     GameIsPaused = false;
+    // }
 
-    public void Pause()
-    {
-        victoryScreenUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-        elapsedTimeText.text = timerSystem.GetTime();
-        
-        if(starsProgress.possibleStars == 3){
-            ThreeStars.SetActive(true);
-        }
-        else if(starsProgress.possibleStars == 2){
-            TwoStars.SetActive(true);
-        }
-        else if(starsProgress.possibleStars == 1){
-            OneStar.SetActive(true);
-        }
+    // public void Pause()
+    // {
+    //     victoryScreenUI.SetActive(true);
+    //     Time.timeScale = 0f;
+    //     GameIsPaused = true;
+    //     elapsedTimeText.text = timerSystem.GetTime();
+    //     currentTotalCoins.text = PlayerPrefs.GetInt("PlayerCoins").ToString();
 
-        timerUI.SetActive(false);
-        collectedCoinsText.text = "+" + player.currentCoins.ToString();
-        AddCoinsToPlayerPrefs(player.currentCoins);
-    }
+    //     if (starsProgress.possibleStars == 3)
+    //     {
+    //         Debug.Log("yo3stars?");
+    //         ThreeStars.SetActive(true);
+    //     }
+    //     else if (starsProgress.possibleStars == 2)
+    //     {
+    //         TwoStars.SetActive(true);
+    //     }
+    //     else if (starsProgress.possibleStars == 1)
+    //     {
+    //         OneStar.SetActive(true);
+    //     }
+
+    //     timerUI.SetActive(false);
+    //     collectedCoinsText.text = "+" + player.currentCoins.ToString();
+    //     AddCoinsToPlayerPrefs(player.currentCoins);
+    // }
     void AddCoinsToPlayerPrefs(int currentCoins)
     {
         int coinCount = PlayerPrefs.GetInt("PlayerCoins", 0);
@@ -77,4 +108,5 @@ public class Victory : MonoBehaviour
         PlayerPrefs.SetInt("PlayerCoins", coinCount);
         PlayerPrefs.Save();
     }
+
 }
