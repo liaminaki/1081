@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     private ShieldManager shieldManager;
     private CoinCollectionManager coinManager;
 
+    public AudioSource coinAudio;
+    public AudioSource shieldAudio;
+
     private void Start(){
         shieldManager = FindObjectOfType<ShieldManager>();
         coinManager = FindObjectOfType<CoinCollectionManager>();
@@ -216,13 +219,8 @@ public class PlayerMovement : MonoBehaviour
             int coinID = coinScript.getCoinID();
             Destroy(other.gameObject);
             currentCoins++;
-            // PlayerPrefs.SetInt("PlayerCoins",coinCount);
-            // PlayerPrefs.Save();
+            coinAudio.Play();
             Debug.Log("Coin: " + currentCoins);
-            // Debug.Log("Collected Coin ID: " + coinID);
-            // coinManager.addCoinToList(coinID);
-            // coinManager.ShowCollectedCoinIDs();
-            // coinManager.ResetCollectedCoins();
         }
         else 
         if(other.gameObject.CompareTag("Shield")){
@@ -236,6 +234,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("ShieldID is : " + shieldID);
             shieldManager.addshieldToList(shieldID);
             // shieldManager.ShowCollectedshieldIDs();
+            shieldAudio.Play();
         }
     }
 }
