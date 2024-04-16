@@ -10,6 +10,7 @@ public class EndTrigger : MonoBehaviour
     
     // The renamed reference to the post-game timeline is now called Timeline2
     public PlayableDirector Timeline2;
+    public bool end = false;
 
     // A flag to track whether the event has been handled
     private bool eventHandled = false;
@@ -43,6 +44,7 @@ public class EndTrigger : MonoBehaviour
         // Check if the collided object is tagged as "Player"
         if (collider.CompareTag("Player"))
         {
+            end = true;
             // Log the collision for debugging purposes
             Debug.Log("Player collided with the end trigger.");
 
