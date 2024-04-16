@@ -35,4 +35,9 @@ public class Timer : MonoBehaviour
     public string GetTime(){
         return timeText.text;
     }
+
+    public void StopTime()
+    {
+        timeIsRunning = false;
+    }
 }

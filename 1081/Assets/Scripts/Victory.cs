@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 public class Victory : MonoBehaviour
 {
+    public int ChapterNum;
     // Start is called before the first frame update
     public Timer timerSystem;
     public GameObject timerUI;
@@ -14,7 +15,7 @@ public class Victory : MonoBehaviour
     public TMP_Text currentTotalCoins;
     public AudioSource src;
     // public AudioClip missionSuccess, stars;
-    public EndTrigger end;
+    // public EndTrigger end;
     public static bool GameIsPaused = false;
 
     public StarsProgressController starsProgress;
@@ -25,10 +26,15 @@ public class Victory : MonoBehaviour
         victoryScreenUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StopTime() {
+        timerSystem.StopTime();
+        GameIsPaused = true;
+        timerUI.SetActive(false);
+    }
+    
+    public void Open()
     {
-        if (end.end == true && lockSwitch)
+        if (lockSwitch)
         {
             // Debug.Log("8 has been pressed!");
             // victoryScreenUI.SetActive(true);
@@ -43,8 +49,7 @@ public class Victory : MonoBehaviour
             //     Pause();
             // }
             victoryScreenUI.SetActive(true);
-            Time.timeScale = 0f;
-            GameIsPaused = true;
+            
             elapsedTimeText.text = timerSystem.GetTime();
             currentTotalCoins.text = PlayerPrefs.GetInt("PlayerCoins").ToString();
 
@@ -61,8 +66,11 @@ public class Victory : MonoBehaviour
             {
                 OneStar.SetActive(true);
             }
+            
+            // Save stars number
+            PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", starsProgress.possibleStars);
 
-            timerUI.SetActive(false);
+            
             collectedCoinsText.text = "+" + player.currentCoins.ToString();
             AddCoinsToPlayerPrefs(player.currentCoins);
             lockSwitch = false;

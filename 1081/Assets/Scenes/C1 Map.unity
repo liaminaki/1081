@@ -21673,7 +21673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainTimeline: {fileID: 157021506}
   Timeline2: {fileID: 1626128512}
-  end: 0
+  victory: {fileID: 135607703622444021}
 --- !u!1 &1370718957
 GameObject:
   m_ObjectHideFlags: 0
@@ -47997,6 +47997,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: d24c400c107e94807a210168eeb428a1, type: 2}
     - {fileID: 11400000, guid: 195e458be174947de946248455de22c1, type: 2}
+    - {fileID: 11400000, guid: 3f032bd6eec744d20ba32ff378b72a41, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -48017,6 +48018,20 @@ MonoBehaviour:
         - m_Target: {fileID: 1650336060}
           m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
           m_MethodName: TurnOffPlayerInput
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 135607703622444021}
+          m_TargetAssemblyTypeName: Victory, Assembly-CSharp
+          m_MethodName: Open
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -49086,6 +49101,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3866465971433289848, guid: 7be6ec8ebbbd97947a04f4d2fd2ba274, type: 3}
   m_PrefabInstance: {fileID: 5080976103795558653}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &135607703622444021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4498232196583556194, guid: 7be6ec8ebbbd97947a04f4d2fd2ba274, type: 3}
+  m_PrefabInstance: {fileID: 5080976103795558653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3305d1389e798a0468021729ee5b885d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &777050903285205946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49402,6 +49428,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 424313916}
     - target: {fileID: 4498232196583556194, guid: 7be6ec8ebbbd97947a04f4d2fd2ba274, type: 3}
+      propertyPath: ChapterNum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498232196583556194, guid: 7be6ec8ebbbd97947a04f4d2fd2ba274, type: 3}
       propertyPath: timerSystem
       value: 
       objectReference: {fileID: 734517276}
@@ -49413,6 +49443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameWin
       objectReference: {fileID: 0}
+    - target: {fileID: 8093437264715457345, guid: 7be6ec8ebbbd97947a04f4d2fd2ba274, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1835645873}
     - target: {fileID: 8832778461800445618, guid: 7be6ec8ebbbd97947a04f4d2fd2ba274, type: 3}
       propertyPath: aud
       value: 
