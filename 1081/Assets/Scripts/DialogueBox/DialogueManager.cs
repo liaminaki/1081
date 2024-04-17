@@ -188,10 +188,10 @@ public class DialogueManager : MonoBehaviour
     }
 
     private string LoadPlayerName() {
-        return PlayerPrefs.GetString("CharacterName");
+        return PlayerPrefs.GetString("CharacterName", "Player");
     }
 
     private int LoadPlayerSkin() {
-        return PlayerPrefs.GetInt("SelectedSkinIndex");
+        return PlayerPrefs.GetInt("SelectedSkinIndex", 0);
     }
 }

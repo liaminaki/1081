@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 3f;
     private int shieldLevel;
     private int staminaLevel;
-    
+    public int currentCoins = 0;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator animator;
@@ -45,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
     private CoinCollectionManager coinManager;
     private int shieldCount;
 
-    public GameObject enemy;
-    private EnemyAI enemyAI;
-
+    public AudioSource coinAudio;
+    public AudioSource shieldAudio;
+ 
     private void Start(){
         shieldManager = FindObjectOfType<ShieldManager>();
         coinManager = FindObjectOfType<CoinCollectionManager>();
@@ -302,12 +302,9 @@ public class PlayerMovement : MonoBehaviour
         {   Coin coinScript = other.gameObject.GetComponent<Coin>();
             int coinID = coinScript.getCoinID();
             Destroy(other.gameObject);
-            coinCount++;
-            PlayerPrefs.SetInt("PlayerCoins",coinCount);
-            PlayerPrefs.Save();
-            Debug.Log("Coin: " + coinCount);
-            Debug.Log("Collected Coin ID: " + coinID);
-            coinManager.addCoinToList(coinID);
+            currentCoins++;
+            coinAudio.Play();
+            Debug.Log("Coin: " + currentCoins);
             // coinManager.ShowCollectedCoinIDs();
             // coinManager.ResetCollectedCoins();
         }
@@ -323,6 +320,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("ShieldID is : " + shieldID);
             shieldManager.addshieldToList(shieldID);
             // shieldManager.ShowCollectedshieldIDs();
+            shieldAudio.Play();
         }
     }
 }
