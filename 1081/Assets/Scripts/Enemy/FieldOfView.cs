@@ -13,25 +13,23 @@ public class FieldOfView : MonoBehaviour
 
     public bool CanSeePlayer { get; private set; }
 
+    public float meshResolution;
+    public MeshFilter viewMeshFilter;
+    Mesh viewMesh;
+
     private EnemyAI enemyAI;
-    // private LineRenderer lineRenderer;
 
     void Start()
     {
+        viewMesh = new Mesh();
+        viewMesh.name = "View Mesh";
+        viewMeshFilter.mesh = viewMesh;
         enemyAI = GetComponent<EnemyAI>();
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (playerObjects.Length > 0)
         {
             playerRef = playerObjects[0];
         }
-
-        // // Add LineRenderer component
-        // lineRenderer = gameObject.AddComponent<LineRenderer>();
-        // lineRenderer.startWidth = 0.1f;
-        // lineRenderer.endWidth = 0.1f;
-        // lineRenderer.startColor = Color.yellow;
-        // lineRenderer.endColor = Color.yellow;
-        // lineRenderer.positionCount = 3;
 
         StartCoroutine(FOVCheck());
     }
@@ -45,6 +43,10 @@ public class FieldOfView : MonoBehaviour
             yield return wait;
             FOV();
         }
+    }
+
+    void LateUpdate(){
+        DrawFieldOfView();
     }
 
     private void FOV()
@@ -97,17 +99,68 @@ public class FieldOfView : MonoBehaviour
             CanSeePlayer = false;
     }
 
-    // private void Update()
-    // {
-    //     if (enemyAI != null){
-    //         // Update LineRenderer positions
-    //         Vector3 angle01 = DirectionFromAngle(-GetAngleFromDirection(enemyAI.CurrentDirection) - angle / 2);
-    //         Vector3 angle02 = DirectionFromAngle(-GetAngleFromDirection(enemyAI.CurrentDirection) + angle / 2);
-    //         lineRenderer.SetPosition(0, transform.position);
-    //         lineRenderer.SetPosition(1, transform.position + angle01 * radius);
-    //         lineRenderer.SetPosition(2, transform.position + angle02 * radius);
-    //     }
-    // }
+    void DrawFieldOfView(){
+        int stepCount = Mathf.RoundToInt (angle * meshResolution);
+        float stepAngleSize = angle / stepCount;
+
+        List<Vector2> viewPoints = new List<Vector2> ();
+
+        // Get the angle based on the enemy's direction
+        float startingAngle = -GetAngleFromDirection(enemyAI.CurrentDirection) - angle / 2;
+
+        for (int i = 0; i <= stepCount; i++){
+            float viewAngle = startingAngle + stepAngleSize * i;
+            ViewCastInfo newViewCast = ViewCast(viewAngle);
+            viewPoints.Add(newViewCast.point);
+            // Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
+        }
+
+        int vertexCount = viewPoints.Count + 1;
+        Vector3[] vertices = new Vector3[vertexCount];
+        int[] triangles = new int[(vertexCount-2) * 3];
+
+        vertices [0] = Vector3.zero;
+        for (int i = 0; i < vertexCount - 1; i++){
+            vertices [i + 1] = transform.InverseTransformPoint(viewPoints [i]);
+
+            if (i < vertexCount - 2){
+                triangles [i * 3] = 0;
+                triangles [i * 3 + 1] = i + 1;
+                triangles [i * 3 + 2] = i + 2;
+            }
+        }
+
+        viewMesh.Clear();
+        viewMesh.vertices = vertices;
+        viewMesh.triangles = triangles;
+        viewMesh.RecalculateNormals ();
+    }
+
+    ViewCastInfo ViewCast (float globalAngle){
+        Vector2 dir = DirectionFromAngle (globalAngle);
+        RaycastHit hit;
+
+        if (Physics.Raycast (transform.position, dir, out hit, radius, obstructionLayer)){
+            return new ViewCastInfo (true, hit.point, hit.distance, globalAngle);
+        }
+        else{
+           return new ViewCastInfo(false, (Vector2)transform.position + dir * radius, radius, globalAngle);
+        }
+    }
+
+    public struct ViewCastInfo{
+        public bool hit;
+        public Vector2 point;
+        public float dst;
+        public float viewAngle;
+
+        public ViewCastInfo (bool _hit, Vector2 _point, float _dst, float _viewAngle){
+            hit = _hit;
+            point = _point;
+            dst = _dst;
+            viewAngle = _viewAngle;
+        }
+    }
 
     private void OnDrawGizmos()
     {
