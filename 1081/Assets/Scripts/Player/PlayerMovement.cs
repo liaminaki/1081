@@ -45,9 +45,6 @@ public class PlayerMovement : MonoBehaviour
     private CoinCollectionManager coinManager;
     private int shieldCount;
 
-    public GameObject enemy;
-    private EnemyAI enemyAI;
-
     private void Start(){
         shieldManager = FindObjectOfType<ShieldManager>();
         coinManager = FindObjectOfType<CoinCollectionManager>();
@@ -71,31 +68,23 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        enemyAI = enemy.GetComponent<EnemyAI>();
     }
 
     public void OnMovement(InputAction.CallbackContext ctxt)
     {
         movement = ctxt.ReadValue<Vector2>();
 
-        if (enemyAI.caughtPlayer){
-            animator.SetBool("isArrested", true);
-            rb.velocity = Vector2.zero;
-            Debug.Log("Caught");
+        if (movement.x != 0 || movement.y != 0)
+        {
+            animator.SetFloat("X", movement.x);
+            animator.SetFloat("Y", movement.y);
         }
-        else{
-            if (movement.x != 0 || movement.y != 0)
-            {
-                animator.SetFloat("X", movement.x);
-                animator.SetFloat("Y", movement.y);
-            }
-            else
-            {
-                animator.SetBool("IsWalking", false);
-                animator.SetBool("IsSprinting", false);
-                animator.SetBool("ShieldWalking", false);
-                animator.SetBool("ShieldSprinting", false);
-            }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsSprinting", false);
+            animator.SetBool("ShieldWalking", false);
+            animator.SetBool("ShieldSprinting", false);
         }
     }
 

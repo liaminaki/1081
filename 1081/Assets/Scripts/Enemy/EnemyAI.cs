@@ -4,9 +4,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     public List<GameObject> pathPoints; // List of waypoints defining the path
-    public float speed = 3f; // Speed of movement
-    public bool isRunning = false;
-    public bool caughtPlayer {get; private set;}
+    public float speed = 5f; // Speed of movement
 
     public enum Direction
     {
@@ -22,13 +20,10 @@ public class EnemyAI : MonoBehaviour
     private Animator anim;
     private int currentPointIndex = 0; // Index of the current waypoint
 
-    private FieldOfView fov;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        fov = GetComponent<FieldOfView>();
     }
 
     void Update()
@@ -37,43 +32,14 @@ public class EnemyAI : MonoBehaviour
         if (pathPoints.Count == 0)
             return;
 
-        if (fov.CanSeePlayer){
-            // Move towards player
-            if (caughtPlayer){
-                rb.velocity = Vector2.zero;
-            }
-            else{
-                MoveTowardsPoint(fov.playerRef.transform.position);
-                anim.SetBool("isFound", true);
-                isRunning = true;
-            }
-        }
-        else{
-            anim.SetBool("isFound", false);
-            isRunning = false;
-            // Move towards the current waypoint
-            MoveTowardsPoint(pathPoints[currentPointIndex].transform.position);
+        // Move towards the current waypoint
+        MoveTowardsPoint(pathPoints[currentPointIndex].transform.position);
 
-            // Check if the enemy has reached the current waypoint
-            if (Vector2.Distance(transform.position, pathPoints[currentPointIndex].transform.position) < 0.1f)
-            {
-                // Move to the next waypoint
-                currentPointIndex = (currentPointIndex + 1) % pathPoints.Count;
-            }
-        }
-
-            // Check if the enemy is in the same position as the player
-        if (Vector2.Distance(transform.position, fov.playerRef.transform.position) < 0.1f)
+        // Check if the enemy has reached the current waypoint
+        if (Vector2.Distance(transform.position, pathPoints[currentPointIndex].transform.position) < 0.1f)
         {
-            // The enemy is in the same position as the player
-            // You can add your logic here
-            anim.SetBool("isIdle", true);
-            caughtPlayer = true;
-            rb.velocity = Vector2.zero;
-            Debug.Log("GameOver!");
-        }
-        else{
-            caughtPlayer = false;
+            // Move to the next waypoint
+            currentPointIndex = (currentPointIndex + 1) % pathPoints.Count;
         }
     }
 
@@ -85,10 +51,7 @@ public class EnemyAI : MonoBehaviour
         UpdateDirection(direction);
 
         // Move the enemy towards the target position
-        if (!isRunning)
-            rb.velocity = direction * speed;
-        else
-            rb.velocity = direction * (speed * 2);
+        rb.velocity = direction * speed;
 
         // Update the animation based on movement direction
         anim.SetFloat("X", direction.x);
