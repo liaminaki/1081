@@ -6,7 +6,7 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     public float radius = 5f;
-    [Range (1, 360)] public float angle = 45f;
+    [Range (1, 360)] public float angle = 180f;
     public LayerMask targetLayer;
     public LayerMask obstructionLayer;
 
@@ -58,7 +58,7 @@ public class FieldOfView : MonoBehaviour
         UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
 
         Vector3 angle01 = DirectionFromAngle(-transform.eulerAngles.z, -angle/2);
-        Vector3 angle02 = DirectionFromAngle(-transform.eulerAngles.z, angle/2);
+        Vector3 angle02 = DirectionFromAngle(transform.eulerAngles.z, angle/2);
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + angle01 * radius);
@@ -67,6 +67,7 @@ public class FieldOfView : MonoBehaviour
         if (CanSeePlayer){
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, playerRef.transform.position);
+            Debug.Log("Player Found!");
         }
     }
 
@@ -75,3 +76,4 @@ public class FieldOfView : MonoBehaviour
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }
+
