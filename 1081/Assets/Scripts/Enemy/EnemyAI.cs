@@ -1,62 +1,3 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using System.Drawing;
-// using UnityEngine;
-
-// public class EnemyAI : MonoBehaviour
-// {
-//     public GameObject PointA;
-//     public GameObject PointB;
-
-//     private Rigidbody2D rb;
-//     private Animator anim;
-//     private Transform currentPoint;
-//     public float speed;
-
-//     public bool isVertical;
-
-//     void Start (){
-//         rb = GetComponent<Rigidbody2D>();
-//         anim = GetComponent<Animator>();
-//         currentPoint = PointB.transform;
-//     }
-
-//     void Update (){
-//         Vector2 point = currentPoint.position - transform.position;
-
-//         if (currentPoint == PointB.transform){
-//             if (isVertical)
-//                 rb.velocity = new Vector2(0, speed);
-//             else
-//                 rb.velocity = new Vector2(speed, 0);
-//         }
-//         else{
-//             if (isVertical)
-//                 rb.velocity = new Vector2(0, -speed);
-//             else
-//                 rb.velocity = new Vector2(-speed, 0);
-//         }
-
-//         float xVelocity = rb.velocity.x;
-//         float yVelocity = rb.velocity.y;
-//         anim.SetFloat("X", xVelocity);
-//         anim.SetFloat("Y", yVelocity);
-
-//         if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == PointB.transform){
-//             currentPoint = PointA.transform;
-//         }
-//         if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == PointA.transform){
-//             currentPoint = PointB.transform;
-//         }
-//     }
-
-//     private void OnDrawGizmos(){
-//         Gizmos.DrawWireSphere(PointA.transform.position, 1f);
-//         Gizmos.DrawWireSphere(PointB.transform.position, 1f);
-//         Gizmos.DrawLine(PointA.transform.position, PointB.transform.position);
-//     }
-// }
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -64,6 +5,16 @@ public class EnemyAI : MonoBehaviour
 {
     public List<GameObject> pathPoints; // List of waypoints defining the path
     public float speed = 5f; // Speed of movement
+
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    public Direction CurrentDirection { get; private set; } = Direction.Right; // Current movement direction
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -97,12 +48,32 @@ public class EnemyAI : MonoBehaviour
         // Calculate the direction to move towards the target position
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
+        UpdateDirection(direction);
+
         // Move the enemy towards the target position
         rb.velocity = direction * speed;
 
         // Update the animation based on movement direction
         anim.SetFloat("X", direction.x);
         anim.SetFloat("Y", direction.y);
+    }
+
+    void UpdateDirection(Vector2 direction)
+    {
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            if (direction.x > 0)
+                CurrentDirection = Direction.Right;
+            else
+                CurrentDirection = Direction.Left;
+        }
+        else
+        {
+            if (direction.y > 0)
+                CurrentDirection = Direction.Up;
+            else
+                CurrentDirection = Direction.Down;
+        }
     }
 
     // Visualize the path in the editor
