@@ -14,15 +14,25 @@ public class FieldOfView : MonoBehaviour
     public bool CanSeePlayer { get; private set; }
 
     private EnemyAI enemyAI;
+    // private LineRenderer lineRenderer;
 
     void Start()
     {
+        enemyAI = GetComponent<EnemyAI>();
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
         if (playerObjects.Length > 0)
         {
             playerRef = playerObjects[0];
         }
-        enemyAI = GetComponent<EnemyAI>();
+
+        // // Add LineRenderer component
+        // lineRenderer = gameObject.AddComponent<LineRenderer>();
+        // lineRenderer.startWidth = 0.1f;
+        // lineRenderer.endWidth = 0.1f;
+        // lineRenderer.startColor = Color.yellow;
+        // lineRenderer.endColor = Color.yellow;
+        // lineRenderer.positionCount = 3;
+
         StartCoroutine(FOVCheck());
     }
 
@@ -87,6 +97,18 @@ public class FieldOfView : MonoBehaviour
             CanSeePlayer = false;
     }
 
+    // private void Update()
+    // {
+    //     if (enemyAI != null){
+    //         // Update LineRenderer positions
+    //         Vector3 angle01 = DirectionFromAngle(-GetAngleFromDirection(enemyAI.CurrentDirection) - angle / 2);
+    //         Vector3 angle02 = DirectionFromAngle(-GetAngleFromDirection(enemyAI.CurrentDirection) + angle / 2);
+    //         lineRenderer.SetPosition(0, transform.position);
+    //         lineRenderer.SetPosition(1, transform.position + angle01 * radius);
+    //         lineRenderer.SetPosition(2, transform.position + angle02 * radius);
+    //     }
+    // }
+
     private void OnDrawGizmos()
     {
         if (enemyAI == null){
@@ -112,7 +134,6 @@ public class FieldOfView : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, playerRef.transform.position);
-            Debug.Log("Player Found!");
         }
     }
 
