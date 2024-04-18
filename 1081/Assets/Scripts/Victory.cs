@@ -9,7 +9,7 @@ public class Victory : MonoBehaviour
     public Timer timerSystem;
     public GameObject timerUI;
     public GameObject victoryScreenUI;
-    public PlayerMovement player;
+    private PlayerMovement player;
     public TMP_Text elapsedTimeText;
     public TMP_Text collectedCoinsText;
     public TMP_Text currentTotalCoins;
@@ -23,6 +23,7 @@ public class Victory : MonoBehaviour
     bool lockSwitch = true;
     void Start()
     {
+        player = FindObjectOfType<PlayerMovement>();
         victoryScreenUI.SetActive(false);
     }
 
@@ -36,18 +37,6 @@ public class Victory : MonoBehaviour
     {
         if (lockSwitch)
         {
-            // Debug.Log("8 has been pressed!");
-            // victoryScreenUI.SetActive(true);
-            // Time.timeScale = 0f;
-
-            // if (GameIsPaused)
-            // {
-            //     Resume();
-            // }
-            // else
-            // {
-            //     Pause();
-            // }
             victoryScreenUI.SetActive(true);
             
             elapsedTimeText.text = timerSystem.GetTime();
@@ -55,7 +44,6 @@ public class Victory : MonoBehaviour
 
             if (starsProgress.possibleStars == 3)
             {
-                Debug.Log("yo3stars?");
                 ThreeStars.SetActive(true);
             }
             else if (starsProgress.possibleStars == 2)
@@ -76,39 +64,7 @@ public class Victory : MonoBehaviour
             lockSwitch = false;
         }
     }
-    // public void Resume()
-    // {
-    //     victoryScreenUI.SetActive(false);
-    //     Time.timeScale = 1f;
-    //     GameIsPaused = false;
-    // }
 
-    // public void Pause()
-    // {
-    //     victoryScreenUI.SetActive(true);
-    //     Time.timeScale = 0f;
-    //     GameIsPaused = true;
-    //     elapsedTimeText.text = timerSystem.GetTime();
-    //     currentTotalCoins.text = PlayerPrefs.GetInt("PlayerCoins").ToString();
-
-    //     if (starsProgress.possibleStars == 3)
-    //     {
-    //         Debug.Log("yo3stars?");
-    //         ThreeStars.SetActive(true);
-    //     }
-    //     else if (starsProgress.possibleStars == 2)
-    //     {
-    //         TwoStars.SetActive(true);
-    //     }
-    //     else if (starsProgress.possibleStars == 1)
-    //     {
-    //         OneStar.SetActive(true);
-    //     }
-
-    //     timerUI.SetActive(false);
-    //     collectedCoinsText.text = "+" + player.currentCoins.ToString();
-    //     AddCoinsToPlayerPrefs(player.currentCoins);
-    // }
     void AddCoinsToPlayerPrefs(int currentCoins)
     {
         int coinCount = PlayerPrefs.GetInt("PlayerCoins", 0);
