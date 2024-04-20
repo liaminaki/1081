@@ -174,6 +174,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (enemyAI.caughtPlayer){
+            animator.SetBool("isArrested", true);
+            rb.velocity = Vector2.zero;
+            Debug.Log("Caught");
+        }
+
         shieldTimer -= Time.fixedDeltaTime; // Decrease shield timer
         //check if shield is got any seconds left;
         if(shieldTimer <= 0f){

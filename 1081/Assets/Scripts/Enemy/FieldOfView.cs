@@ -112,7 +112,7 @@ public class FieldOfView : MonoBehaviour
             float viewAngle = startingAngle + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(viewAngle);
             viewPoints.Add(newViewCast.point);
-            // Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
+            Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
         }
 
         int vertexCount = viewPoints.Count + 1;

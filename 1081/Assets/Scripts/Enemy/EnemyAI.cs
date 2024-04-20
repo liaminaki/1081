@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         fov = GetComponent<FieldOfView>();
+        caughtPlayer = false;
     }
 
     void Update()
@@ -40,14 +41,9 @@ public class EnemyAI : MonoBehaviour
 
             if (fov.CanSeePlayer){
                 // Move towards player
-                if (caughtPlayer){
-                    rb.velocity = Vector2.zero;
-                }
-                else{
-                    MoveTowardsPoint(fov.playerRef.transform.position);
-                    anim.SetBool("isFound", true);
-                    isRunning = true;
-                }
+                MoveTowardsPoint(fov.playerRef.transform.position);
+                anim.SetBool("isFound", true);
+                isRunning = true;
             }
             else{
                 anim.SetBool("isFound", false);
@@ -66,6 +62,7 @@ public class EnemyAI : MonoBehaviour
                 // Check if the enemy is in the same position as the player
             if (Vector2.Distance(transform.position, fov.playerRef.transform.position) < 0.1f)
             {
+                Debug.Log("Distance: " +Vector2.Distance(transform.position, fov.playerRef.transform.position));
                 // The enemy is in the same position as the player
                 // You can add your logic here
                 anim.SetBool("isIdle", true);
@@ -79,7 +76,6 @@ public class EnemyAI : MonoBehaviour
         }
         else{
             rb.velocity = Vector2.zero;
-            Debug.Log("No Movement");
         }
     }
 
@@ -96,10 +92,8 @@ public class EnemyAI : MonoBehaviour
         else
             rb.velocity = direction * (speed * 2);
 
-        if (!caughtPlayer){// Update the animation based on movement direction
-            anim.SetFloat("X", direction.x);
-            anim.SetFloat("Y", direction.y);
-        }
+        anim.SetFloat("X", direction.x);
+        anim.SetFloat("Y", direction.y);
     }
 
     void UpdateDirection(Vector2 direction)
