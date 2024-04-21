@@ -305,7 +305,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        int coinCount = PlayerPrefs.GetInt("PlayerCoins", 200);
         int shieldCount = PlayerPrefs.GetInt("ShieldNumber", 0);
         if(other.gameObject.CompareTag("Coin"))
         {   Coin coinScript = other.gameObject.GetComponent<Coin>();
@@ -313,7 +312,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             currentCoins++;
             coinAudio.Play();
-            Debug.Log("Coin: " + currentCoins);
+            // Debug.Log("Coin: " + currentCoins);
             // coinManager.ShowCollectedCoinIDs();
             // coinManager.ResetCollectedCoins();
         }
@@ -325,8 +324,8 @@ public class PlayerMovement : MonoBehaviour
             shieldCount++;
             PlayerPrefs.SetInt("ShieldNumber", shieldCount);
             PlayerPrefs.Save();
-            Debug.Log("Shield: " + shieldCount);
-            Debug.Log("ShieldID is : " + shieldID);
+            // Debug.Log("Shield: " + shieldCount);
+            // Debug.Log("ShieldID is : " + shieldID);
             shieldManager.addshieldToList(shieldID);
             // shieldManager.ShowCollectedshieldIDs();
             shieldAudio.Play();
