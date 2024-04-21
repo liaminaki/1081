@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour
     private int currentPointIndex = 0; // Index of the current waypoint
 
     private FieldOfView fov;
+    public List <GameObject> player;
+
 
     void Start()
     {
@@ -76,6 +78,13 @@ public class EnemyAI : MonoBehaviour
         }
         else{
             rb.velocity = Vector2.zero;
+            foreach (GameObject obj in player){
+                PlayerMovement playerMovement = obj.GetComponent<PlayerMovement>();
+
+                if (playerMovement != null){
+                    playerMovement.ArrestedState();
+                }
+            }
         }
     }
 
