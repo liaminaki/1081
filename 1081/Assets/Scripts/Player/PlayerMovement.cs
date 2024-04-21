@@ -47,10 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource coinAudio;
     public AudioSource shieldAudio;
-
-    public GameObject enemy;
-
-
  
     private void Start(){
         shieldManager = FindObjectOfType<ShieldManager>();
