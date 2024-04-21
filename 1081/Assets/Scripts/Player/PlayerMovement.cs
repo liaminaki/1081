@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource shieldAudio;
 
     public GameObject enemy;
-    private EnemyAI enemyAI;
 
 
  
@@ -76,19 +75,18 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        enemyAI = enemy.GetComponent<EnemyAI>();
     }
 
     public void OnMovement(InputAction.CallbackContext ctxt)
     {
         movement = ctxt.ReadValue<Vector2>();
 
-        if (enemyAI.caughtPlayer){
-            animator.SetBool("isArrested", true);
-            rb.velocity = Vector2.zero;
-            Debug.Log("Caught");
-        }
-        else{
+        // if (enemyAI.caughtPlayer){
+        //     // animator.SetBool("isArrested", true);
+        //     // rb.velocity = Vector2.zero;
+        //     // Debug.Log("Caught");
+        // }
+        // else{
             if (movement.x != 0 || movement.y != 0)
             {
                 animator.SetFloat("X", movement.x);
@@ -101,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("ShieldWalking", false);
                 animator.SetBool("ShieldSprinting", false);
             }
-        }
+        // }
     }
 
     public void OnSprint(InputAction.CallbackContext ctxt)
@@ -174,6 +172,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // if (enemyAI.caughtPlayer){
+        //     animator.SetBool("isArrested", true);
+        //     rb.velocity = Vector2.zero;
+        //     Debug.Log("Caught");
+        // }
+
         shieldTimer -= Time.fixedDeltaTime; // Decrease shield timer
         //check if shield is got any seconds left;
         if(shieldTimer <= 0f){
@@ -326,5 +330,11 @@ public class PlayerMovement : MonoBehaviour
             // shieldManager.ShowCollectedshieldIDs();
             shieldAudio.Play();
         }
+    }
+
+    public void ArrestedState (){
+        animator.SetBool("isArrested", true);
+        rb.velocity = Vector2.zero;
+        Debug.Log("Caught");
     }
 }
