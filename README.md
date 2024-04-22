@@ -20,7 +20,7 @@ The game will support multiple languages for the dialogues including local ones.
 3. Filipino
 
 ## **Screenshots**
-<img width="500" alt="Menu" src="https://github.com/liaminaki/1081/assets/87406026/521e8c50-589d-443e-953b-01bc478f623a">
-<img width="500" alt="ChapterSelection" src="https://github.com/liaminaki/1081/assets/87406026/eabb16cb-a2df-432a-bf16-e8c9746ccec0">
-<img width="500" alt="Cutscene" src="https://github.com/liaminaki/1081/assets/87406026/4f6fdc9a-f738-48cb-a1b7-a564d2230d68">
-<img width="500" alt="ChapterTitle" src="https://github.com/liaminaki/1081/assets/87406026/b8dd1de5-872d-4c92-91d3-b0c0488cfec0">
+<img width="250" alt="Menu" src="https://github.com/liaminaki/1081/assets/87406026/521e8c50-589d-443e-953b-01bc478f623a">
+<img width="250" alt="ChapterSelection" src="https://github.com/liaminaki/1081/assets/87406026/eabb16cb-a2df-432a-bf16-e8c9746ccec0">
+<img width="250" alt="Cutscene" src="https://github.com/liaminaki/1081/assets/87406026/4f6fdc9a-f738-48cb-a1b7-a564d2230d68">
+<img width="250" alt="ChapterTitle" src="https://github.com/liaminaki/1081/assets/87406026/b8dd1de5-872d-4c92-91d3-b0c0488cfec0">
