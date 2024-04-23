@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9107207897488970986}
   - component: {fileID: 6687697171910626494}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: F
       objectReference: {fileID: 0}
+    - target: {fileID: 8366154906767016677, guid: 373e9539cb4171f49877368a9d3ba804, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -168,6 +172,10 @@ PrefabInstance:
     - target: {fileID: 2469977756850816052, guid: 0abcf386d9a5ed74bb8198097322bed0, type: 3}
       propertyPath: m_Name
       value: M
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469977756850816052, guid: 0abcf386d9a5ed74bb8198097322bed0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2469977756850816052, guid: 0abcf386d9a5ed74bb8198097322bed0, type: 3}
       propertyPath: m_IsActive

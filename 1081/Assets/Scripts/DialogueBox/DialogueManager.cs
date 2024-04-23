@@ -184,14 +184,14 @@ public class DialogueManager : MonoBehaviour
 
     private void LoadSelectedLanguage()
     {
-        language = PlayerPrefs.GetString("Language");
+        language = PlayerPrefs.GetString("Language", "ENGLISH");
     }
 
     private string LoadPlayerName() {
-        return PlayerPrefs.GetString("CharacterName");
+        return PlayerPrefs.GetString("CharacterName", "Player");
     }
 
     private int LoadPlayerSkin() {
-        return PlayerPrefs.GetInt("SelectedSkinIndex");
+        return PlayerPrefs.GetInt("SelectedSkinIndex", 0);
     }
 }
