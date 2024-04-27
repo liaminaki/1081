@@ -45,13 +45,14 @@ public class EnemyAI : MonoBehaviour
     {
         // Check if there are any waypoints defined
         if (!caughtPlayer){
-            GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];  
+            GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];
+            PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
             if (pathPoints.Count == 0)
                 return;
 
             if (fov.CanSeePlayer){
                 // Move towards player
-                MoveTowardsPoint(selectedCharacter.transform.position);
+                MoveTowardsPoint(playerMovement.center.position);
                 anim.SetBool("isFound", true);
                 isRunning = true;
             }
@@ -70,11 +71,10 @@ public class EnemyAI : MonoBehaviour
             }
 
                 // Check if the enemy is in the same position as the player
-            if (Vector2.Distance(transform.position, selectedCharacter.transform.position) < 0.1f)
+            if (Vector2.Distance(transform.position, playerMovement.center.transform.position) < 0.5f)
             {
-                PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
                 if(playerMovement.usingShield){
-                    var dir = center.position - selectedCharacter.transform.position;
+                    var dir = center.position - playerMovement.center.transform.position;
                     knockBack = true;
                     Vector2 deflectionDirection1 = new Vector2(0f, dir.y);
                     deflectionDirection1.Normalize();
@@ -119,6 +119,7 @@ public class EnemyAI : MonoBehaviour
                 PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
                 if (playerMovement != null){
                     playerMovement.ArrestedState();
+                    playerManager.TurnOffPlayerInput();
                 }
             }
         }
@@ -142,7 +143,7 @@ public class EnemyAI : MonoBehaviour
             if (!isRunning)
                 rb.velocity = direction * speed;
             else
-                rb.velocity = direction * (speed * 2);
+                rb.velocity = direction * (speed * 3);
 
             anim.SetFloat("X", direction.x);
             anim.SetFloat("Y", direction.y);
