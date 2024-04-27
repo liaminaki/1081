@@ -75,8 +75,27 @@ public class EnemyAI : MonoBehaviour
                 PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
                 if(playerMovement.usingShield){
                     var dir = center.position - selectedCharacter.transform.position;
-                    rb.velocity = (dir.normalized * knockBackForce);
                     knockBack = true;
+                    Vector2 deflectionDirection1 = new Vector2(0f, dir.y);
+                    deflectionDirection1.Normalize();
+                    Vector2 deflectionDirection2 = new Vector2(dir.x, 0f);
+                    deflectionDirection2.Normalize();
+                    switch (CurrentDirection){
+                        case Direction.Up:
+                            rb.velocity = deflectionDirection1 * knockBackForce;
+                            break;
+                        case Direction.Down:
+                            rb.velocity = deflectionDirection1 * knockBackForce;
+                            break;
+                        case Direction.Left:
+                            rb.velocity = deflectionDirection2 * knockBackForce;
+                            break;
+                        case Direction.Right:
+                            rb.velocity = deflectionDirection2 * knockBackForce;
+                            break;
+                        default:
+                            break;
+                    }
                     StartCoroutine(UnknockBack());
                 }
                 else{
@@ -106,7 +125,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     private IEnumerator UnknockBack(){
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         knockBack = false;
     }
 
@@ -128,10 +147,16 @@ public class EnemyAI : MonoBehaviour
             anim.SetFloat("X", direction.x);
             anim.SetFloat("Y", direction.y);
         }
-        else{
-            var lerpedVelocity = Mathf.Lerp(rb.velocity.x, rb.velocity.y, Time.deltaTime * 3);
-            rb.velocity = new Vector2 (lerpedVelocity, lerpedVelocity);
-        }
+        // else{
+        //     var lerpedVelocityX = Mathf.Lerp(rb.velocity.x, 0f, Time.deltaTime);
+        //     var lerpedVelocityY = Mathf.Lerp(0f, rb.velocity.y, Time.deltaTime);
+        //     if (CurrentDirection == Direction.Right || CurrentDirection == Direction.Left){
+        //         rb.velocity = new Vector2 (lerpedVelocityX, rb.velocity.y);
+        //     }
+        //     else if (CurrentDirection == Direction.Up || CurrentDirection == Direction.Down){
+        //         rb.velocity = new Vector2 (rb.velocity.x, lerpedVelocityY);
+        //     }
+        // }
     }
 
     void UpdateDirection(Vector2 direction)
