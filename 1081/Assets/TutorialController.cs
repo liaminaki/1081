@@ -6,6 +6,7 @@ public class TutorialController : MonoBehaviour
 {
     public List<GameObject> messages = new List<GameObject>();
     private int messageID = -1;
+    public AudioSource messageSound;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,17 @@ public class TutorialController : MonoBehaviour
         {
             for (int i = 0; i < messages.Count; i++)
             {
-                if (i == messageID)
+                if (i == messageID) {
+                    // StartCoroutine(ShowMessageDelayed());
                     messages[i].SetActive(true);
+
+                    // Play sound before setting the message active
+                    if (messageSound != null && messageSound.clip != null)
+                    {
+                        messageSound.Play();
+                    }
+                }
+                    
                 else
                     messages[i].SetActive(false);
             }
@@ -50,4 +60,12 @@ public class TutorialController : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    // IEnumerator ShowMessageDelayed()
+    // {
+    //     yield return new WaitForSeconds(2f); // Wait for 2 seconds
+
+    //     // Show the message corresponding to the current messageID
+    //     messages[messageID].SetActive(true);
+    // }
 }
