@@ -10,6 +10,7 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstructionLayer;
 
     public GameObject playerRef;
+    public PlayerManager playerManager;
 
     public bool CanSeePlayer { get; private set; }
 
@@ -25,11 +26,7 @@ public class FieldOfView : MonoBehaviour
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
         enemyAI = GetComponent<EnemyAI>();
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-        if (playerObjects.Length > 0)
-        {
-            playerRef = playerObjects[0];
-        }
+        playerManager = playerRef.GetComponent<PlayerManager>();
 
         StartCoroutine(FOVCheck());
     }
@@ -51,48 +48,52 @@ public class FieldOfView : MonoBehaviour
 
     private void FOV()
     {
+        //Gets the current character selected
+        GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];
         Collider2D[] rangeCheck = Physics2D.OverlapCircleAll(transform.position, radius, targetLayer);
 
         if (rangeCheck.Length > 0)
         {
             foreach (var collider in rangeCheck)
             {
-                Transform target = collider.transform;
-                // Get the direction of the enemy AI
-                Vector2 enemyDirection = Vector2.zero;
-                if (enemyAI != null)
-                {
-                    switch (enemyAI.CurrentDirection)
+                if (collider.gameObject == selectedCharacter){
+                    Transform target = collider.transform;
+                    // Get the direction of the enemy AI
+                    Vector2 enemyDirection = Vector2.zero;
+                    if (enemyAI != null)
                     {
-                        case EnemyAI.Direction.Up:
-                            enemyDirection = Vector2.up;
-                            break;
-                        case EnemyAI.Direction.Down:
-                            enemyDirection = Vector2.down;
-                            break;
-                        case EnemyAI.Direction.Left:
-                            enemyDirection = Vector2.left;
-                            break;
-                        case EnemyAI.Direction.Right:
-                            enemyDirection = Vector2.right;
-                            break;
-                        default:
-                            break;
+                        switch (enemyAI.CurrentDirection)
+                        {
+                            case EnemyAI.Direction.Up:
+                                enemyDirection = Vector2.up;
+                                break;
+                            case EnemyAI.Direction.Down:
+                                enemyDirection = Vector2.down;
+                                break;
+                            case EnemyAI.Direction.Left:
+                                enemyDirection = Vector2.left;
+                                break;
+                            case EnemyAI.Direction.Right:
+                                enemyDirection = Vector2.right;
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
-                Vector2 directionToTarget = ((Vector2)target.position - (Vector2)transform.position).normalized;
-                 float angleToTarget = Vector2.Angle(enemyDirection, directionToTarget);
-                if (angleToTarget < angle / 2)
-                {
-                    float distanceToTarget = Vector2.Distance(transform.position, target.position);
-                    // Check for obstructions
-                    if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer))
-                        CanSeePlayer = true;
+                    Vector2 directionToTarget = ((Vector2)target.position - (Vector2)transform.position).normalized;
+                    float angleToTarget = Vector2.Angle(enemyDirection, directionToTarget);
+                    if (angleToTarget < angle / 2)
+                    {
+                        float distanceToTarget = Vector2.Distance(transform.position, target.position);
+                        // Check for obstructions
+                        if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer))
+                            CanSeePlayer = true;
+                        else
+                            CanSeePlayer = false;
+                    }
                     else
                         CanSeePlayer = false;
                 }
-                else
-                    CanSeePlayer = false;
             }
         }
         else if (CanSeePlayer)
@@ -186,7 +187,8 @@ public class FieldOfView : MonoBehaviour
         if (CanSeePlayer)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, playerRef.transform.position);
+            GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];
+            Gizmos.DrawLine(transform.position, selectedCharacter.transform.position);
         }
     }
 

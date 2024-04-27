@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -23,7 +25,11 @@ public class EnemyAI : MonoBehaviour
     private int currentPointIndex = 0; // Index of the current waypoint
 
     private FieldOfView fov;
-    public List <GameObject> player;
+    public GameObject player;
+    public PlayerManager playerManager;
+    public float knockBackForce = 6f;
+    [SerializeField] private Transform center;
+    [SerializeField] private bool knockBack;
 
 
     void Start()
@@ -31,19 +37,21 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         fov = GetComponent<FieldOfView>();
+        playerManager = player.GetComponent<PlayerManager>();
         caughtPlayer = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Check if there are any waypoints defined
         if (!caughtPlayer){
+            GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];  
             if (pathPoints.Count == 0)
                 return;
 
             if (fov.CanSeePlayer){
                 // Move towards player
-                MoveTowardsPoint(fov.playerRef.transform.position);
+                MoveTowardsPoint(selectedCharacter.transform.position);
                 anim.SetBool("isFound", true);
                 isRunning = true;
             }
@@ -62,15 +70,23 @@ public class EnemyAI : MonoBehaviour
             }
 
                 // Check if the enemy is in the same position as the player
-            if (Vector2.Distance(transform.position, fov.playerRef.transform.position) < 0.1f)
+            if (Vector2.Distance(transform.position, selectedCharacter.transform.position) < 0.1f)
             {
-                Debug.Log("Distance: " +Vector2.Distance(transform.position, fov.playerRef.transform.position));
-                // The enemy is in the same position as the player
-                // You can add your logic here
-                anim.SetBool("isIdle", true);
-                caughtPlayer = true;
-                rb.velocity = Vector2.zero;
-                Debug.Log("GameOver!");
+                PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
+                if(playerMovement.usingShield){
+                    var dir = center.position - selectedCharacter.transform.position;
+                    rb.velocity = (dir.normalized * knockBackForce);
+                    knockBack = true;
+                    StartCoroutine(UnknockBack());
+                }
+                else{
+                    anim.SetBool("isIdle", true);
+                    caughtPlayer = true;
+                    rb.velocity = Vector2.zero;
+                    // Freeze the y position
+                    rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+                    Debug.Log("GameOver!");
+                }
             }
             else{
                 caughtPlayer = false;
@@ -78,15 +94,22 @@ public class EnemyAI : MonoBehaviour
         }
         else{
             rb.velocity = Vector2.zero;
-            foreach (GameObject obj in player){
-                PlayerMovement playerMovement = obj.GetComponent<PlayerMovement>();
-
+            // Freeze the y position
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            if (playerManager != null){
+                PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
                 if (playerMovement != null){
                     playerMovement.ArrestedState();
                 }
             }
         }
     }
+
+    private IEnumerator UnknockBack(){
+        yield return new WaitForSeconds(1f);
+        knockBack = false;
+    }
+
 
     void MoveTowardsPoint(Vector2 targetPosition)
     {
@@ -95,14 +118,20 @@ public class EnemyAI : MonoBehaviour
 
         UpdateDirection(direction);
 
-        // Move the enemy towards the target position
-        if (!isRunning)
-            rb.velocity = direction * speed;
-        else
-            rb.velocity = direction * (speed * 2);
+        if (!knockBack){
+            // Move the enemy towards the target position
+            if (!isRunning)
+                rb.velocity = direction * speed;
+            else
+                rb.velocity = direction * (speed * 2);
 
-        anim.SetFloat("X", direction.x);
-        anim.SetFloat("Y", direction.y);
+            anim.SetFloat("X", direction.x);
+            anim.SetFloat("Y", direction.y);
+        }
+        else{
+            var lerpedVelocity = Mathf.Lerp(rb.velocity.x, rb.velocity.y, Time.deltaTime * 3);
+            rb.velocity = new Vector2 (lerpedVelocity, lerpedVelocity);
+        }
     }
 
     void UpdateDirection(Vector2 direction)
