@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
 {
     public CinemachineVirtualCamera Vcam;
     public GameObject[] playerPrefabs;
-    private int characterIndex;
+    public int characterIndex {get; private set;}
     private PlayerInput playerInput;
     private void Awake()
     {

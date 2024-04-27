@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private bool isSprinting = false;
-    private bool usingShield = false;
+    public bool usingShield {get; private set;}
     private float shieldTimer = 0f;
     //default shield duration is 5 seconds
     private float shieldDuration = 5f;
@@ -47,10 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource coinAudio;
     public AudioSource shieldAudio;
-
-    public GameObject enemy;
-
-
  
     private void Start(){
         shieldManager = FindObjectOfType<ShieldManager>();
@@ -60,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         maxStamina = defaultStamina + (2f * (staminaLevel - 1));
         currentStaminaRegen = defaultStaminaRegen + (0.5f * (staminaLevel - 1));
         shieldLevel = PlayerPrefs.GetInt("ShieldLevel", 1);
+        PlayerPrefs.SetInt("ShieldNumber", 10);
         shieldCount = PlayerPrefs.GetInt("ShieldNumber");
         maxTime = shieldDuration + (2f * (shieldLevel - 1));
         _shieldCount.text = shieldCount.ToString();
@@ -69,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         _shieldDuration.gameObject.SetActive(false);
         _shieldCount.gameObject.SetActive(false);
         _staminaTracker.text = string.Format("{0}/{1}", (int)currentStamina, (int)maxStamina);
+        usingShield = false;
     }
 
     private void Awake()
@@ -80,26 +78,18 @@ public class PlayerMovement : MonoBehaviour
     public void OnMovement(InputAction.CallbackContext ctxt)
     {
         movement = ctxt.ReadValue<Vector2>();
-
-        // if (enemyAI.caughtPlayer){
-        //     // animator.SetBool("isArrested", true);
-        //     // rb.velocity = Vector2.zero;
-        //     // Debug.Log("Caught");
-        // }
-        // else{
-            if (movement.x != 0 || movement.y != 0)
-            {
-                animator.SetFloat("X", movement.x);
-                animator.SetFloat("Y", movement.y);
-            }
-            else
-            {
-                animator.SetBool("IsWalking", false);
-                animator.SetBool("IsSprinting", false);
-                animator.SetBool("ShieldWalking", false);
-                animator.SetBool("ShieldSprinting", false);
-            }
-        // }
+        if (movement.x != 0 || movement.y != 0)
+        {
+            animator.SetFloat("X", movement.x);
+            animator.SetFloat("Y", movement.y);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsSprinting", false);
+            animator.SetBool("ShieldWalking", false);
+            animator.SetBool("ShieldSprinting", false);
+        }
     }
 
     public void OnSprint(InputAction.CallbackContext ctxt)
@@ -172,11 +162,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // if (enemyAI.caughtPlayer){
-        //     animator.SetBool("isArrested", true);
-        //     rb.velocity = Vector2.zero;
-        //     Debug.Log("Caught");
-        // }
 
         shieldTimer -= Time.fixedDeltaTime; // Decrease shield timer
         //check if shield is got any seconds left;
@@ -335,6 +320,6 @@ public class PlayerMovement : MonoBehaviour
     public void ArrestedState (){
         animator.SetBool("isArrested", true);
         rb.velocity = Vector2.zero;
-        Debug.Log("Caught");
+        // Debug.Log("Caught");
     }
 }

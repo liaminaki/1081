@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -23,7 +25,11 @@ public class EnemyAI : MonoBehaviour
     private int currentPointIndex = 0; // Index of the current waypoint
 
     private FieldOfView fov;
-    public List <GameObject> player;
+    public GameObject player;
+    public PlayerManager playerManager;
+    public float knockBackForce = 6f;
+    [SerializeField] private Transform center;
+    [SerializeField] private bool knockBack;
 
 
     void Start()
@@ -31,19 +37,21 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         fov = GetComponent<FieldOfView>();
+        playerManager = player.GetComponent<PlayerManager>();
         caughtPlayer = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Check if there are any waypoints defined
         if (!caughtPlayer){
+            GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];  
             if (pathPoints.Count == 0)
                 return;
 
             if (fov.CanSeePlayer){
                 // Move towards player
-                MoveTowardsPoint(fov.playerRef.transform.position);
+                MoveTowardsPoint(selectedCharacter.transform.position);
                 anim.SetBool("isFound", true);
                 isRunning = true;
             }
@@ -62,15 +70,42 @@ public class EnemyAI : MonoBehaviour
             }
 
                 // Check if the enemy is in the same position as the player
-            if (Vector2.Distance(transform.position, fov.playerRef.transform.position) < 0.1f)
+            if (Vector2.Distance(transform.position, selectedCharacter.transform.position) < 0.1f)
             {
-                Debug.Log("Distance: " +Vector2.Distance(transform.position, fov.playerRef.transform.position));
-                // The enemy is in the same position as the player
-                // You can add your logic here
-                anim.SetBool("isIdle", true);
-                caughtPlayer = true;
-                rb.velocity = Vector2.zero;
-                Debug.Log("GameOver!");
+                PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
+                if(playerMovement.usingShield){
+                    var dir = center.position - selectedCharacter.transform.position;
+                    knockBack = true;
+                    Vector2 deflectionDirection1 = new Vector2(0f, dir.y);
+                    deflectionDirection1.Normalize();
+                    Vector2 deflectionDirection2 = new Vector2(dir.x, 0f);
+                    deflectionDirection2.Normalize();
+                    switch (CurrentDirection){
+                        case Direction.Up:
+                            rb.velocity = deflectionDirection1 * knockBackForce;
+                            break;
+                        case Direction.Down:
+                            rb.velocity = deflectionDirection1 * knockBackForce;
+                            break;
+                        case Direction.Left:
+                            rb.velocity = deflectionDirection2 * knockBackForce;
+                            break;
+                        case Direction.Right:
+                            rb.velocity = deflectionDirection2 * knockBackForce;
+                            break;
+                        default:
+                            break;
+                    }
+                    StartCoroutine(UnknockBack());
+                }
+                else{
+                    anim.SetBool("isIdle", true);
+                    caughtPlayer = true;
+                    rb.velocity = Vector2.zero;
+                    // Freeze the y position
+                    rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+                    Debug.Log("GameOver!");
+                }
             }
             else{
                 caughtPlayer = false;
@@ -78,15 +113,22 @@ public class EnemyAI : MonoBehaviour
         }
         else{
             rb.velocity = Vector2.zero;
-            foreach (GameObject obj in player){
-                PlayerMovement playerMovement = obj.GetComponent<PlayerMovement>();
-
+            // Freeze the y position
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            if (playerManager != null){
+                PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
                 if (playerMovement != null){
                     playerMovement.ArrestedState();
                 }
             }
         }
     }
+
+    private IEnumerator UnknockBack(){
+        yield return new WaitForSeconds(0.5f);
+        knockBack = false;
+    }
+
 
     void MoveTowardsPoint(Vector2 targetPosition)
     {
@@ -95,14 +137,26 @@ public class EnemyAI : MonoBehaviour
 
         UpdateDirection(direction);
 
-        // Move the enemy towards the target position
-        if (!isRunning)
-            rb.velocity = direction * speed;
-        else
-            rb.velocity = direction * (speed * 2);
+        if (!knockBack){
+            // Move the enemy towards the target position
+            if (!isRunning)
+                rb.velocity = direction * speed;
+            else
+                rb.velocity = direction * (speed * 2);
 
-        anim.SetFloat("X", direction.x);
-        anim.SetFloat("Y", direction.y);
+            anim.SetFloat("X", direction.x);
+            anim.SetFloat("Y", direction.y);
+        }
+        // else{
+        //     var lerpedVelocityX = Mathf.Lerp(rb.velocity.x, 0f, Time.deltaTime);
+        //     var lerpedVelocityY = Mathf.Lerp(0f, rb.velocity.y, Time.deltaTime);
+        //     if (CurrentDirection == Direction.Right || CurrentDirection == Direction.Left){
+        //         rb.velocity = new Vector2 (lerpedVelocityX, rb.velocity.y);
+        //     }
+        //     else if (CurrentDirection == Direction.Up || CurrentDirection == Direction.Down){
+        //         rb.velocity = new Vector2 (rb.velocity.x, lerpedVelocityY);
+        //     }
+        // }
     }
 
     void UpdateDirection(Vector2 direction)
