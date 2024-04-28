@@ -10,12 +10,24 @@ public class TutorialController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        // Set inactive all tutorial messages
-        foreach (GameObject message in messages)
+    {   
+        int hasWatchedTutorial = PlayerPrefs.GetInt("HasWatchedTutorial", 0);
+        
+        if (hasWatchedTutorial == 0) 
         {
-            message.SetActive(false);
+             // Set inactive all tutorial messages
+            foreach (GameObject message in messages)
+            {
+                message.SetActive(false);
+            }
         }
+
+        else
+        {
+            // Turn off this TutorialController is tutorial already watched
+            gameObject.SetActive(false);
+        }
+       
     }
 
     // Update is called once per frame
@@ -55,7 +67,10 @@ public class TutorialController : MonoBehaviour
             }
         }
         else
-        {
+        {   
+            // Set to true if all tutorial messages are watched
+            PlayerPrefs.SetInt("HasWatchedTutorial", 1);
+
             // No more messages, turn off this TutorialController
             gameObject.SetActive(false);
         }
