@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         maxStamina = defaultStamina + (2f * (staminaLevel - 1));
         currentStaminaRegen = defaultStaminaRegen + (0.5f * (staminaLevel - 1));
         shieldLevel = PlayerPrefs.GetInt("ShieldLevel", 1);
-        PlayerPrefs.SetInt("ShieldNumber", 10);
+        // PlayerPrefs.SetInt("ShieldNumber", 10);
         shieldCount = PlayerPrefs.GetInt("ShieldNumber");
         maxTime = shieldDuration + (2f * (shieldLevel - 1));
         _shieldCount.text = shieldCount.ToString();

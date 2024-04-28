@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -30,6 +29,11 @@ public class EnemyAI : MonoBehaviour
     public float knockBackForce = 6f;
     [SerializeField] private Transform center;
     [SerializeField] private bool knockBack;
+    private Vector2 lastPosition;
+    public bool visitedLastPosition {get; private set;}
+    public GameObject foundAnimation;
+    public Animator foundAnim;
+
 
 
     void Start()
@@ -39,6 +43,9 @@ public class EnemyAI : MonoBehaviour
         fov = GetComponent<FieldOfView>();
         playerManager = player.GetComponent<PlayerManager>();
         caughtPlayer = false;
+        visitedLastPosition = false;
+        foundAnimation.SetActive(false);
+        foundAnim = foundAnimation.GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -53,15 +60,28 @@ public class EnemyAI : MonoBehaviour
             if (fov.CanSeePlayer){
                 // Move towards player
                 MoveTowardsPoint(playerMovement.center.position);
+                lastPosition = playerMovement.center.position;
                 anim.SetBool("isFound", true);
+                foundAnimation.SetActive(true);
                 isRunning = true;
+                visitedLastPosition = true;
             }
             else{
+                isRunning = false; 
                 anim.SetBool("isFound", false);
-                isRunning = false;
+                foundAnimation.SetActive(false);
                 // Move towards the current waypoint
-                MoveTowardsPoint(pathPoints[currentPointIndex].transform.position);
-
+                if (!visitedLastPosition){
+                    MoveTowardsPoint(pathPoints[currentPointIndex].transform.position);
+                }
+                else{
+                    if (Vector2.Distance(transform.position, lastPosition) < 0.1f){
+                        StartCoroutine(ScanArea());
+                    }
+                    else{
+                        MoveTowardsPoint(lastPosition);
+                    }
+                }
                 // Check if the enemy has reached the current waypoint
                 if (Vector2.Distance(transform.position, pathPoints[currentPointIndex].transform.position) < 0.1f)
                 {
@@ -71,7 +91,7 @@ public class EnemyAI : MonoBehaviour
             }
 
                 // Check if the enemy is in the same position as the player
-            if (Vector2.Distance(transform.position, playerMovement.center.transform.position) < 0.5f)
+            if (Vector2.Distance(transform.position, playerMovement.center.transform.position) < 0.1f)
             {
                 if(playerMovement.usingShield){
                     var dir = center.position - playerMovement.center.transform.position;
@@ -99,6 +119,7 @@ public class EnemyAI : MonoBehaviour
                     StartCoroutine(UnknockBack());
                 }
                 else{
+                    isRunning = false;
                     anim.SetBool("isIdle", true);
                     caughtPlayer = true;
                     rb.velocity = Vector2.zero;
@@ -112,6 +133,8 @@ public class EnemyAI : MonoBehaviour
             }
         }
         else{
+            isRunning = false;
+            anim.SetBool("isIdle", true);
             rb.velocity = Vector2.zero;
             // Freeze the y position
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
@@ -130,6 +153,15 @@ public class EnemyAI : MonoBehaviour
         knockBack = false;
     }
 
+    private IEnumerator ScanArea(){
+        anim.SetBool("isIdle", true);
+        rb.velocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        yield return new WaitForSeconds(3f);
+        rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        anim.SetBool("isIdle", false);
+        visitedLastPosition = false;
+    }
 
     void MoveTowardsPoint(Vector2 targetPosition)
     {
@@ -192,5 +224,9 @@ public class EnemyAI : MonoBehaviour
 
         // Draw a line between the last and first waypoint to close the path loop
         Gizmos.DrawLine(pathPoints[pathPoints.Count - 1].transform.position, pathPoints[0].transform.position);
+        // if (lastPosition != null){
+        //     Gizmos.color = Color.red;
+        //     Gizmos.DrawLine(transform.position,lastPosition);
+        // }
     }
 }
