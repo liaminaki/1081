@@ -188,7 +188,8 @@ public class FieldOfView : MonoBehaviour
         {
             Gizmos.color = Color.green;
             GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];
-            Gizmos.DrawLine(transform.position, selectedCharacter.transform.position);
+            PlayerMovement playerMovement = selectedCharacter.GetComponent<PlayerMovement>();
+            Gizmos.DrawLine(transform.position, playerMovement.center.position);
         }
     }
 

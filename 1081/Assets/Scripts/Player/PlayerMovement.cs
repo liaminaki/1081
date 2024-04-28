@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private TMP_Text _shieldDuration;
     [SerializeField] private TMP_Text _shieldCount;
     [SerializeField] private TMP_Text _staminaTracker;
+    [SerializeField] public Transform center;
 
     // Shield/Coin Manager
 
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         maxStamina = defaultStamina + (2f * (staminaLevel - 1));
         currentStaminaRegen = defaultStaminaRegen + (0.5f * (staminaLevel - 1));
         shieldLevel = PlayerPrefs.GetInt("ShieldLevel", 1);
-        PlayerPrefs.SetInt("ShieldNumber", 10);
+        // PlayerPrefs.SetInt("ShieldNumber", 10);
         shieldCount = PlayerPrefs.GetInt("ShieldNumber");
         maxTime = shieldDuration + (2f * (shieldLevel - 1));
         _shieldCount.text = shieldCount.ToString();
@@ -180,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(UpdateUITimer(shieldTimer, maxTime));
 
         if (!animator.GetBool("hasEnergy")){
-            if  (currentStamina > 5f)
+            if  (currentStamina > (maxStamina * 0.3f))
                 animator.SetBool("hasEnergy", true);
             else
                 isSprinting = false;
