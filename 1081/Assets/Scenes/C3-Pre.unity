@@ -320,11 +320,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92867f19f032c476b9f00fec8f440fb2, type: 3}
---- !u!4 &122841211 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8885665819487101713, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
-  m_PrefabInstance: {fileID: 2026613361}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167566582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,10 +2659,18 @@ PlayableDirector:
     value: {fileID: 184279179}
   - key: {fileID: -3077512430432723884, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
     value: {fileID: 184279176}
-  - key: {fileID: 8756367248176042875, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
-    value: {fileID: 1679008588}
   - key: {fileID: 6210146990727457514, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
     value: {fileID: 7338908643229546101}
+  - key: {fileID: 5154188981033497929, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
+    value: {fileID: 1995279717}
+  - key: {fileID: 1605301271876744986, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
+    value: {fileID: 810976420}
+  - key: {fileID: 8618437657562076653, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
+    value: {fileID: 1679008588}
+  - key: {fileID: 5489624631748390541, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
+    value: {fileID: 1742963126}
+  - key: {fileID: 8068176116786184890, guid: f762ebc7bb69f4b1d9951bd8baf7127f, type: 2}
+    value: {fileID: 1554437926}
   m_ExposedReferences:
     m_References:
     - a44f5f076c75543a08de1ede56ffa13f: {fileID: 0}
@@ -2714,10 +2717,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: e0a954f6b2b2049459b6b9f2b5fa95e5, type: 2}
     - {fileID: 11400000, guid: 79f140c4ddc9c4455ba8200b7439d73d, type: 2}
-    - {fileID: 11400000, guid: 375c4090e834f49589ac1cfc9c1b490b, type: 2}
-    - {fileID: 11400000, guid: b2d7c3f65369c40f9a7b78fe11ae13b0, type: 2}
-    - {fileID: 11400000, guid: befd5de77da484c79949501b479e0c99, type: 2}
-    - {fileID: 11400000, guid: 2149ae56eb8c74840801b59172bba2fe, type: 2}
+    - {fileID: 11400000, guid: 4113d22fc08964869bdc7557e8c75ae5, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -2750,48 +2750,6 @@ MonoBehaviour:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2088595460}
-          m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
-          m_MethodName: TriggerDialogue
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1120573663}
-          m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
-          m_MethodName: TriggerDialogue
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2133869680}
-          m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
-          m_MethodName: TriggerDialogue
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1874356179}
           m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
           m_MethodName: TriggerDialogue
           m_Mode: 1
@@ -4308,7 +4266,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -8783,6 +8741,73 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &810976418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1554437927}
+    m_Modifications:
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3815063955114195414, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_Name
+      value: Enemy 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+--- !u!4 &810976419 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+  m_PrefabInstance: {fileID: 810976418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &810976420 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8324286566241425486, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+  m_PrefabInstance: {fileID: 810976418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &850627064
 GameObject:
   m_ObjectHideFlags: 0
@@ -9006,61 +9031,6 @@ Transform:
   - {fileID: 850627066}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1120573661
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1120573662}
-  - component: {fileID: 1120573663}
-  m_Layer: 0
-  m_Name: DLG_2.1.2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1120573662
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120573661}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 122841211}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1120573663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120573661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38474edc9fdb54f8690bfd735835193a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines:
-    - character:
-        name: Chona Mae
-        icon: {fileID: 813682566, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: 'Hold on! We''ve got breaking news! Martial Law has been declared!
-        Martial Law is in effect!
-
-'
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
 --- !u!1 &1127542300
 GameObject:
   m_ObjectHideFlags: 0
@@ -9158,6 +9128,60 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1554437925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1554437927}
+  - component: {fileID: 1554437926}
+  m_Layer: 0
+  m_Name: Enemy 3 Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &1554437926
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554437925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1554437927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554437925}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -60.19, y: -106.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 810976419}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1660789417
 GameObject:
   m_ObjectHideFlags: 0
@@ -9533,7 +9557,7 @@ GameObject:
   - component: {fileID: 1679008589}
   - component: {fileID: 1679008588}
   m_Layer: 0
-  m_Name: Enemy Container
+  m_Name: Enemy 1 Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9569,7 +9593,7 @@ Transform:
   m_GameObject: {fileID: 1679008587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59, y: -104.22, z: 0}
+  m_LocalPosition: {x: -60.19, y: -106.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10101,6 +10125,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1742963125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742963127}
+  - component: {fileID: 1742963126}
+  m_Layer: 0
+  m_Name: 'Enemy 2 Container '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &1742963126
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742963125}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1742963127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742963125}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -58.84, y: -105.89001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1995279716}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857378147
 GameObject:
   m_ObjectHideFlags: 0
@@ -10204,59 +10282,73 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1874356177
-GameObject:
+--- !u!1001 &1995279715
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1874356178}
-  - component: {fileID: 1874356179}
-  m_Layer: 0
-  m_Name: DLG_2.1.4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1874356178
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874356177}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 122841211}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1874356179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1742963127}
+    m_Modifications:
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3815063955114195414, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+      propertyPath: m_Name
+      value: Enemy 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+--- !u!4 &1995279716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+  m_PrefabInstance: {fileID: 1995279715}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874356177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38474edc9fdb54f8690bfd735835193a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines:
-    - character:
-        name: Player
-        icon: {fileID: 35166338, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: Something doesn't feel right. I feel like I'm being followed.
-        I have to make it home safely.
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+--- !u!95 &1995279717 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8324286566241425486, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
+  m_PrefabInstance: {fileID: 1995279715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2026613361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10267,7 +10359,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1707179487147732309, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: m_Name
-      value: DLG_2.1.1
+      value: DLG_3.1.1
       objectReference: {fileID: 0}
     - target: {fileID: 2423787225455124931, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: playableDirector
@@ -10359,7 +10451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541244895212278696, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
@@ -10367,13 +10459,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInEnglish
-      value: It's getting worse out there. People are disappearing, and we can't
-        trust anyone.
+      value: What are you doing here? Did I do something wrong?
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInEnglish
-      value: Alright. We need to discuss the current situation. The government is
-        tightening its grip, and we can't afford to stay silent.
+      value: "Just come with us or else\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInCebuano
@@ -10381,8 +10471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInEnglish
-      value: Did you hear what Ninoy exposed about "Oplan Sagittarius" in his speech?
-        Marcos planned to use a series of bombings as a pretext for Martial Law.
+      value: Or else what?!
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
@@ -10395,10 +10484,10 @@ PrefabInstance:
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
       value: 
-      objectReference: {fileID: 651708694, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
+      objectReference: {fileID: -207290405, guid: 8cfd8755891e84c8da7f3dbc71c8f902, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.name
-      value: Princess Bea
+      value: Police
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInFilipino
@@ -10407,23 +10496,14 @@ PrefabInstance:
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
       value: 
-      objectReference: {fileID: 70576822, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
+      objectReference: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.name
-      value: Bogart
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8885665819487101713, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1120573662}
-    - targetCorrespondingSourceObject: {fileID: 8885665819487101713, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2133869679}
-    - targetCorrespondingSourceObject: {fileID: 8885665819487101713, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1874356178}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
 --- !u!1 &2036303447
@@ -10563,94 +10643,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2133869678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2133869679}
-  - component: {fileID: 2133869680}
-  m_Layer: 0
-  m_Name: DLG_2.1.3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2133869679
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133869678}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 122841211}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2133869680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133869678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38474edc9fdb54f8690bfd735835193a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines:
-    - character:
-        name: Bogart
-        icon: {fileID: 70576822, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: What? This changes everything! What about Ninoy? What about
-        our plans for activism?
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
-    - character:
-        name: Chona Mae
-        icon: {fileID: 813682566, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: 'Ninoy has been arrested. They got to him before he even had
-        a chance. '
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
-    - character:
-        name: Cora Tan
-        icon: {fileID: -937332574, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: Our plans need to adapt. Martial Law means we're under direct
-        threat now.
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
-    - character:
-        name: Player
-        icon: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: This is madness. We need to be careful. They won't spare anyone
-        who opposes them.
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
-    - character:
-        name: Princess Bea
-        icon: {fileID: 651708694, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: 'Agreed. Let''s wrap this up. We can''t afford to linger here. '
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
-    - character:
-        name: Princess Bea
-        icon: {fileID: 651708694, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
-      LineInEnglish: 'Our fight for justice continues, but we must be strategic and
-        cautious in the face of this tyranny. Go home, stay safe, and watch your
-        back. '
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
 --- !u!1 &2137750221
 GameObject:
   m_ObjectHideFlags: 0
@@ -11447,11 +11439,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.13
       objectReference: {fileID: 0}
     - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 1358611114994693018, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11487,7 +11479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3815063955114195414, guid: f63b0fe75166d4a29b32d2daa8843340, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11520,3 +11512,5 @@ SceneRoots:
   - {fileID: 177782882}
   - {fileID: 184279175}
   - {fileID: 1679008589}
+  - {fileID: 1742963127}
+  - {fileID: 1554437927}
