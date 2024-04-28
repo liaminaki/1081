@@ -135,5 +135,14 @@ public class MenuController : MonoBehaviour
         return PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") > -1;
     }
 
+    public void QuitApplication()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+
 
 }
