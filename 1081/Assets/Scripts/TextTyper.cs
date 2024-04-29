@@ -10,11 +10,9 @@ public class TextTyper : MonoBehaviour
     // List to hold TextMeshPro components
     public List<TextMeshProUGUI> TextObjects = new List<TextMeshProUGUI>();
 
-    // Audio clip to play for each character
-    public AudioClip TypingSound;
+    public AudioClip typingSound; // Sound to play while typing
 
-    // AudioSource component to play the typing sound
-    [SerializeField] private AudioSource _audioSource;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -52,19 +50,26 @@ public class TextTyper : MonoBehaviour
         text.text = "";
         text.gameObject.SetActive(true); // Activate the text object
 
+        // Play typing sound at the beginning
+        if (typingSound != null && audioSource != null) {
+            audioSource.clip = typingSound;
+            // audioSource.loop = true;
+            audioSource.Play();
+        }
+
         // Display text by character like typing animation
         foreach (char letter in originalText.ToCharArray())
         {
             text.text += letter;
 
-            // Play typing sound
-            if (TypingSound != null && _audioSource != null)
-            {
-                _audioSource.PlayOneShot(TypingSound);
-            }
+            
             
             yield return new WaitForSeconds(TypingSpeed);
         }
+
+        // Stop typing sound after the animation is complete
+        if (typingSound != null && audioSource != null)
+            audioSource.Stop();
 
         // Remove the typed TextMeshPro component from the list
         TextObjects.RemoveAt(0);
