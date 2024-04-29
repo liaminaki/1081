@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     public Direction CurrentDirection { get; private set; } = Direction.Right; // Current movement direction
+    public Direction LastDirection { get; private set; } = Direction.Right; // Last movement direction
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -33,8 +34,8 @@ public class EnemyAI : MonoBehaviour
     public bool visitedLastPosition {get; private set;}
     public GameObject foundAnimation;
     public Animator foundAnim;
-
-
+    private bool? waitTime;
+    private float startTime;
 
     void Start()
     {
@@ -44,7 +45,6 @@ public class EnemyAI : MonoBehaviour
         playerManager = player.GetComponent<PlayerManager>();
         caughtPlayer = false;
         visitedLastPosition = false;
-        foundAnimation.SetActive(false);
         foundAnim = foundAnimation.GetComponent<Animator>();
     }
 
@@ -57,41 +57,8 @@ public class EnemyAI : MonoBehaviour
             if (pathPoints.Count == 0)
                 return;
 
-            if (fov.CanSeePlayer){
-                // Move towards player
-                MoveTowardsPoint(playerMovement.center.position);
-                lastPosition = playerMovement.center.position;
-                anim.SetBool("isFound", true);
-                foundAnimation.SetActive(true);
-                isRunning = true;
-                visitedLastPosition = true;
-            }
-            else{
-                isRunning = false; 
-                anim.SetBool("isFound", false);
-                foundAnimation.SetActive(false);
-                // Move towards the current waypoint
-                if (!visitedLastPosition){
-                    MoveTowardsPoint(pathPoints[currentPointIndex].transform.position);
-                }
-                else{
-                    if (Vector2.Distance(transform.position, lastPosition) < 0.1f){
-                        StartCoroutine(ScanArea());
-                    }
-                    else{
-                        MoveTowardsPoint(lastPosition);
-                    }
-                }
-                // Check if the enemy has reached the current waypoint
-                if (Vector2.Distance(transform.position, pathPoints[currentPointIndex].transform.position) < 0.1f)
-                {
-                    // Move to the next waypoint
-                    currentPointIndex = (currentPointIndex + 1) % pathPoints.Count;
-                }
-            }
-
                 // Check if the enemy is in the same position as the player
-            if (Vector2.Distance(transform.position, playerMovement.center.transform.position) < 0.1f)
+            if (Vector2.Distance(transform.position, playerMovement.center.transform.position) < 0.3f)
             {
                 if(playerMovement.usingShield){
                     var dir = center.position - playerMovement.center.transform.position;
@@ -120,16 +87,69 @@ public class EnemyAI : MonoBehaviour
                 }
                 else{
                     isRunning = false;
-                    anim.SetBool("isIdle", true);
                     caughtPlayer = true;
                     rb.velocity = Vector2.zero;
                     // Freeze the y position
                     rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                     Debug.Log("GameOver!");
+                    foundAnim.SetBool("found", false);
+                    visitedLastPosition = true;
                 }
             }
             else{
                 caughtPlayer = false;
+            }
+
+            if (fov.CanSeePlayer){
+                // Move towards player
+                rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                MoveTowardsPoint(playerMovement.center.position);
+                lastPosition = playerMovement.center.position;
+                anim.SetBool("isFound", true);
+                foundAnim.SetBool("found", true);
+                isRunning = true;
+                visitedLastPosition = true;
+                LastDirection = CurrentDirection;
+            }
+            else{
+                isRunning = false; 
+                anim.SetBool("isFound", false);
+                foundAnim.SetBool("found", false);
+                // Move towards the current waypoint
+                if (!visitedLastPosition){
+                    MoveTowardsPoint(pathPoints[currentPointIndex].transform.position);
+                }
+                else{
+                    if (waitTime != null){
+                        WaitTime();
+                        if(waitTime == true){
+                            rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                            anim.SetBool("isIdle", false);
+                            visitedLastPosition = false;
+                            waitTime = null;
+                        }
+                    }
+                    else{
+                        if (Vector2.Distance(transform.position, lastPosition) < 0.1f){
+                            anim.SetBool("isIdle", true);
+                            rb.velocity = Vector2.zero;
+                            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+                            ZeroAnim();
+                            CurrentDirection = LastDirection;
+                            startTime = 5f;
+                            WaitTime();
+                        }
+                        else{
+                            MoveTowardsPoint(lastPosition);
+                        }
+                    }
+                }
+                // Check if the enemy has reached the current waypoint
+                if (Vector2.Distance(transform.position, pathPoints[currentPointIndex].transform.position) < 0.1f)
+                {
+                    // Move to the next waypoint
+                    currentPointIndex = (currentPointIndex + 1) % pathPoints.Count;
+                }
             }
         }
         else{
@@ -153,14 +173,19 @@ public class EnemyAI : MonoBehaviour
         knockBack = false;
     }
 
-    private IEnumerator ScanArea(){
-        anim.SetBool("isIdle", true);
-        rb.velocity = Vector2.zero;
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-        yield return new WaitForSeconds(3f);
-        rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-        anim.SetBool("isIdle", false);
-        visitedLastPosition = false;
+    private void WaitTime(){
+        if (startTime >= 0){
+            startTime -= Time.deltaTime;
+            waitTime = false;
+        }
+        else{
+            waitTime = true;
+        }
+    }
+
+    private void ZeroAnim(){
+        anim.SetFloat("X", 0); // Reset X and Y animation parameters
+        anim.SetFloat("Y", 0);
     }
 
     void MoveTowardsPoint(Vector2 targetPosition)
@@ -180,16 +205,6 @@ public class EnemyAI : MonoBehaviour
             anim.SetFloat("X", direction.x);
             anim.SetFloat("Y", direction.y);
         }
-        // else{
-        //     var lerpedVelocityX = Mathf.Lerp(rb.velocity.x, 0f, Time.deltaTime);
-        //     var lerpedVelocityY = Mathf.Lerp(0f, rb.velocity.y, Time.deltaTime);
-        //     if (CurrentDirection == Direction.Right || CurrentDirection == Direction.Left){
-        //         rb.velocity = new Vector2 (lerpedVelocityX, rb.velocity.y);
-        //     }
-        //     else if (CurrentDirection == Direction.Up || CurrentDirection == Direction.Down){
-        //         rb.velocity = new Vector2 (rb.velocity.x, lerpedVelocityY);
-        //     }
-        // }
     }
 
     void UpdateDirection(Vector2 direction)
