@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     public Direction CurrentDirection { get; private set; } = Direction.Right; // Current movement direction
+    public Direction LastDirection { get; private set; } = Direction.Right; // Last movement direction
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -64,6 +65,7 @@ public class EnemyAI : MonoBehaviour
                 foundAnim.SetBool("found", true);
                 isRunning = true;
                 visitedLastPosition = true;
+                LastDirection = CurrentDirection;
             }
             else{
                 isRunning = false; 
@@ -75,7 +77,24 @@ public class EnemyAI : MonoBehaviour
                 }
                 else{
                     if (Vector2.Distance(transform.position, lastPosition) < 0.1f){
-                        StartCoroutine(ScanArea());
+                        ZeroAnim();
+                        switch (LastDirection){
+                            case Direction.Up:
+                                anim.SetFloat("Y", 1);
+                                break;
+                            case Direction.Down:
+                                anim.SetFloat("Y", -1);
+                                break;
+                            case Direction.Left:
+                                anim.SetFloat("X", -1);
+                                break;
+                            case Direction.Right:
+                                anim.SetFloat("X", 1);
+                                break;
+                            default:
+                                break;
+                        }
+                        ScanArea();
                     }
                     else{
                         MoveTowardsPoint(lastPosition);
@@ -152,14 +171,53 @@ public class EnemyAI : MonoBehaviour
         knockBack = false;
     }
 
-    private IEnumerator ScanArea(){
+    private void WaitTime(){
+        float startTime = 1f;
+        while (startTime <= 1f){
+            startTime -= Time.fixedDeltaTime;
+        }
+    }
+
+    private void ScanArea(){
+        ZeroAnim();
         anim.SetBool("isIdle", true);
         rb.velocity = Vector2.zero;
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-        yield return new WaitForSeconds(3f);
+        WaitTime();
+
+        // Scan in all directions
+        ZeroAnim();
+        anim.SetFloat("Y", 1);
+        UpdateDirection(Vector2.up); // Up
+        WaitTime();
+        
+        ZeroAnim();
+        anim.SetFloat("Y", -1);
+        UpdateDirection(Vector2.down); // Down
+        WaitTime();
+        
+        ZeroAnim();
+        anim.SetFloat("X", -1);
+        UpdateDirection(Vector2.left); // Left
+        WaitTime();
+        
+        ZeroAnim();
+        anim.SetFloat("X", 1);
+        UpdateDirection(Vector2.right); // Right
+        WaitTime();
+
+        ZeroAnim();
+        CurrentDirection = LastDirection;
+        WaitTime();
+
         rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
         anim.SetBool("isIdle", false);
         visitedLastPosition = false;
+    }
+
+    private void ZeroAnim(){
+        anim.SetFloat("X", 0); // Reset X and Y animation parameters
+        anim.SetFloat("Y", 0);
     }
 
     void MoveTowardsPoint(Vector2 targetPosition)
