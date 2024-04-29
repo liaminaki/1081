@@ -634,6 +634,12 @@ PlayableDirector:
     value: {fileID: 7161217746693953408}
   - key: {fileID: 8010007626031458397, guid: 8b4a40185667a49879c8b98626431c95, type: 2}
     value: {fileID: 845277823218047086}
+  - key: {fileID: 5832214428885149026, guid: 8b4a40185667a49879c8b98626431c95, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -1968163202275025382, guid: 8b4a40185667a49879c8b98626431c95, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6573350277912661574, guid: 8b4a40185667a49879c8b98626431c95, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &4943884774435644219
@@ -842,6 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08887fe28c08bb1448eba24120a32e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCoins: 0
   staminaBar: {fileID: 0}
   shieldBar: {fileID: 0}
   shieldBarBackground: {fileID: 0}
@@ -855,6 +862,9 @@ MonoBehaviour:
   _shieldDuration: {fileID: 0}
   _shieldCount: {fileID: 0}
   _staminaTracker: {fileID: 0}
+  center: {fileID: 0}
+  coinAudio: {fileID: 0}
+  shieldAudio: {fileID: 0}
 --- !u!95 &5619480328441755187
 Animator:
   serializedVersion: 5
@@ -1159,6 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08887fe28c08bb1448eba24120a32e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCoins: 0
   staminaBar: {fileID: 0}
   shieldBar: {fileID: 0}
   shieldBarBackground: {fileID: 0}
@@ -1172,6 +1183,9 @@ MonoBehaviour:
   _shieldDuration: {fileID: 0}
   _shieldCount: {fileID: 0}
   _staminaTracker: {fileID: 0}
+  center: {fileID: 0}
+  coinAudio: {fileID: 0}
+  shieldAudio: {fileID: 0}
 --- !u!95 &7161217746693953408
 Animator:
   serializedVersion: 5
