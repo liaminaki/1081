@@ -44,7 +44,6 @@ public class EnemyAI : MonoBehaviour
         playerManager = player.GetComponent<PlayerManager>();
         caughtPlayer = false;
         visitedLastPosition = false;
-        foundAnimation.SetActive(false);
         foundAnim = foundAnimation.GetComponent<Animator>();
     }
 
@@ -62,14 +61,14 @@ public class EnemyAI : MonoBehaviour
                 MoveTowardsPoint(playerMovement.center.position);
                 lastPosition = playerMovement.center.position;
                 anim.SetBool("isFound", true);
-                foundAnimation.SetActive(true);
+                foundAnim.SetBool("found", true);
                 isRunning = true;
                 visitedLastPosition = true;
             }
             else{
                 isRunning = false; 
                 anim.SetBool("isFound", false);
-                foundAnimation.SetActive(false);
+                foundAnim.SetBool("found", false);
                 // Move towards the current waypoint
                 if (!visitedLastPosition){
                     MoveTowardsPoint(pathPoints[currentPointIndex].transform.position);
