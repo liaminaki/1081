@@ -12,4 +12,20 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
 
     }
+
+    public void QuitApplication()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+
+    public void IsOldEnough()
+    {
+        PlayerPrefs.SetInt("IsOld", 1);
+    }
+
+
 }
