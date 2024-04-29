@@ -55596,6 +55596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DLG_3.2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2423787225455124931, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: playableDirector
+      value: 
+      objectReference: {fileID: 1054842806}
     - target: {fileID: 4488448628606640969, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -55686,7 +55690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInEnglish
-      value: "Here it is\u2014the door to freedom."
+      value: Here it is - the door to freedom.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInCebuano
@@ -55736,7 +55740,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].LineInEnglish
-      value: Stay here then, you fucking coward!
+      value: Listen, please. Escaping tonight might cost us everything we've fought
+        for. We can't let desperation blind us to the risks.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInCebuano
@@ -55744,8 +55749,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInEnglish
-      value: Listen, please. Escaping tonight might cost us everything we've fought
-        for. We can't let desperation blind us to the risks.
+      value: We need to find another way, one that doesn't endanger everyone's lives.
+        We owe it to ourselves and those who believe in our cause.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].LineInCebuano
@@ -55753,8 +55758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].LineInEnglish
-      value: We need to find another way, one that doesn't endanger everyone's lives.
-        We owe it to ourselves and those who believe in our cause.
+      value: Stay here then, you fucking coward!
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
@@ -55831,10 +55835,10 @@ PrefabInstance:
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].character.icon
       value: 
-      objectReference: {fileID: 1700744123, guid: b8797c5b3c3f4454b95f676f8a4b8778, type: 3}
+      objectReference: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[6].character.name
-      value: Prisoner
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInFilipino
@@ -55855,10 +55859,10 @@ PrefabInstance:
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].character.icon
       value: 
-      objectReference: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
+      objectReference: {fileID: 1700744123, guid: b8797c5b3c3f4454b95f676f8a4b8778, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].character.name
-      value: Player
+      value: Prisoner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -78595,10 +78599,10 @@ PrefabInstance:
     - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_PlayableAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 9de205a4e3d6b4556bf9a5148e0e6304, type: 2}
+      objectReference: {fileID: 11400000, guid: c24ec060edc5349c292d2b02167d2c9f, type: 2}
     - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 22
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_SceneBindings.Array.data[1].key
@@ -78684,6 +78688,22 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[21].key
       value: 
       objectReference: {fileID: 926372097230855144, guid: 9de205a4e3d6b4556bf9a5148e0e6304, type: 2}
+    - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+      propertyPath: m_SceneBindings.Array.data[22].key
+      value: 
+      objectReference: {fileID: 4190188092367150732, guid: 22b6ff2810f734c42b241ad628e66554, type: 2}
+    - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+      propertyPath: m_SceneBindings.Array.data[23].key
+      value: 
+      objectReference: {fileID: 7561470337694838859, guid: 22b6ff2810f734c42b241ad628e66554, type: 2}
+    - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+      propertyPath: m_SceneBindings.Array.data[24].key
+      value: 
+      objectReference: {fileID: -7168116876821470782, guid: 22b6ff2810f734c42b241ad628e66554, type: 2}
+    - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+      propertyPath: m_SceneBindings.Array.data[25].key
+      value: 
+      objectReference: {fileID: -6029843524819686950, guid: 22b6ff2810f734c42b241ad628e66554, type: 2}
     - target: {fileID: 1370866435821142347, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_SceneBindings.Array.data[1].value
       value: 
