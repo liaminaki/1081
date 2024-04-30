@@ -36,6 +36,7 @@ public class EnemyAI : MonoBehaviour
     public Animator foundAnim;
     private bool? waitTime;
     private float startTime;
+    public Failed failed;
 
     void Start()
     {
@@ -91,7 +92,8 @@ public class EnemyAI : MonoBehaviour
                     rb.velocity = Vector2.zero;
                     // Freeze the y position
                     rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-                    Debug.Log("GameOver!");
+                    playerMovement.animator.SetBool("isArrested", true);
+                    // Debug.Log("GameOver!");
                     foundAnim.SetBool("found", false);
                     visitedLastPosition = true;
                 }
@@ -163,11 +165,17 @@ public class EnemyAI : MonoBehaviour
                 if (playerMovement != null){
                     playerMovement.ArrestedState();
                     playerManager.TurnOffPlayerInput();
+                    foundAnim.SetBool("found", false);
+                    StartCoroutine(Failed());
                 }
             }
         }
     }
 
+    private IEnumerator Failed(){
+        yield return new WaitForSeconds(0.5f);
+        failed.loss=true;
+    }
     private IEnumerator UnknockBack(){
         yield return new WaitForSeconds(0.5f);
         knockBack = false;
