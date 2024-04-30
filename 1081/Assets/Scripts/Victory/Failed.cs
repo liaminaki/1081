@@ -8,7 +8,7 @@ public class Failed : MonoBehaviour
     public GameObject failedScreenUI;
     public GameObject statsUI;
 
-    public bool loss;
+    public bool loss {get; set;}
     void Start()
     {
         failedScreenUI.SetActive(false);

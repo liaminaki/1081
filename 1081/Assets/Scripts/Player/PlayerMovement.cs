@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public int currentCoins = 0;
     private Vector2 movement;
     private Rigidbody2D rb;
-    private Animator animator;
+    public Animator animator;
     private bool isSprinting = false;
     public bool usingShield {get; private set;}
     private float shieldTimer = 0f;
@@ -321,6 +321,5 @@ public class PlayerMovement : MonoBehaviour
     public void ArrestedState (){
         animator.SetBool("isArrested", true);
         rb.velocity = Vector2.zero;
-        // Debug.Log("Caught");
     }
 }
