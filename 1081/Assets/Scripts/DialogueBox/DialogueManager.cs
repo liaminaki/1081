@@ -60,6 +60,19 @@ public class DialogueManager : MonoBehaviour
 
         LoadSelectedLanguage();
     }
+
+    private void Update() {
+
+        if(isDialogueActive)
+        {
+             // Check for mouse click
+            if (Input.GetMouseButtonDown(0))
+            {
+                // Display next dialogue
+                DisplayNextDialogueLine();
+            }
+        }
+    }
  
     public void StartDialogue(Dialogue dialogue)
     {
