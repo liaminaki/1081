@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class coinCollectDisplaychanges : MonoBehaviour
 {
     // Start is called before the first frame update
     int currentTotalCoins;
-    public PlayerMovement player;
+    PlayerMovement player ;
     public TMP_Text currentTotalCoinsText;
 
     public AudioSource aud;
 
+    public void Start(){
+        player = FindObjectOfType<PlayerMovement>();
+    }
     public void PlaySound(){
         aud.Play();
     }
