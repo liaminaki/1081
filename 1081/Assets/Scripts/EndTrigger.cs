@@ -17,6 +17,8 @@ public class EndTrigger : MonoBehaviour
 
     public Victory victory;
 
+    public bool Win {get; private set;}
+
     // This method is called at the start of the script's life
     void Start()
     {
@@ -31,6 +33,8 @@ public class EndTrigger : MonoBehaviour
         {
             Timeline2.Stop();
         }
+
+        Win = false;
     }
 
     // This method is called when another collider enters the collider attached to this game object
@@ -49,6 +53,7 @@ public class EndTrigger : MonoBehaviour
             // end = true;
             // Log the collision for debugging purposes
             Debug.Log("Player collided with the end trigger.");
+            Win = true;
 
             // Stop the MainTimeline if it's currently playing
             if (MainTimeline != null && MainTimeline.state == PlayState.Playing)

@@ -188,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (usingShield){
+            _shieldCount.text = PlayerPrefs.GetInt("ShieldNumber").ToString();
             //change speed;
             speed = 2f;
             //conditions
