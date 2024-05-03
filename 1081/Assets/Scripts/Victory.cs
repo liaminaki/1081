@@ -5,6 +5,8 @@ using TMPro;
 public class Victory : MonoBehaviour
 {
     public int ChapterNum;
+    private Chapter chapter;
+
     // Start is called before the first frame update
     public Timer timerSystem;
     public GameObject timerUI;
@@ -22,7 +24,10 @@ public class Victory : MonoBehaviour
     public GameObject OneStar, TwoStars, ThreeStars;
     bool lockSwitch = true;
     void Start()
-    {
+    {  
+        // Set game scene as previous scene
+        SceneStateManager.PreviousScene = "GameScene";
+        chapter = new Chapter(ChapterNum);
         player = FindObjectOfType<PlayerMovement>();
         victoryScreenUI.SetActive(false);
     }
@@ -56,7 +61,8 @@ public class Victory : MonoBehaviour
             }
             
             // Save stars number
-            PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", starsProgress.possibleStars);
+            // PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", starsProgress.possibleStars);
+            chapter.UpdateScore(starsProgress.possibleStars);
 
             
             collectedCoinsText.text = "+" + player.currentCoins.ToString();
