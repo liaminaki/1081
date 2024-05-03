@@ -19,7 +19,7 @@ public class TextTyper : MonoBehaviour
     {   
         // Turn off all text objects initially
         TurnOffTexts();
-
+        
         // Start typing the first text in the list
         StartTypingNextText();
     }
