@@ -4501,6 +4501,10 @@ PrefabInstance:
       propertyPath: playableDirector
       value: 
       objectReference: {fileID: 899843155}
+    - target: {fileID: 4360909406478792252, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4488448628606640969, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4604,11 +4608,13 @@ PrefabInstance:
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInCebuano
       value: Ugh! Face-to-face na gyod atong klase?  Sugod pa lang, gikapoy na man
-        dayun ko oy.
+        dayun ko oy. <color=#FFA500>[Click anywhere or press the button to show next
+        dialogue.]</color>
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInEnglish
-      value: Ugh! Face-to-face classes again? I am tired already.
+      value: Ugh! Face-to-face classes again? I am tired already. <color=#FFA500>[Click
+        anywhere or press the button to show next dialogue.]</color>
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInCebuano
@@ -4694,7 +4700,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInFilipino
-      value: Ugh! Face-to-face na ulit ang klase? Ngayon pa lang pagod na ako.
+      value: Ugh! Face-to-face na ulit ang klase? Ngayon pa lang pagod na ako. <color=#FFA500>[Click
+        anywhere or press the button to show next dialogue.]</color>
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon

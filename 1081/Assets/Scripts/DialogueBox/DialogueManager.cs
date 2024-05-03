@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.EventSystems;
 
 /*  
     Show/Hide Dialogue Box
@@ -68,8 +69,8 @@ public class DialogueManager : MonoBehaviour
              // Check for mouse click
             if (Input.GetMouseButtonDown(0))
             {
-                // Display next dialogue
-                DisplayNextDialogueLine();
+                    // Display next dialogue
+                    DisplayNextDialogueLine();
             }
         }
     }
@@ -151,8 +152,17 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
+        string instruct = "<color=#FFA500>[Click anywhere or press the button to show next dialogue.]</color>";
         line = line.Replace("<PlayerName>", LoadPlayerName());
-
+    
+        bool isInstruct = false;
+   
+        // Remove instruction in indiv char typing
+        if (line.Contains(instruct)) {
+            isInstruct = true;
+            line = line.Replace(instruct, "");
+        }
+           
          // Play typing sound at the beginning
         if (typingSound != null && audioSource != null) {
             audioSource.clip = typingSound;
@@ -167,6 +177,9 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
 
+        if (isInstruct)
+            dialogueArea.text += instruct;
+        
          // Stop typing sound after the animation is complete
         if (typingSound != null && audioSource != null)
             audioSource.Stop();
