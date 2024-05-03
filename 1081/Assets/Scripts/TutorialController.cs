@@ -11,7 +11,8 @@ public class TutorialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        int hasWatchedTutorial = PlayerPrefs.GetInt("HasWatchedTutorial", 0);
+        // int hasWatchedTutorial = PlayerPrefs.GetInt("HasWatchedTutorial", 0);
+        int hasWatchedTutorial = 0;
         
         if (hasWatchedTutorial == 0) 
         {
@@ -41,14 +42,27 @@ public class TutorialController : MonoBehaviour
         }
     }
 
+    // public void StartMessage() 
+    // {   
+    //     Time.timeScale = 0f;
+    //     ShowMessage();
+    // }
+
     public void ShowMessage()
     {
         // Increment messageID first
         messageID++;
 
+        if (messageID == 1)
+            Time.timeScale = 0f;
+
+        else if (messageID == 6)
+            Time.timeScale = 1f;
+
         // Check if there are more messages to show
         if (messageID < messages.Count)
-        {
+        {   
+
             for (int i = 0; i < messages.Count; i++)
             {
                 if (i == messageID) {

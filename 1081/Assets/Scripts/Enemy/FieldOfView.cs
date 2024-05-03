@@ -167,6 +167,7 @@ public class FieldOfView : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        #if UNITY_EDITOR
         if (enemyAI == null){
             // Ensure enemyAI is initialized before accessing it
             Start();
@@ -193,6 +194,7 @@ public class FieldOfView : MonoBehaviour
             PlayerMovement playerMovement = selectedCharacter.GetComponent<PlayerMovement>();
             Gizmos.DrawLine(center.position, playerMovement.center.position);
         }
+        #endif
     }
 
     private Vector2 DirectionFromAngle(float angleInDegrees)
