@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
     public bool visitedLastPosition {get; private set;}
     public GameObject foundAnimation;
     public Animator foundAnim;
-    private bool? waitTime;
+    public bool? waitTime;
     private float startTime;
     public Failed failed;
     public EndTrigger endTrigger;
@@ -215,9 +215,16 @@ public class EnemyAI : MonoBehaviour
         if (startTime >= 0){
             startTime -= Time.deltaTime;
             waitTime = false;
+            if (startTime <= 3f && startTime >= 1.5f){
+                fov.idleScan = true;
+            }
+            else if (startTime <= 1.5f){
+                fov.idleScan = false;
+            }
         }
         else{
             waitTime = true;
+            fov.idleScan = null;
         }
     }
 

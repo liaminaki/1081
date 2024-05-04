@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -17,6 +18,8 @@ public class FieldOfView : MonoBehaviour
     public float meshResolution;
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
+
+    public bool? idleScan;
 
     private EnemyAI enemyAI;
 
@@ -108,12 +111,18 @@ public class FieldOfView : MonoBehaviour
 
         // Get the angle based on the enemy's direction
         float startingAngle = -GetAngleFromDirection(enemyAI.CurrentDirection) - angle / 2;
+        if (idleScan == true){
+            startingAngle += 15f;
+        }
+        else if (idleScan == false){
+            startingAngle -= 30f;
+        }
             
         for (int i = 0; i <= stepCount; i++){
             float viewAngle = startingAngle + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(viewAngle);
             viewPoints.Add(newViewCast.point);
-            Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
+            // Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
         }
 
         int vertexCount = viewPoints.Count + 1;
