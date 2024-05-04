@@ -20,8 +20,6 @@ public class FieldOfView : MonoBehaviour
 
     private EnemyAI enemyAI;
 
-    [SerializeField] public Transform center;
-
     void Start()
     {
         viewMesh = new Mesh();
@@ -52,7 +50,7 @@ public class FieldOfView : MonoBehaviour
     {
         //Gets the current character selected
         GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];
-        Collider2D[] rangeCheck = Physics2D.OverlapCircleAll(center.position, radius, targetLayer);
+        Collider2D[] rangeCheck = Physics2D.OverlapCircleAll(transform.position, radius, targetLayer);
 
         if (rangeCheck.Length > 0)
         {
@@ -82,13 +80,13 @@ public class FieldOfView : MonoBehaviour
                                 break;
                         }
                     }
-                    Vector2 directionToTarget = ((Vector2)target.position - (Vector2)center.position).normalized;
+                    Vector2 directionToTarget = ((Vector2)target.position - (Vector2)transform.position).normalized;
                     float angleToTarget = Vector2.Angle(enemyDirection, directionToTarget);
                     if (angleToTarget < angle / 2)
                     {
-                        float distanceToTarget = Vector2.Distance(center.position, target.position);
+                        float distanceToTarget = Vector2.Distance(transform.position, target.position);
                         // Check for obstructions
-                        if (!Physics2D.Raycast(center.position, directionToTarget, distanceToTarget, obstructionLayer))
+                        if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer))
                             CanSeePlayer = true;
                         else
                             CanSeePlayer = false;
@@ -115,7 +113,7 @@ public class FieldOfView : MonoBehaviour
             float viewAngle = startingAngle + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(viewAngle);
             viewPoints.Add(newViewCast.point);
-            Debug.DrawLine(center.position, center.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
+            Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
         }
 
         int vertexCount = viewPoints.Count + 1;
@@ -141,13 +139,13 @@ public class FieldOfView : MonoBehaviour
 
     ViewCastInfo ViewCast (float globalAngle){
         Vector2 dir = DirectionFromAngle (globalAngle);
-        RaycastHit hit;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, radius, obstructionLayer);
 
-        if (Physics.Raycast (center.position, dir, out hit, radius, obstructionLayer)){
+        if (hit.collider!= null){
             return new ViewCastInfo (true, hit.point, hit.distance, globalAngle);
         }
         else{
-           return new ViewCastInfo(false, (Vector2)center.position + dir * radius, radius, globalAngle);
+           return new ViewCastInfo(false, (Vector2)transform.position + dir * radius, radius, globalAngle);
         }
     }
 
@@ -178,21 +176,21 @@ public class FieldOfView : MonoBehaviour
             }
         }
         Gizmos.color = Color.white;
-        UnityEditor.Handles.DrawWireDisc(center.position, Vector3.forward, radius);
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
 
         Vector3 angle01 = DirectionFromAngle(-GetAngleFromDirection(enemyAI.CurrentDirection) - angle / 2);
         Vector3 angle02 = DirectionFromAngle(-GetAngleFromDirection(enemyAI.CurrentDirection) + angle / 2);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(center.position, center.position + angle01 * radius);
-        Gizmos.DrawLine(center.position, center.position + angle02 * radius);
+        Gizmos.DrawLine(transform.position, transform.position + angle01 * radius);
+        Gizmos.DrawLine(transform.position, transform.position + angle02 * radius);
 
         if (CanSeePlayer)
         {
             Gizmos.color = Color.green;
             GameObject selectedCharacter = playerManager.playerPrefabs[playerManager.characterIndex];
             PlayerMovement playerMovement = selectedCharacter.GetComponent<PlayerMovement>();
-            Gizmos.DrawLine(center.position, playerMovement.center.position);
+            Gizmos.DrawLine(transform.position, playerMovement.center.position);
         }
         #endif
     }

@@ -17,8 +17,8 @@ public class EnemyAI : MonoBehaviour
         Right
     }
 
-    public Direction CurrentDirection { get; private set; } = Direction.Right; // Current movement direction
-    public Direction LastDirection { get; private set; } = Direction.Right; // Last movement direction
+    public Direction CurrentDirection { get; private set; } = Direction.Up; // Current movement direction
+    public Direction LastDirection { get; private set; } = Direction.Up; // Last movement direction
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -224,7 +224,10 @@ public class EnemyAI : MonoBehaviour
 
     void UpdateDirection(Vector2 direction)
     {
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        float absX = Mathf.Abs(direction.x);
+        float absY = Mathf.Abs(direction.y);
+
+        if (absX > absY)
         {
             if (direction.x > 0)
                 CurrentDirection = Direction.Right;
@@ -239,6 +242,7 @@ public class EnemyAI : MonoBehaviour
                 CurrentDirection = Direction.Down;
         }
     }
+
 
     // Visualize the path in the editor
     private void OnDrawGizmos()
