@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -38,6 +39,7 @@ public class EnemyAI : MonoBehaviour
     private float startTime;
     public Failed failed;
     public EndTrigger endTrigger;
+    public GameObject QMark;
 
     void Start()
     {
@@ -48,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         caughtPlayer = false;
         visitedLastPosition = false;
         foundAnim = foundAnimation.GetComponent<Animator>();
+        QMark.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -212,6 +215,7 @@ public class EnemyAI : MonoBehaviour
 
     private void WaitTime(){
         if (startTime >= 0){
+            QMark.gameObject.SetActive(true);
             startTime -= Time.deltaTime;
             waitTime = false;
             if (startTime <= 3f && startTime >= 1.5f){
@@ -222,6 +226,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
         else{
+            QMark.gameObject.SetActive(false);
             waitTime = true;
             fov.idleScan = null;
         }
