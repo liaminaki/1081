@@ -113,7 +113,7 @@ public class EnemyAI : MonoBehaviour
                     foundAnim.SetBool("found", true);
                     isRunning = true;
                     visitedLastPosition = true;
-                    // LastDirection = CurrentDirection;
+                    LastDirection = CurrentDirection;
                 }
                 else{
                     isRunning = false;
@@ -139,12 +139,35 @@ public class EnemyAI : MonoBehaviour
                         }
                     }
                     else{
-                        if (Vector2.Distance(transform.position, lastPosition) < 0.1f){
+                        if (Vector2.Distance(transform.position, lastPosition) < 0.3f){
                             anim.SetBool("isIdle", true);
                             rb.velocity = Vector2.zero;
                             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                             ZeroAnim();
-                            // CurrentDirection = LastDirection;
+                            CurrentDirection = LastDirection;
+                            switch (CurrentDirection){
+                                case Direction.Up:
+                                    anim.SetFloat("X", 0);
+                                    anim.SetFloat("Y", 1);
+                                    break;
+                                case Direction.Down:
+                                    anim.SetFloat("X", 0);
+                                    anim.SetFloat("Y", -1);
+                                    break;
+                                case Direction.Left:
+                                    anim.SetFloat("X", -1);
+                                    anim.SetFloat("Y", 0);
+                                    break;
+                                case Direction.Right:
+                                    anim.SetFloat("X", 1);
+                                    anim.SetFloat("Y", 0);
+                                    break;
+                                default:
+                                    anim.SetFloat("X", 0);
+                                    anim.SetFloat("Y", 0);
+                                    break;
+                            }
+                            Debug.Log("LastDirection: " + CurrentDirection);
                             startTime = 5f;
                             WaitTime();
                         }
