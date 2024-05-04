@@ -113,7 +113,7 @@ public class EnemyAI : MonoBehaviour
                     foundAnim.SetBool("found", true);
                     isRunning = true;
                     visitedLastPosition = true;
-                    LastDirection = CurrentDirection;
+                    // LastDirection = CurrentDirection;
                 }
                 else{
                     isRunning = false;
@@ -144,7 +144,7 @@ public class EnemyAI : MonoBehaviour
                             rb.velocity = Vector2.zero;
                             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                             ZeroAnim();
-                            CurrentDirection = LastDirection;
+                            // CurrentDirection = LastDirection;
                             startTime = 5f;
                             WaitTime();
                         }

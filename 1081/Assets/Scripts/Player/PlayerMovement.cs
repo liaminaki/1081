@@ -190,6 +190,8 @@ public class PlayerMovement : MonoBehaviour
         if (usingShield){
             //change speed;
             speed = 2f;
+
+            _shieldCount.text = PlayerPrefs.GetInt("ShieldNumber").ToString();
             //conditions
             if (isSprinting){
                 if (movement.x != 0 || movement.y != 0) 
