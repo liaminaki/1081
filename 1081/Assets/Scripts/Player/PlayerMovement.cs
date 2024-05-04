@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Image shieldBar;
     public Image shieldBarBackground;
     public Image Shield;
+    public Image QMark;
     // private Coroutine recharge;
 
 
