@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     private bool? waitTime;
     private float startTime;
     public Failed failed;
+    public EndTrigger endTrigger;
 
     void Start()
     {
@@ -104,14 +105,20 @@ public class EnemyAI : MonoBehaviour
 
             if (fov.CanSeePlayer){
                 // Move towards player
-                rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-                MoveTowardsPoint(playerMovement.center.position);
-                lastPosition = playerMovement.center.position;
-                anim.SetBool("isFound", true);
-                foundAnim.SetBool("found", true);
-                isRunning = true;
-                visitedLastPosition = true;
-                LastDirection = CurrentDirection;
+                if (endTrigger.Win == false){
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                    MoveTowardsPoint(playerMovement.center.position);
+                    lastPosition = playerMovement.center.position;
+                    anim.SetBool("isFound", true);
+                    foundAnim.SetBool("found", true);
+                    isRunning = true;
+                    visitedLastPosition = true;
+                    // LastDirection = CurrentDirection;
+                }
+                else{
+                    isRunning = false;
+                    visitedLastPosition = false;
+                }
             }
             else{
                 isRunning = false; 
@@ -137,7 +144,7 @@ public class EnemyAI : MonoBehaviour
                             rb.velocity = Vector2.zero;
                             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                             ZeroAnim();
-                            CurrentDirection = LastDirection;
+                            // CurrentDirection = LastDirection;
                             startTime = 5f;
                             WaitTime();
                         }
