@@ -167,7 +167,6 @@ public class EnemyAI : MonoBehaviour
                                     anim.SetFloat("Y", 0);
                                     break;
                             }
-                            Debug.Log("LastDirection: " + CurrentDirection);
                             startTime = 5f;
                             WaitTime();
                         }
