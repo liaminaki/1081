@@ -85,6 +85,12 @@ public class FieldOfView : MonoBehaviour
                     }
                     Vector2 directionToTarget = ((Vector2)target.position - (Vector2)transform.position).normalized;
                     float angleToTarget = Vector2.Angle(enemyDirection, directionToTarget);
+                    if (idleScan == true){
+                        angleToTarget += 60f;
+                    }
+                    else if (idleScan == false){
+                        angleToTarget -= 60f;
+                    }
                     if (angleToTarget < angle / 2)
                     {
                         float distanceToTarget = Vector2.Distance(transform.position, target.position);
@@ -111,11 +117,13 @@ public class FieldOfView : MonoBehaviour
 
         // Get the angle based on the enemy's direction
         float startingAngle = -GetAngleFromDirection(enemyAI.CurrentDirection) - angle / 2;
-        if (idleScan == true){
-            startingAngle += 60f;
-        }
-        else if (idleScan == false){
-            startingAngle -= 60f;
+        if (!CanSeePlayer){
+            if (idleScan == true){
+                startingAngle += 60f;
+            }
+            else if (idleScan == false){
+                startingAngle -= 60f;
+            }
         }
             
         for (int i = 0; i <= stepCount; i++){

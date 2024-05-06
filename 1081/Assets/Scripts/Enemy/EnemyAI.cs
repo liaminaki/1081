@@ -105,7 +105,6 @@ public class EnemyAI : MonoBehaviour
             else{
                 caughtPlayer = false;
             }
-
             if (fov.CanSeePlayer){
                 // Move towards player
                 if (endTrigger.Win == false){
@@ -147,7 +146,7 @@ public class EnemyAI : MonoBehaviour
                             rb.velocity = Vector2.zero;
                             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                             ZeroAnim();
-                            CurrentDirection = LastDirection;
+                            CurrentDirection = LastDirection; 
                             switch (CurrentDirection){
                                 case Direction.Up:
                                     anim.SetFloat("X", 0);
