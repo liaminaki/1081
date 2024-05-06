@@ -313,7 +313,9 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             // temporarily set the binding text label to "<Waiting>".
             // if (m_RebindOverlay == null && m_RebindText == null && m_RebindStartEvent == null && m_BindingText != null)
             //     m_BindingText.text = "<Waiting...>";
-             m_BindingText.text = "[Waiting for Input]";
+            Debug.Log("before: " + m_BindingText.text);
+            m_BindingText.text = "[Waiting for Input]";
+            Debug.Log(m_BindingText.text);
 
             // Give listeners a chance to act on the rebind starting.
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
