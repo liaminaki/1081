@@ -7404,6 +7404,7 @@ GameObject:
   - component: {fileID: 354454280}
   - component: {fileID: 354454282}
   - component: {fileID: 354454281}
+  - component: {fileID: 354454283}
   m_Layer: 5
   m_Name: Rebind
   m_TagString: Untagged
@@ -7466,6 +7467,20 @@ MonoBehaviour:
   MoveRef: {fileID: -5040569377243652773, guid: 5b428f977b44a794a92a0a0d8c39ae51, type: 3}
   SprintRef: {fileID: -3741022557057796515, guid: 5b428f977b44a794a92a0a0d8c39ae51, type: 3}
   ShieldRef: {fileID: 7239752255335119326, guid: 5b428f977b44a794a92a0a0d8c39ae51, type: 3}
+--- !u!114 &354454283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354454279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7351e09de11e53441b5c24aacc427d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editBind: {fileID: 1256583920}
+  rebindOverlay: {fileID: 2031331656}
 --- !u!114 &355255758 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
@@ -16545,6 +16560,85 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1858315376566497140, guid: e21d1a766aca1464bbf7b0665d3bcd39, type: 3}
   m_PrefabInstance: {fileID: 566225860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1256583920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256583921}
+  - component: {fileID: 1256583923}
+  - component: {fileID: 1256583922}
+  m_Layer: 5
+  m_Name: EditBind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1256583921
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256583920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1316090550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 178, y: -4}
+  m_SizeDelta: {x: 831.07, y: 44.439}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1256583922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256583920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e0a7e594c8ded4e7dade93e05ace5932, type: 3}
+    m_FontSize: 36
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Waiting for Input
+--- !u!222 &1256583923
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256583920}
+  m_CullTransparentMesh: 0
 --- !u!1 &1269227466
 GameObject:
   m_ObjectHideFlags: 0
@@ -17177,6 +17271,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2077502820403289739, guid: 029ebc57f211f48b2b90fcfd726ce0af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1256583921}
     - targetCorrespondingSourceObject: {fileID: 2077502820403289739, guid: 029ebc57f211f48b2b90fcfd726ce0af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 354454280}
