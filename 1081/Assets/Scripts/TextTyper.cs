@@ -14,6 +14,12 @@ public class TextTyper : MonoBehaviour
 
     public AudioSource audioSource;
 
+
+    void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -79,10 +85,22 @@ public class TextTyper : MonoBehaviour
         if (typingSound != null && audioSource != null)
             audioSource.Stop();
 
+        StartCoroutine(DelayThenStartNext(text));
+        
+    }
+
+    // One second delay
+    private IEnumerator DelayThenStartNext(TextMeshProUGUI text)
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        text.gameObject.SetActive(false);
+
         // Remove the typed TextMeshPro component from the list
         TextObjects.RemoveAt(0);
 
         // Start typing the next text, if available
         StartTypingNextText();
+
     }
 }
