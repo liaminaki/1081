@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public int currentCoins = 0;
     private Vector2 movement;
     private Rigidbody2D rb;
-    private Animator animator;
+    public Animator animator;
     private bool isSprinting = false;
     public bool usingShield {get; private set;}
     private float shieldTimer = 0f;
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Image shieldBar;
     public Image shieldBarBackground;
     public Image Shield;
+    public Image QMark;
     // private Coroutine recharge;
 
 
@@ -190,6 +191,8 @@ public class PlayerMovement : MonoBehaviour
         if (usingShield){
             //change speed;
             speed = 2f;
+
+            _shieldCount.text = PlayerPrefs.GetInt("ShieldNumber").ToString();
             //conditions
             if (isSprinting){
                 if (movement.x != 0 || movement.y != 0) 
@@ -321,6 +324,5 @@ public class PlayerMovement : MonoBehaviour
     public void ArrestedState (){
         animator.SetBool("isArrested", true);
         rb.velocity = Vector2.zero;
-        // Debug.Log("Caught");
     }
 }

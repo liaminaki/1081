@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -17,6 +18,8 @@ public class FieldOfView : MonoBehaviour
     public float meshResolution;
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
+
+    public bool? idleScan;
 
     private EnemyAI enemyAI;
 
@@ -82,6 +85,12 @@ public class FieldOfView : MonoBehaviour
                     }
                     Vector2 directionToTarget = ((Vector2)target.position - (Vector2)transform.position).normalized;
                     float angleToTarget = Vector2.Angle(enemyDirection, directionToTarget);
+                    if (idleScan == true){
+                        angleToTarget += 60f;
+                    }
+                    else if (idleScan == false){
+                        angleToTarget -= 60f;
+                    }
                     if (angleToTarget < angle / 2)
                     {
                         float distanceToTarget = Vector2.Distance(transform.position, target.position);
@@ -108,12 +117,20 @@ public class FieldOfView : MonoBehaviour
 
         // Get the angle based on the enemy's direction
         float startingAngle = -GetAngleFromDirection(enemyAI.CurrentDirection) - angle / 2;
-
+        if (!CanSeePlayer){
+            if (idleScan == true){
+                startingAngle += 60f;
+            }
+            else if (idleScan == false){
+                startingAngle -= 60f;
+            }
+        }
+            
         for (int i = 0; i <= stepCount; i++){
             float viewAngle = startingAngle + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(viewAngle);
             viewPoints.Add(newViewCast.point);
-            Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
+            // Debug.DrawLine(transform.position, transform.position + (Vector3)DirectionFromAngle(viewAngle) * radius, Color.red);
         }
 
         int vertexCount = viewPoints.Count + 1;
@@ -139,9 +156,9 @@ public class FieldOfView : MonoBehaviour
 
     ViewCastInfo ViewCast (float globalAngle){
         Vector2 dir = DirectionFromAngle (globalAngle);
-        RaycastHit hit;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, radius, obstructionLayer);
 
-        if (Physics.Raycast (transform.position, dir, out hit, radius, obstructionLayer)){
+        if (hit.collider!= null){
             return new ViewCastInfo (true, hit.point, hit.distance, globalAngle);
         }
         else{
@@ -165,6 +182,7 @@ public class FieldOfView : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        #if UNITY_EDITOR
         if (enemyAI == null){
             // Ensure enemyAI is initialized before accessing it
             Start();
@@ -191,6 +209,7 @@ public class FieldOfView : MonoBehaviour
             PlayerMovement playerMovement = selectedCharacter.GetComponent<PlayerMovement>();
             Gizmos.DrawLine(transform.position, playerMovement.center.position);
         }
+        #endif
     }
 
     private Vector2 DirectionFromAngle(float angleInDegrees)

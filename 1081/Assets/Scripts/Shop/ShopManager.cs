@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
             }
 
             //uncomment this if funds are not enough during testing 
-            PlayerPrefs.SetInt("PlayerCoins", 1000);
+            // PlayerPrefs.SetInt("PlayerCoins", 1000);
             // PlayerPrefs.SetInt("ShieldLevel", 1);
             // PlayerPrefs.SetInt("StaminaLevel", 1);
             // PlayerPrefs.SetInt("ShieldNumber", 0);

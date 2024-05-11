@@ -8,7 +8,7 @@ public class Failed : MonoBehaviour
     public GameObject failedScreenUI;
     public GameObject statsUI;
 
-    public bool loss;
+    public bool loss {get; set;}
     void Start()
     {
         failedScreenUI.SetActive(false);
@@ -29,16 +29,17 @@ public class Failed : MonoBehaviour
     }
     public void Exit()
     {
-        SceneManager.LoadScene("ChapterSelectionScene");
+        loss = false;
         Time.timeScale = 1f;
+        SceneManager.LoadScene("ChapterSelectionScene");
 
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        failedScreenUI.SetActive(false);
         Time.timeScale = 1f;
-        loss = false;
+        loss = false; 
+        failedScreenUI.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -15,6 +15,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
     public class RebindActionUI : MonoBehaviour
     {
 
+        // public GameObject editBind;
+
+        // public void Awake(){
+        //     editBind.SetActive(false);
+        // }
         public void Update(){
             UpdateBindingDisplay();
         }
@@ -313,7 +318,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             // temporarily set the binding text label to "<Waiting>".
             // if (m_RebindOverlay == null && m_RebindText == null && m_RebindStartEvent == null && m_BindingText != null)
             //     m_BindingText.text = "<Waiting...>";
-             m_BindingText.text = "[Waiting for Input]";
+            // editBind.SetActive(true);
+            m_BindingText.text = "[Waiting for Input]";
 
             // Give listeners a chance to act on the rebind starting.
             m_RebindStartEvent?.Invoke(this, m_RebindOperation);
@@ -392,6 +398,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         [Tooltip("Optional UI that will be shown while a rebind is in progress.")]
         [SerializeField]
         private GameObject m_RebindOverlay;
+
+        [Tooltip("Optional UI that will be shown as instruction when a rebind is in progress")]
+        [SerializeField]
+        private GameObject m_EditBind;
+
 
         [Tooltip("Optional text label that will be updated with prompt for user input.")]
         [SerializeField]

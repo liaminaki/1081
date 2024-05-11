@@ -13,6 +13,15 @@ public class MenuController : MonoBehaviour
         // PlayerPrefs.SetInt("SelectedSkinIndex", -1); // For testing character selection, remove in final
         // PlayerPrefs.SetString("CharacterName", "");
 
+
+        int isOld = PlayerPrefs.GetInt("IsOld", 0);
+        
+        // Check if player is old enought
+        if (isOld == 0)
+        {
+            SceneManager.LoadScene("AgeConfirm");
+        }
+
         // Play splash screen if not from chapter selection
         if (SceneStateManager.PreviousScene != "ChapterSelectionScene") {
             _mainMenuAnimator.Play("SplashScreen");
@@ -133,6 +142,15 @@ public class MenuController : MonoBehaviour
 
     public bool IsCharacterSelected() {
         return PlayerPrefs.HasKey("SelectedSkinIndex") && PlayerPrefs.GetInt("SelectedSkinIndex") > -1;
+    }
+
+    public void QuitApplication()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
 

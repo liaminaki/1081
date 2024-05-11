@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Chapter : MonoBehaviour {
+public class Chapter {
 
     private int currentStarsNum = 0;
     public int ChapterNum;
 
-    void Start() {
-        // Set main menu as previous scene
-        SceneStateManager.PreviousScene = "GameScene";
+    public Chapter(int ChapterNum) {
+        this.ChapterNum = ChapterNum;
     }
 
     // Go back to chapter selection scene
@@ -19,7 +18,7 @@ public class Chapter : MonoBehaviour {
         SceneManager.LoadScene("ChapterSelectionScene");
     }
 
-    public void PressStarsButton(int starsNum) {
+    public void UpdateScore(int starsNum) {
         
         // PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", 0);
 
@@ -49,7 +48,7 @@ public class Chapter : MonoBehaviour {
             PlayerPrefs.SetInt("Chapter" + ChapterNum + "Stars", starsNum);
         }
 
-        OnBackClick();
+        // OnBackClick();
     }
 
     // Indicate that there is new chapter that is unlocked
