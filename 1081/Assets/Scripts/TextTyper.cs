@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TextTyper : MonoBehaviour
 {
-    public float TypingSpeed = 0.2f; // Typing speed in seconds
+    public float TypingSpeed = 0.05f; // Typing speed in seconds
 
     // List to hold TextMeshPro components
     public List<TextMeshProUGUI> TextObjects = new List<TextMeshProUGUI>();
@@ -17,11 +17,15 @@ public class TextTyper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        // Turn off all text objects initially
-        TurnOffTexts();
-        
-        // Start typing the first text in the list
-        StartTypingNextText();
+        // Check if the GameObject is active
+        if (gameObject.activeSelf)
+        {
+            // Turn off all text objects initially
+            TurnOffTexts();
+            
+            // Start typing the first text in the list
+            StartTypingNextText();
+        }
     }
 
     // Start typing the next text, if available
@@ -30,17 +34,21 @@ public class TextTyper : MonoBehaviour
         if (TextObjects.Count > 0)
         {
             TextMeshProUGUI text = TextObjects[0];
+            text.gameObject.SetActive(true);
             StartCoroutine(TypeText(text));
         }
     }
 
     private void TurnOffTexts()
-    {
-        foreach (TextMeshProUGUI textObject in TextObjects)
+    {   
+        if (TextObjects.Count > 0)
         {
-            textObject.gameObject.SetActive(false);
+            foreach (TextMeshProUGUI textObject in TextObjects)
+            {
+                textObject.gameObject.SetActive(false);
+            }
         }
-
+        
     }
 
     // Coroutine to type the TextMeshPro component
