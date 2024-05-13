@@ -43,12 +43,32 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    // Moves the object to the specified position
+    // Moves the active child's transform to the specified position
     private void MoveObject()
     {
         if (objectToTeleport != null)
         {
-            objectToTeleport.transform.position = new Vector3(teleportPositionX, teleportPositionY, objectToTeleport.transform.position.z);
+            Transform activeChildTransform = null;
+
+            // Find the active child transform
+            foreach (Transform child in objectToTeleport.transform)
+            {
+                if (child.gameObject.activeSelf)
+                {
+                    activeChildTransform = child;
+                    break;
+                }
+            }
+
+            if (activeChildTransform != null)
+            {
+                // Set the position of the active child's transform
+                activeChildTransform.position = new Vector3(teleportPositionX, teleportPositionY, activeChildTransform.position.z);
+            }
+            else
+            {
+                Debug.LogWarning("No active child found!");
+            }
         }
         else
         {
