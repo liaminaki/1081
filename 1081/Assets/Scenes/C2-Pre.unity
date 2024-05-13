@@ -643,7 +643,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1846594566}
           m_TargetAssemblyTypeName: CutsceneController, Assembly-CSharp
           m_MethodName: GoTo
           m_Mode: 5
@@ -652,12 +652,12 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Chapter2
+            m_StringArgument: C2 Map
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1846594566}
           m_TargetAssemblyTypeName: CutsceneController, Assembly-CSharp
           m_MethodName: IncrCutScenesPlayed
           m_Mode: 1
@@ -19299,7 +19299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5598705355209383924, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Chapter2
+      value: C2 Map
       objectReference: {fileID: 0}
     - target: {fileID: 6242535999859578053, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
       propertyPath: m_Pivot.x
@@ -19386,6 +19386,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
+--- !u!114 &1846594566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3756603692958754368, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
+  m_PrefabInstance: {fileID: 1846594565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a83ad00a9634ffbb56052d66b5489b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1857378147
 GameObject:
   m_ObjectHideFlags: 0
