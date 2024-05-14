@@ -26,13 +26,13 @@ public class Companion : MonoBehaviour
     void TargetFollow(){
         if (Vector2.Distance(transform.position, target.position) > targetPosition){
             aiAnim.SetBool("isWalk", true);
-            rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+            // rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
             MoveTowardsPoint(target.position);
         }
         else{
             aiAnim.SetBool("isWalk", false);
             rb.velocity = Vector2.zero;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            // rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
     }
 
