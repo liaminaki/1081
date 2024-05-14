@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 public class EndTrigger : MonoBehaviour
-{
+{   
     // References to the timelines
-    public PlayableDirector MainTimeline;
+    public TimelineManager timelines;
     
-    // The renamed reference to the post-game timeline is now called Timeline2
-    public PlayableDirector Timeline2;
     // public bool end = false;
 
     // A flag to track whether the event has been handled
@@ -22,16 +20,16 @@ public class EndTrigger : MonoBehaviour
     void Start()
     {
         // Play the MainTimeline at the beginning of the game
-        if (MainTimeline != null)
-        {
-            MainTimeline.Play();
-        }
+        // if (MainTimeline != null)
+        // {
+        //     MainTimeline.Play();
+        // }
         
         // Ensure Timeline2 is stopped at the start of the game
-        if (Timeline2 != null)
-        {
-            Timeline2.Stop();
-        }
+        // if (Timeline2 != null)
+        // {
+        //     Timeline2.Stop();
+        // }
         Win = false;
     }
 
@@ -53,19 +51,21 @@ public class EndTrigger : MonoBehaviour
             Debug.Log("Player collided with the end trigger.");
             Win = true;
 
-            // Stop the MainTimeline if it's currently playing
-            if (MainTimeline != null && MainTimeline.state == PlayState.Playing)
-            {
-                MainTimeline.Stop();
-                Debug.Log("MainTimeline stopped.");
-            }
+            timelines.PlayNext();
 
-            // Play Timeline2
-            if (Timeline2 != null)
-            {
-                Timeline2.Play();
-                Debug.Log("Timeline2 started.");
-            }
+            // Stop the MainTimeline if it's currently playing
+            // if (MainTimeline != null && MainTimeline.state == PlayState.Playing)
+            // {
+            //     MainTimeline.Stop();
+            //     Debug.Log("MainTimeline stopped.");
+            // }
+
+            // // Play Timeline2
+            // if (Timeline2 != null)
+            // {
+            //     Timeline2.Play();
+            //     Debug.Log("Timeline2 started.");
+            // }
             
             victory.StopTime();
             // victory.Open();
