@@ -4498,6 +4498,18 @@ PrefabInstance:
       value: DLG_0.1.1
       objectReference: {fileID: 0}
     - target: {fileID: 2423787225455124931, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: typingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 97c7679746c9843ad8732edc980827d4, type: 3}
+    - target: {fileID: 2423787225455124931, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: typingSpeed
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423787225455124931, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: isDialogueActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423787225455124931, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: playableDirector
       value: 
       objectReference: {fileID: 899843155}
@@ -7262,7 +7274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -21.737}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -63.173706, y: 112.00748}
+  m_AnchoredPosition: {x: -63.173584, y: 112.00748}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7000736426296120499
