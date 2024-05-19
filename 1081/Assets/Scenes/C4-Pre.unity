@@ -47760,7 +47760,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -48110,7 +48110,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -57724,7 +57724,7 @@ AudioSource:
   m_GameObject: {fileID: 785073640}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1f1612eba0c6faf478a885617ff184ab, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -60362,7 +60362,7 @@ AudioSource:
   m_GameObject: {fileID: 923981395}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1f1612eba0c6faf478a885617ff184ab, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -60825,6 +60825,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &976594213
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.421402
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -15.100007
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.566066
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903024937875968670, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_Name
+      value: Audio_Brightness Controller
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
 --- !u!1 &996601893
 GameObject:
   m_ObjectHideFlags: 0
@@ -89594,7 +89651,7 @@ AudioSource:
   m_GameObject: {fileID: 1284685097}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1f1612eba0c6faf478a885617ff184ab, type: 2}
   m_audioClip: {fileID: 8300000, guid: db819f94fd74e415ea5f5b59da48a2cb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -134157,3 +134214,4 @@ SceneRoots:
   - {fileID: 2091178192}
   - {fileID: 1284685099}
   - {fileID: 785073642}
+  - {fileID: 976594213}
