@@ -12,14 +12,22 @@ public class VolumeManager : MonoBehaviour
 
 
 private void Start()
-    {
-        // Add a listener to the slider's value change event
-        volumeSlider.onValueChanged.AddListener(setVolume);
-        Debug.Log("Volume Controller initialized.");
+    {   
+        if (volumeSlider != null)
+        {
+            // Add a listener to the slider's value change event
+            volumeSlider.onValueChanged.AddListener(setVolume);
+            Debug.Log("Volume Controller initialized.");
+        }
+        
 
         // Load the volume value from PlayerPrefs and set it to the slider
         float savedVolume = PlayerPrefs.GetFloat("Volume", -7.0f); // Default value 1.0f if not found
-        volumeSlider.value = savedVolume;
+        
+        if (volumeSlider != null)
+        {
+            volumeSlider.value = savedVolume;
+        }
 
         // Apply the initial volume value
         setVolume(savedVolume);
@@ -27,11 +35,14 @@ private void Start()
 
     public void setVolume(float vol){
         
-        if (Mathf.Approximately(vol, volumeSlider.minValue)) // If the slider is at the left end
+        if (volumeSlider != null)
         {
-            vol = -80f; // Set volume to 0
+            if (Mathf.Approximately(vol, volumeSlider.minValue)) // If the slider is at the left end
+            {
+                vol = -80f; // Set volume to 0
+            }
         }
-
+        
         _audio.SetFloat("vol", vol);
         PlayerPrefs.SetFloat("Volume", vol);
     }
