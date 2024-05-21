@@ -57913,6 +57913,11 @@ MonoBehaviour:
   - {fileID: 135979935}
   typingSound: {fileID: 8300000, guid: 97c7679746c9843ad8732edc980827d4, type: 3}
   audioSource: {fileID: 1029084564}
+--- !u!1 &1287487308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5563015825596095570, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+  m_PrefabInstance: {fileID: 2053175823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1303747157
 GameObject:
   m_ObjectHideFlags: 0
@@ -59010,7 +59015,7 @@ Transform:
   m_GameObject: {fileID: 1409841910}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.83388, y: -68.330444, z: -274.42477}
+  m_LocalPosition: {x: -19.82861, y: -68.33046, z: -274.42477}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83996,6 +84001,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7783895971200092483, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+      propertyPath: exitConfirmationUI
+      value: 
+      objectReference: {fileID: 1287487308}
     - target: {fileID: 8026419095377595342, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.2
