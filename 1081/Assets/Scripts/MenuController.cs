@@ -16,11 +16,11 @@ public class MenuController : MonoBehaviour
 
         int isOld = PlayerPrefs.GetInt("IsOld", 0);
         
-        // Check if player is old enought
-        // if (isOld == 0)
-        // {
-        //     SceneManager.LoadScene("AgeConfirm");
-        // }
+        // Check if player is old enough
+        if (isOld == 0)
+        {
+            SceneManager.LoadScene("AgeConfirm");
+        }
 
         // Play splash screen if not from chapter selection
         if (SceneStateManager.PreviousScene != "ChapterSelectionScene") {

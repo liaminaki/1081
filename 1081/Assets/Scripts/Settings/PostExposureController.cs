@@ -15,9 +15,12 @@ public class PostExposureController : MonoBehaviour
         // Check if the Volume has a ColorAdjustments component
         if (globalVolume.profile.TryGet(out colorAdjustments))
         {
-            // Add a listener to the slider's value change event
-            postExposureSlider.onValueChanged.AddListener(ChangePostExposure);
-            Debug.Log("Color Adjustments found.");
+            if (postExposureSlider != null)
+            {
+                // Add a listener to the slider's value change event
+                postExposureSlider.onValueChanged.AddListener(ChangePostExposure);
+                Debug.Log("Color Adjustments found.");
+            }
         }
         else
         {
@@ -25,7 +28,9 @@ public class PostExposureController : MonoBehaviour
         }
 
         float savedBrightness = PlayerPrefs.GetFloat("Brightness", -0.5f); // Default value 1.0f if not found
-        postExposureSlider.value = savedBrightness;
+        
+        if (postExposureSlider != null)
+            postExposureSlider.value = savedBrightness;
 
         // Apply the initial brightness value
         ChangePostExposure(savedBrightness);
@@ -45,10 +50,14 @@ public class PostExposureController : MonoBehaviour
     }
 
     public void SaveBrightness()
-    {
-        float brightnessValue = postExposureSlider.value;
-        PlayerPrefs.SetFloat("Brightness", brightnessValue);
-        PlayerPrefs.Save();
+    {   
+        if (postExposureSlider != null) 
+        {
+            float brightnessValue = postExposureSlider.value;
+            PlayerPrefs.SetFloat("Brightness", brightnessValue);
+            PlayerPrefs.Save();
+        }
+            
     }
 
     

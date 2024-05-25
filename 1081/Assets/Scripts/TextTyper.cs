@@ -4,7 +4,8 @@ using TMPro;
 using UnityEngine;
 
 public class TextTyper : MonoBehaviour
-{
+{   
+    public bool isContinuous = false;
     public float TypingSpeed = 0.05f; // Typing speed in seconds
 
     // List to hold TextMeshPro components
@@ -16,8 +17,9 @@ public class TextTyper : MonoBehaviour
 
 
     void Awake()
-    {
-        gameObject.SetActive(false);
+    {   
+        if (!isContinuous)
+            gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -76,8 +78,6 @@ public class TextTyper : MonoBehaviour
         {
             text.text += letter;
 
-            
-            
             yield return new WaitForSeconds(TypingSpeed);
         }
 
@@ -85,7 +85,16 @@ public class TextTyper : MonoBehaviour
         if (typingSound != null && audioSource != null)
             audioSource.Stop();
 
-        StartCoroutine(DelayThenStartNext(text));
+        if (isContinuous) {
+            // Remove the typed TextMeshPro component from the list
+            TextObjects.RemoveAt(0);
+
+            // Start typing the next text, if available
+            StartTypingNextText();
+        }
+
+        else
+            StartCoroutine(DelayThenStartNext(text));
         
     }
 
