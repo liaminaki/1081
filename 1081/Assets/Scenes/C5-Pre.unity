@@ -43978,7 +43978,7 @@ GameObject:
   - component: {fileID: 1812734112}
   - component: {fileID: 1812734111}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46323,6 +46323,10 @@ PrefabInstance:
     - target: {fileID: 2507518661056101152, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
       propertyPath: m_Name
       value: Cutscene Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756603692958754368, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
+      propertyPath: CurrentCutScnId
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6242535999859578053, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
       propertyPath: m_Pivot.x

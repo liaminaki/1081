@@ -5064,7 +5064,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -9069,6 +9069,63 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7810420388620870019, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
   m_PrefabInstance: {fileID: 1308352355}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &602936702
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.421402
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -15.100007
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.566066
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 972318390761334900, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903024937875968670, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
+      propertyPath: m_Name
+      value: Audio-Brightness Controller
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c48cb14faa8b64233aacded4647aa899, type: 3}
 --- !u!1 &630747956
 GameObject:
   m_ObjectHideFlags: 0
@@ -9411,7 +9468,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -18133,6 +18190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cutscene Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 3756603692958754368, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
+      propertyPath: CurrentCutScnId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5598705355209383924, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: C3 Map
@@ -20563,7 +20624,7 @@ GameObject:
   - component: {fileID: 1742380575}
   - component: {fileID: 1742380574}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20578,7 +20639,7 @@ AudioSource:
   m_GameObject: {fileID: 1742380573}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1f1612eba0c6faf478a885617ff184ab, type: 2}
   m_audioClip: {fileID: 8300000, guid: 86148b1c7d936437386b924675ed152c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -32937,3 +32998,4 @@ SceneRoots:
   - {fileID: 646151244}
   - {fileID: 1197432214}
   - {fileID: 688818644}
+  - {fileID: 602936702}
