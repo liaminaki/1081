@@ -185,7 +185,7 @@ public class DialogueManager : MonoBehaviour
             audioSource.Stop();
     }
  
-    void EndDialogue()
+    public void EndDialogue()
     {
         isDialogueActive = false;
         animator.Play("hide");
@@ -220,4 +220,10 @@ public class DialogueManager : MonoBehaviour
     private int LoadPlayerSkin() {
         return PlayerPrefs.GetInt("SelectedSkinIndex", 0);
     }
+
+    public void ReplaceTimeline(PlayableDirector newTimeline)
+    {
+        this.playableDirector = newTimeline;
+    }
+
 }
