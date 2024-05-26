@@ -9,11 +9,18 @@ public class ChapterSelection : MonoBehaviour {
     [SerializeField] private Animator _chapterSelectionAnimator;
     private int chaptersUnlocked;
     private int isNewChapterUnlocked;
+    
+    public GameObject JournalCanvas;
+    public GameObject JournalContainer; // Parent where journal will be instantiated
+    public List<GameObject> Journals;
+    private GameObject journal = null; // Reference to instantiated journal
 
     public ChapterButton Chapter1Button;
 
     // Start is called before the first frame update
     void Start() {
+        SetJournalCanvas(false);
+
         Debug.Log("Chapter selection running");
         // Play transition if not from chapter selection
         if (SceneStateManager.PreviousScene == "MainMenuScene") {
@@ -25,7 +32,8 @@ public class ChapterSelection : MonoBehaviour {
         }
 
         // Clear the previous scene information to prevent it from persisting across scenes
-        SceneStateManager.PreviousScene = null;
+        if (SceneStateManager.PreviousScene != "Epilogue")
+            SceneStateManager.PreviousScene = null;
         
         LoadIsNewChapterUnlocked();
         LoadChaptersUnlocked();
@@ -117,6 +125,40 @@ public class ChapterSelection : MonoBehaviour {
         // PlayerPrefs.DeleteKey("NewChapterUnlocked");
 
         PlayerPrefs.DeleteAll();
+    }
+
+    // Instantiate chapter journal in selection
+    public void OpenJournal(int n) {
+
+        SetJournalCanvas(true);
+        
+        // Subtract 1 since index starts with 0
+        n -= 1;
+
+        // Instantiate journal
+        journal = Object.Instantiate(Journals[n], JournalContainer.transform);
+
+    }
+
+    public void CloseJournal() {
+        Destroy(journal);
+        journal = null;
+
+        SetJournalCanvas(false);
+    }
+
+    public void SetJournalCanvas(bool boolean) {
+        JournalCanvas.SetActive(boolean);
+    }
+
+    public void ShowLastJournal() {
+        
+        if (SceneStateManager.PreviousScene == "Epilogue") {
+           OpenJournal(5);
+        }
+
+        SceneStateManager.PreviousScene = null;
+
     }
 
 }

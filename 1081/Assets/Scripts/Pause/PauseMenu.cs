@@ -6,10 +6,12 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject exitConfirmationUI;
 
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        exitConfirmationUI.SetActive(false);
         GameIsPaused = false;
     }
 
@@ -39,9 +41,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Exit(){
-        SceneManager.LoadScene("ChapterSelectionScene");
-        Time.timeScale = 1f;
-
+        exitConfirmationUI.SetActive(true);
     }
 
     public void Retry(){
@@ -49,5 +49,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+    }
+    public void ConfirmExit(){
+        SceneManager.LoadScene("ChapterSelectionScene");
+        Time.timeScale = 1f;
+    }
+    public void CancelExit(){
+        exitConfirmationUI.SetActive(false);
     }
 }

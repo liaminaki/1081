@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     
     public bool isDialogueActive = false; 
  
-    public float typingSpeed = 0.2f;
+    private float typingSpeed = 0.001f;
     
     // For opening and closing animation
     public Animator animator;
