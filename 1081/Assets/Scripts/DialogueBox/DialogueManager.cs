@@ -220,4 +220,10 @@ public class DialogueManager : MonoBehaviour
     private int LoadPlayerSkin() {
         return PlayerPrefs.GetInt("SelectedSkinIndex", 0);
     }
+
+    public void ReplaceTimeline(PlayableDirector newTimeline)
+    {
+        this.playableDirector = newTimeline;
+    }
+
 }

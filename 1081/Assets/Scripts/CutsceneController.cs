@@ -32,8 +32,8 @@ public class CutsceneController : MonoBehaviour
         // Delay for 2 seconds
         yield return new WaitForSeconds(2);
 
-        Debug.Log(cutscenesPlayed);
-        Debug.Log(CurrentCutScnId);
+        Debug.Log("Cutscenes Played: " + cutscenesPlayed);
+        Debug.Log("Cutscene ID: " + CurrentCutScnId);
         
         // Check if current scene has already been played
         if (cutscenesPlayed >= CurrentCutScnId)
