@@ -8023,7 +8023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2679965395529596549, guid: eef952336fdbd439e92a55e3af143e8c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9118529093965329759, guid: eef952336fdbd439e92a55e3af143e8c, type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -11133,7 +11133,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.85
+  orthographic size: 6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -15481,6 +15481,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2bbb8cf63eb94cb0964a3bf77ea566c, type: 3}
+--- !u!1001 &2946297231205604726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 818.2565
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 814.2725
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.5546763
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822722825043774394, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840423883444471299, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
+      propertyPath: m_Name
+      value: An Ancient King
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc779295e20bd447480a0ffc35e63000, type: 3}
 --- !u!1001 &6149815040526724898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15559,3 +15616,4 @@ SceneRoots:
   - {fileID: 177782882}
   - {fileID: 1873209162}
   - {fileID: 2043937064}
+  - {fileID: 2946297231205604726}
