@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float speed = 3f;
+    private float speed = 5f;
     private int shieldLevel;
     private int staminaLevel;
     public int currentCoins = 0;
