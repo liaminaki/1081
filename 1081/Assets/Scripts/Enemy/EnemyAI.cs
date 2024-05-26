@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 // using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
     public List<GameObject> pathPoints; // List of waypoints defining the path
-    public float speed = 3f; // Speed of movement
+    public float speed = 4f; // Speed of movement
     public bool isRunning = false;
     public bool caughtPlayer {get; private set;}
 
@@ -51,6 +52,25 @@ public class EnemyAI : MonoBehaviour
         visitedLastPosition = false;
         foundAnim = foundAnimation.GetComponent<Animator>();
         QMark.gameObject.SetActive(false);
+        int chapterLevel = GetChapterNum();
+        speed = speed + (chapterLevel * 0.2f);
+    }
+
+    int GetChapterNum(){
+        // Get the active scene name
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        // Find the first digit in the string
+        foreach (char c in sceneName)
+        {
+            if (char.IsDigit(c))
+            {
+                return int.Parse(c.ToString());
+            }
+        }
+
+        // Return a default value if no digit is found
+        return -1;
     }
 
     void FixedUpdate()
