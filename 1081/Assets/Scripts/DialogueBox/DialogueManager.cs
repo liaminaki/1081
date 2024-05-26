@@ -185,7 +185,7 @@ public class DialogueManager : MonoBehaviour
             audioSource.Stop();
     }
  
-    void EndDialogue()
+    public void EndDialogue()
     {
         isDialogueActive = false;
         animator.Play("hide");
