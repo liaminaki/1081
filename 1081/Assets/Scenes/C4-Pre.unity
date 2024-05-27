@@ -1218,8 +1218,8 @@ MonoBehaviour:
         name: Police
         icon: {fileID: -207290405, guid: 8cfd8755891e84c8da7f3dbc71c8f902, type: 3}
       LineInEnglish: Disperse immediately! This is an unlawful assembly!
-      LineInCebuano: Saman?
-      LineInFilipino: Ano?
+      LineInCebuano: Pamahawa mo diri. Usa ni kailigal na panagtipon.
+      LineInFilipino: Itigil at lumayas na kayo kaagad. Ito ay isang iligal na pagtitipon.
 --- !u!1 &28728580
 GameObject:
   m_ObjectHideFlags: 0
@@ -42425,30 +42425,32 @@ MonoBehaviour:
         icon: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: Father Rudy, Teacher Marites. Should we call this off? We are
         surrounded by Police already.
-      LineInCebuano: a
-      LineInFilipino: b
+      LineInCebuano: Father Rudy, Teacher Marites. Kinahanglan ba nato kini ihunong?
+        Gipalibutan natag mga pulis.
+      LineInFilipino: Father Rudy, Teacher Marites. Ititigil na ba natin ito? Napapalibutan
+        na tayo ng mga pulis.
     - character:
         name: Father Rudy
         icon: {fileID: 21300000, guid: 3249396cf87334f9895ad4de458907db, type: 3}
       LineInEnglish: '<PlayerName>, go take care of yourself and your teacher.
 
 '
-      LineInCebuano: a
-      LineInFilipino: b
+      LineInCebuano: <PlayerName>, adto namo, ug pag-amping mo sa inyong paglakaw.
+      LineInFilipino: <PlayerName>, pumaroon kana, at magingat kayo ng iyong guro.
     - character:
         name: Teacher Marites
         icon: {fileID: -382449769, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: 'No, Father. We won''t leave you here.
 
 '
-      LineInCebuano: a
-      LineInFilipino: b
+      LineInCebuano: Dli Father, dli mi muadto ug wala ka.
+      LineInFilipino: Hindi Father, hindi ka namin iiwan dito.
     - character:
         name: Father Rudy
         icon: {fileID: 21300000, guid: 3249396cf87334f9895ad4de458907db, type: 3}
       LineInEnglish: Trust me on this one. Go now, <PlayerName>.
-      LineInCebuano: a
-      LineInFilipino: b
+      LineInCebuano: Salig mo kanako, adto namo <PlayerName>.
+      LineInFilipino: Magtiwala kayo sakin, pumaroon na kayo <PlayerName>.
 --- !u!1 &379410433
 GameObject:
   m_ObjectHideFlags: 0
@@ -53064,10 +53066,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].LineInCebuano
+      value: Father Rudy, pasayloa ko sa pag-abala. Nakadungog kos ang imong trabaho
+        ug ang papel aning simbahan sa pakigbisog batok kay Marcos. Gusto nako mutabang
+        , unsa ang akong mahimo?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInEnglish
       value: Father Rudy, forgive me for interrupting. I've heard of your work and
         the role of this church in the fight against Marcos. I want to help. What
         can I do?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].LineInCebuano
+      value: Dong, nalipay ko na makakita sa kabatanonan nga ganahan sad ug kausaban.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInEnglish
@@ -53075,7 +53087,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInCebuano
-      value: Saman?
+      value: Ang kani nga dalan kay dli dali, apan ang pakigbisog alang sa hustisya
+        kay nanginahanglan ug pagtindog andam bakang magantos?
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInEnglish
@@ -53084,7 +53097,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[3].LineInCebuano
-      value: Saman?
+      value: Andam ko Father, gusto ko naay mabuhat na pagbag-o, makigbisog kuyog
+        sa mga giapi.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[3].LineInEnglish
@@ -53094,7 +53108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].LineInCebuano
-      value: Saman?
+      value: Ugma, mag-uban ta laban sa mga mapang-api.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].LineInEnglish
@@ -53102,7 +53116,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].LineInCebuano
-      value: Saman?
+      value: Apan dumduma, ang tinuod nga panagbangga wala lamang sa kadalanan kondili
+        sa kasingkasing sa mga tawo. Mahimong husto ang atong kausaban, ug mahimong
+        kita makakita og kusog aron atubangon ang bisan unsa nga mobato nga atong
+        makita.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].LineInEnglish
@@ -53111,12 +53128,22 @@ PrefabInstance:
         to face whatever comes our way.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].LineInFilipino
+      value: Father Rudy, patawarin niyo po ako sa pag-abala. Narinig ko ang iyong
+        trabaho at ang papel ng simbahan na ito sa pagtutol kay Marcos. Gusto kong
+        tumulong, anong magagawa ko?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
       value: 
       objectReference: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].LineInFilipino
+      value: Iho, nakakataba ng puso na makita ang kabataan na niyayakap ang adhikain.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
@@ -53128,7 +53155,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInFilipino
-      value: Ano?
+      value: Ang landas na ating tinatahak ay hindi madali, ngunit ang pakikibaka
+        para sa katarungan ay nangangailangan ng ating paninindigan, handa kabang
+        magtiis?
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
@@ -53140,7 +53169,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[3].LineInFilipino
-      value: Ano?
+      value: Handa ako Father, gusto kong gumawa ng pagbabago, tumindig laban sa
+        pang aapi
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[3].character.icon
@@ -53152,7 +53182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].LineInFilipino
-      value: Ano?
+      value: Bukas, magsasama-sama tayo laban sa mga mapang-api.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[4].character.icon
@@ -53164,7 +53194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].LineInFilipino
-      value: Ano?
+      value: 'Ngunit tandaan, ang tunay na laban ay hindi lang sa mga kalsada kundi
+        sa mga puso ng tao. Nawa''y maging makatarungan ang ating adhikain, at nawa''y
+        matagpuan natin ang lakas upang harapin ang anumang darating.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].character.icon
@@ -57877,8 +57911,10 @@ MonoBehaviour:
         icon: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: Don't worry, Teacher Marites. Just hold on to me, and we'll
         find a way through this chaos together.
-      LineInCebuano: a
-      LineInFilipino: b
+      LineInCebuano: Ayaw kabalaka, Teacher Marites. Kupot lang sa akong kamot, makakita
+        ratag paagi na makaikyas ani.
+      LineInFilipino: Huwag kang mag-alala, Teacher Marites. Kumapit ka lang sa akin,
+        at makakahanap tayo ng paraan para makatakas dito.
 --- !u!1 &796719303
 GameObject:
   m_ObjectHideFlags: 0
@@ -62626,14 +62662,14 @@ MonoBehaviour:
         name: Player
         icon: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: Father, take care of yourself too.
-      LineInCebuano: a
-      LineInFilipino: b
+      LineInCebuano: Father, amping kanunay.
+      LineInFilipino: Father, mag-ingat po kayo.
     - character:
         name: Father Rudy
         icon: {fileID: 21300000, guid: 3249396cf87334f9895ad4de458907db, type: 3}
       LineInEnglish: I will, kid.
-      LineInCebuano: a
-      LineInFilipino: b
+      LineInCebuano: Akong buhaton, dong.
+      LineInFilipino: Gagawin ko, iho.
 --- !u!1 &1127542300
 GameObject:
   m_ObjectHideFlags: 0
@@ -105024,15 +105060,19 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 3249396cf87334f9895ad4de458907db, type: 3}
       LineInEnglish: Brothers and sisters, today we gather not just as individuals
         but as the collective voice of justice!
-      LineInCebuano: Saman?
-      LineInFilipino: Ano?
+      LineInCebuano: Mga igsuon, karon nagtipon kita dili lamang isip mga indibidwal
+        kondili isip ang kolektibong tingog sa katarungan!
+      LineInFilipino: Mga kapatid, ngayon tayo'y nagtitipon hindi lamang bilang mga
+        indibidwal kundi bilang nagkakaisang tinig ng katarungan!
     - character:
         name: Father Rudy
         icon: {fileID: 21300000, guid: 3249396cf87334f9895ad4de458907db, type: 3}
       LineInEnglish: On this International Human Rights Day, let us unite against
         the tyranny that stifles our freedoms!
-      LineInCebuano: Saman?
-      LineInFilipino: Ano?
+      LineInCebuano: Niining International Human Rights Day, maghiusa kita batok
+        sa tiraniya nga nagdumili sa atong mga kagawasan!
+      LineInFilipino: "Sa Araw ng Pandaigdigang Karapatang Pantao na ito, magkaisa
+        tayo laban sa tiraniya na pumipigil sa ating mga kalayaan!\r"
 --- !u!1 &1448369224
 GameObject:
   m_ObjectHideFlags: 0
