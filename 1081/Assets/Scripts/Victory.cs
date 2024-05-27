@@ -84,7 +84,7 @@ public class Victory : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    void GoToEpilogueIfNotWatched() 
+    public void GoToEpilogueIfNotWatched() 
     {   
         if (ChapterNum == 5)
         {
