@@ -1656,6 +1656,11 @@ PlayableDirector:
   m_CorrespondingSourceObject: {fileID: 1431560595679149138, guid: a409c475569df479094c00b44af8e8cc, type: 3}
   m_PrefabInstance: {fileID: 3542020979007604545}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &157405987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1730638009064015650, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+  m_PrefabInstance: {fileID: 3542020979007604545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &172298954
 GameObject:
   m_ObjectHideFlags: 0
@@ -63990,7 +63995,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 9ed546e44a44d474a9b472a630b78c39, type: 2}
     - target: {fileID: 1431560595679149138, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 31
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1431560595679149138, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_SceneBindings.Array.data[8].key
@@ -64085,6 +64090,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -816765591941644369, guid: 9ed546e44a44d474a9b472a630b78c39, type: 2}
     - target: {fileID: 1431560595679149138, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+      propertyPath: m_SceneBindings.Array.data[31].key
+      value: 
+      objectReference: {fileID: 3924289169604258417, guid: 9ed546e44a44d474a9b472a630b78c39, type: 2}
+    - target: {fileID: 1431560595679149138, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 268372522}
@@ -64092,6 +64101,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[30].value
       value: 
       objectReference: {fileID: 1806628525}
+    - target: {fileID: 1431560595679149138, guid: a409c475569df479094c00b44af8e8cc, type: 3}
+      propertyPath: m_SceneBindings.Array.data[31].value
+      value: 
+      objectReference: {fileID: 157405987}
     - target: {fileID: 1431560595679149138, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_ExposedReferences.m_References.Array.data[0].second
       value: 
@@ -64154,7 +64167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1730638009064015650, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1748063455700064629, guid: a409c475569df479094c00b44af8e8cc, type: 3}
       propertyPath: m_LocalPosition.x

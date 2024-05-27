@@ -11,8 +11,8 @@ public class TutorialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        // int hasWatchedTutorial = PlayerPrefs.GetInt("HasWatchedTutorial", 0);
-        int hasWatchedTutorial = 0;
+        int hasWatchedTutorial = PlayerPrefs.GetInt("HasWatchedTutorial", 0);
+        // int hasWatchedTutorial = 0;
         
         if (hasWatchedTutorial == 0) 
         {
