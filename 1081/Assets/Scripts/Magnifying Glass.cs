@@ -5,144 +5,82 @@ using UnityEngine;
 public class MagnifyGlass : MonoBehaviour
 {
     private Camera magnifyCamera;
-    private GameObject magnifyBorders;
-    private LineRenderer LeftBorder, RightBorder, TopBorder, BottomBorder; // Reference for lines of magnify glass borders
-    private float MGOX, MG0Y; // Magnify Glass Origin X and Y position
-    private float MGWidth = Screen.width / 5f, MGHeight = Screen.width / 5f; // Magnify glass width and height
-    private Vector3 mousePos;
-
+    private RenderTexture renderTexture;
     public GameObject magnifierSprite; // Reference to the magnifier sprite
     public GameObject circleObject; // Reference to the circle object where the content should be zoomed
 
     void Start()
     {
-        createMagnifyGlass();
+        CreateMagnifyGlass();
     }
 
     void Update()
     {
-        // Following lines set the camera's pixelRect and camera position at mouse position
-        magnifyCamera.pixelRect = new Rect(Input.mousePosition.x - MGWidth / 2.0f, Input.mousePosition.y - MGHeight / 2.0f, MGWidth, MGHeight);
-        mousePos = getWorldPosition(Input.mousePosition);
-        magnifyCamera.transform.position = mousePos;
-        mousePos.z = 0;
-        magnifyBorders.transform.position = mousePos;
-        UpdateMagnifierSprite(mousePos);
+        UpdateMagnifier();
     }
 
-    // Following method creates MagnifyGlass
-    private void createMagnifyGlass()
+    private void CreateMagnifyGlass()
     {
-        GameObject camera = new GameObject("MagnifyCamera");
-        MGOX = Screen.width / 2f - MGWidth / 2f;
-        MG0Y = Screen.height / 2f - MGHeight / 2f;
-        magnifyCamera = camera.AddComponent<Camera>();
-        magnifyCamera.pixelRect = new Rect(MGOX, MG0Y, MGWidth, MGHeight);
-        magnifyCamera.transform.position = new Vector3(0, 0, 0);
-        if (Camera.main.orthographic)
-        {
-            magnifyCamera.orthographic = true;
-            magnifyCamera.orthographicSize = Camera.main.orthographicSize / 5.0f; //+ 1.0f;
-            createBordersForMagniyGlass();
-        }
-        else
-        {
-            magnifyCamera.orthographic = false;
-            magnifyCamera.fieldOfView = Camera.main.fieldOfView / 10.0f; //3.0f;
-        }
+        // Create the magnify camera
+        GameObject cameraObject = new GameObject("MagnifyCamera");
+        magnifyCamera = cameraObject.AddComponent<Camera>();
+        magnifyCamera.orthographic = true;
+
+        // Set the orthographic size to a smaller value to achieve the zoom effect
+        magnifyCamera.orthographicSize = Camera.main.orthographicSize / 10.0f; // Adjust this factor to get the desired zoom level
+
+        magnifyCamera.clearFlags = CameraClearFlags.SolidColor;
+        magnifyCamera.backgroundColor = Color.clear;
+        magnifyCamera.cullingMask = LayerMask.GetMask("Book"); // Ensure your book content is in the "Book" layer
+
+        // Set the render texture size (adjust as needed for quality vs performance)
+        renderTexture = new RenderTexture(Screen.width / 5, Screen.height / 5, 16);
+        magnifyCamera.targetTexture = renderTexture;
 
         // Set up the magnifier sprite
         if (magnifierSprite != null)
         {
-            magnifierSprite.SetActive(true);
+            SpriteRenderer sr = magnifierSprite.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.material = new Material(Shader.Find("Unlit/Transparent")); // Use Unlit/Transparent shader
+                sr.material.mainTexture = renderTexture;
+            }
         }
 
-        // Set up the circle object
+        // Set up the circle object as a mask
         if (circleObject != null)
         {
-            circleObject.SetActive(true);
+            SpriteMask mask = circleObject.GetComponent<SpriteMask>();
+            if (mask == null)
+            {
+                mask = circleObject.AddComponent<SpriteMask>();
+            }
+            mask.sprite = circleObject.GetComponent<SpriteRenderer>().sprite;
+            circleObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
-    // Following method sets border of MagnifyGlass
-    private void createBordersForMagniyGlass()
+    private void UpdateMagnifier()
     {
-        magnifyBorders = new GameObject();
-        LeftBorder = getLine();
-        LeftBorder.positionCount = 2;
-        LeftBorder.SetPosition(0, new Vector3(getWorldPosition(new Vector3(MGOX, MG0Y, 0)).x, getWorldPosition(new Vector3(MGOX, MG0Y, 0)).y - 0.1f, -1));
-        LeftBorder.SetPosition(1, new Vector3(getWorldPosition(new Vector3(MGOX, MG0Y + MGHeight, 0)).x, getWorldPosition(new Vector3(MGOX, MG0Y + MGHeight, 0)).y + 0.1f, -1));
-        LeftBorder.transform.parent = magnifyBorders.transform;
-        TopBorder = getLine();
-        TopBorder.positionCount = 2;
-        TopBorder.SetPosition(0, new Vector3(getWorldPosition(new Vector3(MGOX, MG0Y + MGHeight, 0)).x, getWorldPosition(new Vector3(MGOX, MG0Y + MGHeight, 0)).y, -1));
-        TopBorder.SetPosition(1, new Vector3(getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y + MGHeight, 0)).x, getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y + MGHeight, 0)).y, -1));
-        TopBorder.transform.parent = magnifyBorders.transform;
-        RightBorder = getLine();
-        RightBorder.positionCount = 2;
-        RightBorder.SetPosition(0, new Vector3(getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y + MGWidth, 0)).x, getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y + MGWidth, 0)).y + 0.1f, -1));
-        RightBorder.SetPosition(1, new Vector3(getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y, 0)).x, getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y, 0)).y - 0.1f, -1));
-        RightBorder.transform.parent = magnifyBorders.transform;
-        BottomBorder = getLine();
-        BottomBorder.positionCount = 2;
-        BottomBorder.SetPosition(0, new Vector3(getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y, 0)).x, getWorldPosition(new Vector3(MGOX + MGWidth, MG0Y, 0)).y, -1));
-        BottomBorder.SetPosition(1, new Vector3(getWorldPosition(new Vector3(MGOX, MG0Y, 0)).x, getWorldPosition(new Vector3(MGOX, MG0Y, 0)).y, -1));
-        BottomBorder.transform.parent = magnifyBorders.transform;
-    }
+        // Update the camera and sprite positions based on the mouse position
+        Vector3 mousePos = GetWorldPosition(Input.mousePosition);
+        magnifyCamera.transform.position = new Vector3(mousePos.x, mousePos.y, -10); // Adjust the z-axis value to match the scene setup
 
-    // Following method creates new line for MagnifyGlass's border
-    private LineRenderer getLine()
-    {
-        LineRenderer line = new GameObject("Line").AddComponent<LineRenderer>();
-        line.material = new Material(Shader.Find("Diffuse"));
-        line.positionCount = 2;
-        line.startWidth = 0.2f;
-        line.endWidth = 0.2f;
-        line.startColor = Color.black;
-        line.endColor = Color.black;
-        line.useWorldSpace = false;
-        return line;
-    }
-
-    private void setLine(LineRenderer line)
-    {
-        line.material = new Material(Shader.Find("Diffuse"));
-        line.positionCount = 2;
-        line.startWidth = 0.2f;
-        line.endWidth = 0.2f;
-        line.startColor = Color.black;
-        line.endColor = Color.black;
-        line.useWorldSpace = false;
-    }
-
-    // Following method calculates world's point from screen point as per camera's projection type
-    public Vector3 getWorldPosition(Vector3 screenPos)
-    {
-        Vector3 worldPos;
-        if (Camera.main.orthographic)
-        {
-            worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-            worldPos.z = Camera.main.transform.position.z;
-        }
-        else
-        {
-            worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, Camera.main.transform.position.z));
-            worldPos.x *= -1;
-            worldPos.y *= -1;
-        }
-        return worldPos;
-    }
-
-    private void UpdateMagnifierSprite(Vector3 position)
-    {
         if (magnifierSprite != null)
         {
-            magnifierSprite.transform.position = position;
+            magnifierSprite.transform.position = mousePos;
         }
 
         if (circleObject != null)
         {
-            circleObject.transform.position = position;
+            circleObject.transform.position = mousePos;
         }
+    }
+
+    // Method to calculate world position from screen position
+    private Vector3 GetWorldPosition(Vector3 screenPos)
+    {
+        return Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
     }
 }
