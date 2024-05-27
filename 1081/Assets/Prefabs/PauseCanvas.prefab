@@ -245,7 +245,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4479053862315604183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,9 +1311,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7501890768558757068}
     m_Modifications:
+    - target: {fileID: 213640127524933294, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.28235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 213640127524933294, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 213640127524933294, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.96862745
+      objectReference: {fileID: 0}
     - target: {fileID: 407482094093547822, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
       propertyPath: m_Name
       value: Exit Confirmation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024413961892635869, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.28235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024413961892635869, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024413961892635869, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.96862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558288893130142497, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.28235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558288893130142497, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.7411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558288893130142497, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.96862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558288893130142497, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4282957303
       objectReference: {fileID: 0}
     - target: {fileID: 8259790432427131001, guid: 3ef09ac892c6b584382a100684128be6, type: 3}
       propertyPath: m_Pivot.x

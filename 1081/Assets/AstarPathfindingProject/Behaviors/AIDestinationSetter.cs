@@ -16,6 +16,7 @@ namespace Pathfinding {
 	public class AIDestinationSetter : VersionedMonoBehaviour {
 		/// <summary>The object that the AI should move to</summary>
 		public Transform target;
+		public Transform npc;
 		IAstarAI ai;
 
 		void OnEnable () {
@@ -29,6 +30,15 @@ namespace Pathfinding {
 
 		void OnDisable () {
 			if (ai != null) ai.onSearchPath -= Update;
+		}
+
+		public void Teleport (){
+			if (target != null && ai != null){
+				Transform activeChild = GetActiveChild(target);
+				if (activeChild != null){
+					npc.position = activeChild.position;
+				}
+			}
 		}
 
 		/// <summary>Updates the AI's destination every frame</summary>

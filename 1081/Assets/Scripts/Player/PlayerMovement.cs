@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public Image shieldBar;
     public Image shieldBarBackground;
     public Image Shield;
-    public Image QMark;
     // private Coroutine recharge;
 
 
@@ -190,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (usingShield){
             //change speed;
-            speed = 2f;
+            speed = 3f;
 
             _shieldCount.text = PlayerPrefs.GetInt("ShieldNumber").ToString();
             //conditions
@@ -232,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else{
             //default speed
-            speed = 3f;
+            speed = 4f;
                 if (isSprinting)
                 {
                     if (movement.x != 0 || movement.y != 0)
