@@ -36,7 +36,8 @@ namespace Pathfinding {
 			if (target != null && ai != null){
 				Transform activeChild = GetActiveChild(target);
 				if (activeChild != null){
-					npc.position = activeChild.position;
+					Vector3 offset = new Vector3(-0.75f, 1, 0); // Define the offset (x - 1, y + 1, z remains the same)
+            		npc.position = activeChild.position + offset;
 				}
 			}
 		}

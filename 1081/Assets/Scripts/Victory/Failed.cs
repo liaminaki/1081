@@ -6,6 +6,7 @@ public class Failed : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject failedScreenUI;
+    public GameObject pauseUI;
     public GameObject statsUI;
 
     public bool loss {get; set;}
@@ -23,6 +24,7 @@ public class Failed : MonoBehaviour
         if (loss)
         {
             failedScreenUI.SetActive(true);
+            pauseUI.SetActive(false);
             Time.timeScale = 0f;
             statsUI.SetActive(false);
         }
