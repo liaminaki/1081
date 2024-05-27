@@ -27,5 +27,10 @@ public class SceneController : MonoBehaviour
         PlayerPrefs.SetInt("IsOld", 1);
     }
 
+    public void WatchedEpilogue()
+    {
+        PlayerPrefs.SetInt("HasWatchedEpilogue", 1);
+    }
+
 
 }

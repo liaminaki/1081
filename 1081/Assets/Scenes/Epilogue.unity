@@ -2440,7 +2440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 1513332
+      value: 4279703412
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_TextStyleHashCode
@@ -4490,6 +4490,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e0a954f6b2b2049459b6b9f2b5fa95e5, type: 2}
     - {fileID: 11400000, guid: 2c0cfd9f84ac74f3b86b903b4b06b027, type: 2}
     - {fileID: 11400000, guid: 9ef5433610b9c498991a079d444b817c, type: 2}
+    - {fileID: 11400000, guid: 77532ee0d109e47c3ac975e10cd7f16c, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -4524,6 +4525,20 @@ MonoBehaviour:
         - m_Target: {fileID: 1157814884}
           m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
           m_MethodName: TriggerDialogue
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 568773634}
+          m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+          m_MethodName: WatchedEpilogue
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4970,7 +4985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4279703412
+      value: 85399412
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_TextStyleHashCode
@@ -5252,7 +5267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4279703412
+      value: 1513332
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_TextStyleHashCode
@@ -6077,7 +6092,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.21
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6808,7 +6823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 1513332
+      value: 4262926196
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_TextStyleHashCode
@@ -9249,7 +9264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 1513332
+      value: 4279703412
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_TextStyleHashCode
@@ -9674,7 +9689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 1513332
+      value: 4279703412
       objectReference: {fileID: 0}
     - target: {fileID: 4075279615772332336, guid: 6fbd3904d803245318437f57f8fb26fa, type: 3}
       propertyPath: m_TextStyleHashCode
