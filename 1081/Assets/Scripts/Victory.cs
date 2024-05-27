@@ -11,6 +11,7 @@ public class Victory : MonoBehaviour
     public Timer timerSystem;
     public GameObject timerUI;
     public GameObject victoryScreenUI;
+    public GameObject pauseUI;
     private PlayerMovement player;
     public TMP_Text elapsedTimeText;
     public TMP_Text collectedCoinsText;
@@ -43,6 +44,8 @@ public class Victory : MonoBehaviour
         if (lockSwitch)
         {
             victoryScreenUI.SetActive(true);
+
+            pauseUI.SetActive(false);
             
             elapsedTimeText.text = timerSystem.GetTime();
             currentTotalCoins.text = PlayerPrefs.GetInt("PlayerCoins").ToString();
