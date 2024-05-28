@@ -42,6 +42,8 @@ public class EnemyAI : MonoBehaviour
     public EndTrigger endTrigger;
     public GameObject QMark;
 
+    public AudioSource ShieldDeflect;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -92,6 +94,7 @@ public class EnemyAI : MonoBehaviour
                     deflectionDirection1.Normalize();
                     Vector2 deflectionDirection2 = new Vector2(dir.x, 0f);
                     deflectionDirection2.Normalize();
+                    ShieldDeflect.Play();
                     switch (CurrentDirection){
                         case Direction.Up:
                             rb.velocity = deflectionDirection1 * knockBackForce;
