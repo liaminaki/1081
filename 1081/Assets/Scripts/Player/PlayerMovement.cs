@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource coinAudio;
     public AudioSource shieldAudio;
+
+    public AudioSource shieldActivation;
  
     private void Start(){
         shieldManager = FindObjectOfType<ShieldManager>();
@@ -145,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
                 _shieldCount.text = PlayerPrefs.GetInt("ShieldNumber").ToString();
                 usingShield = true;
                 Debug.Log("Shield Activated");
+                shieldActivation.Play();
                 animator.SetBool("UsingShield", true);
                 
                 animator.SetInteger("ShieldLevel", shieldLevel);
