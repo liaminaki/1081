@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class Victory : MonoBehaviour
 {
     public int ChapterNum;
@@ -80,6 +82,22 @@ public class Victory : MonoBehaviour
         coinCount += currentCoins;
         PlayerPrefs.SetInt("PlayerCoins", coinCount);
         PlayerPrefs.Save();
+    }
+
+    public void GoToEpilogueIfNotWatched() 
+    {   
+        if (ChapterNum == 5)
+        {
+            int hasWatchedEpilogue = PlayerPrefs.GetInt("HasWatchedEpilogue", 0);
+
+            if (hasWatchedEpilogue == 0)
+                SceneManager.LoadScene("Epilogue");
+            
+            else
+                SceneManager.LoadScene("ChapterSelectionScene");
+
+        }
+
     }
 
 }
