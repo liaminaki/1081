@@ -25,15 +25,12 @@ public class MagnifyGlass : MonoBehaviour
         GameObject cameraObject = new GameObject("MagnifyCamera");
         magnifyCamera = cameraObject.AddComponent<Camera>();
         magnifyCamera.orthographic = true;
-
-        // Set the orthographic size to a smaller value to achieve the zoom effect
-        magnifyCamera.orthographicSize = Camera.main.orthographicSize / 10.0f; // Adjust this factor to get the desired zoom level
-
+        magnifyCamera.orthographicSize = Camera.main.orthographicSize / 5.0f;
         magnifyCamera.clearFlags = CameraClearFlags.SolidColor;
         magnifyCamera.backgroundColor = Color.clear;
         magnifyCamera.cullingMask = LayerMask.GetMask("Book"); // Ensure your book content is in the "Book" layer
 
-        // Set the render texture size (adjust as needed for quality vs performance)
+        // Set the render texture
         renderTexture = new RenderTexture(Screen.width / 5, Screen.height / 5, 16);
         magnifyCamera.targetTexture = renderTexture;
 
@@ -63,9 +60,9 @@ public class MagnifyGlass : MonoBehaviour
 
     private void UpdateMagnifier()
     {
-        // Update the camera and sprite positions based on the mouse position
+        // Update the camera and sprite positions
         Vector3 mousePos = GetWorldPosition(Input.mousePosition);
-        magnifyCamera.transform.position = new Vector3(mousePos.x, mousePos.y, -10); // Adjust the z-axis value to match the scene setup
+        magnifyCamera.transform.position = new Vector3(mousePos.x, mousePos.y, -10); // Set appropriate z-axis value
 
         if (magnifierSprite != null)
         {
@@ -81,6 +78,6 @@ public class MagnifyGlass : MonoBehaviour
     // Method to calculate world position from screen position
     private Vector3 GetWorldPosition(Vector3 screenPos)
     {
-        return Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
+        return Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, Camera.main.nearClipPlane));
     }
 }
