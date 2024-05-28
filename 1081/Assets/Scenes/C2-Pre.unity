@@ -14976,8 +14976,10 @@ MonoBehaviour:
         Martial Law is in effect!
 
 '
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: 'Taysa! Naay niabot bag ong balita! Gideklara na ang Martial
+        Law! '
+      LineInFilipino: Teka lang! May dumating na bagong balita! Nasa ilalim na tayo
+        ng batas militar!
 --- !u!1 &1123258132
 GameObject:
   m_ObjectHideFlags: 0
@@ -19612,8 +19614,10 @@ MonoBehaviour:
         icon: {fileID: 35166338, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: Something doesn't feel right. I feel like I'm being followed.
         I have to make it home safely.
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: Mura ug naay gasunod kanako. Kinahanglan nga makaabot ko sa
+        balay nga luwas sa peligro.
+      LineInFilipino: May nararamdaman akong kakaiba. Parang may sumusunod sa akin.
+        Kailangan kong makauwi ng ligtas.
 --- !u!1 &1875762508
 GameObject:
   m_ObjectHideFlags: 0
@@ -20132,9 +20136,19 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].LineInCebuano
+      value: 'Nisamot ug kabati ang mga panghitabo. Ang mga tawo nangawagtang, ug
+        di na kita makasalig bisan kinsa. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInEnglish
       value: It's getting worse out there. People are disappearing, and we can't
         trust anyone.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].LineInCebuano
+      value: Sige atong storyahan ang atong kahimtang. Mas ni hugot ang kupot sa
+        gobyerno natong mga pilipino, ug dili kita mahimo nga magpabilin nga hilom.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInEnglish
@@ -20143,12 +20157,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInCebuano
-      value: Saman?
+      value: Nakadungog ba mo sa gingon ni ninoy mahitungod sa "Oplan Sagitarrius"?
+        Plano ni Marcos nga gamiton ang usa ka serye sa mga pagpabuto isip rason
+        alang sa Batas Militar.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInEnglish
       value: Did you hear what Ninoy exposed about "Oplan Sagittarius" in his speech?
         Marcos planned to use a series of bombings as a pretext for Martial Law.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].LineInFilipino
+      value: Lumalala na ang sitwasyon sa labas. May mga taong nawawala, at hindi
+        na natin mapagkakatiwalaan ang sinuman.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
@@ -20157,6 +20178,11 @@ PrefabInstance:
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].LineInFilipino
+      value: Tama. Kailangan nating pag-usapan ang kasalukuyang sitwasyon. Pinaigting
+        na ng pamahalaan ang kanilang kontrol sa atin, at hindi na natin kayang manahimik.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
@@ -20168,7 +20194,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].LineInFilipino
-      value: Ano?
+      value: Narinig nyo ba ang inilantad ni Ninoy tungkol sa "Oplan Sagittarius"
+        sa kanyang talumpati? Plano ni Marcos na gamitin ang isang serye ng mga pambobomba
+        bilang pretexto para sa Batas Militar.
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
@@ -23140,43 +23168,66 @@ MonoBehaviour:
         icon: {fileID: 70576822, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: What? This changes everything! What about Ninoy? What about
         our plans for activism?
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: Ha? Naunsa naman si Ninoy? Unsa man atong mga plano alang sa
+        aktibismo?
+      LineInFilipino: Ano? Hindi ito maaari.  Ano na ang mangyayari kay Ninoy? Ano
+        na ang mangyayari sa ating mga plano para sa aktibismo?
     - character:
         name: Chona Mae
         icon: {fileID: 813682566, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: 'Ninoy has been arrested. They got to him before he even had
         a chance. '
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: Nadakpan si Ninoy. Nadakpan na nila siya nga wala pa siya kaandam.
+      LineInFilipino: Si Ninoy ay naaresto. Nakuha na nila siya bago pa siya magkaroon
+        ng pagkakataon.
     - character:
         name: Cora Tan
         icon: {fileID: -937332574, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: Our plans need to adapt. Martial Law means we're under direct
         threat now.
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: 'Atong mga plano kinahanglan ug kausaban kay naa kita
+
+        nahimutang
+        direkta sa panganib.'
+      LineInFilipino: Kailangan nating baguhin ang ating mga plano. Ang Batas Militar
+        ay nangangahulugan na tayo ay nasa direktang banta ngayon.
     - character:
         name: Player
         icon: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: This is madness. We need to be careful. They won't spare anyone
         who opposes them.
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: 'Kinahanglan kita magbinantayon. Dili sila magpakita og kaluoy
+
+        sa
+        mga mosupak kanila.'
+      LineInFilipino: Ito ay kahibangan. Kailangan tayong mag-ingat. Hindi nila palalampasin
+        ang sinumang tumutol sa kanila.
     - character:
         name: Princess Bea
         icon: {fileID: 651708694, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: 'Agreed. Let''s wrap this up. We can''t afford to linger here. '
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: Sige, Tapuson na nato ni. Dili kita pwede magpabilin dinhi.
+      LineInFilipino: Tama ka. Tapusin na natin ang pagpupulong na ito. Hindi tayo
+        pwedeng magtagal dito.
     - character:
         name: Princess Bea
         icon: {fileID: 651708694, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: 'Our fight for justice continues, but we must be strategic and
         cautious in the face of this tyranny. Go home, stay safe, and watch your
         back. '
-      LineInCebuano: Hoy
-      LineInFilipino: Uy
+      LineInCebuano: 'Ang atong pakigbisog alang sa hustisya magpadayon, apan kinahanglan
+
+        kita
+        mag-estratihiko ug maingonon sa atong pag-atubang niining pagpangilad.
+
+        Mubalik
+        na ta sa atong mga panimalay, mag-amping, ug magtan-aw sa atong
+
+        likod.
+        Amping mo kanunay.'
+      LineInFilipino: Magpapatuloy ang ating laban para sa katarungan, ngunit dapat
+        tayong maging madiskarte at maingat sa harap ng tiraniyang ito. Umuwi na
+        kayo, at manatiling ligtas.
 --- !u!1001 &7338908643229546099
 PrefabInstance:
   m_ObjectHideFlags: 0
