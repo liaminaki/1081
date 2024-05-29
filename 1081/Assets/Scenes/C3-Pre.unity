@@ -3295,13 +3295,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3722467626019171048, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6238742666033676269, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7279080756449981579, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7908764384654353931, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_Enabled
@@ -18532,7 +18536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279080756449981579, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7908764384654353931, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_Enabled
@@ -18608,7 +18612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279080756449981579, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7908764384654353931, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_Enabled
@@ -18761,7 +18765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279080756449981579, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7908764384654353931, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_Enabled
@@ -18891,10 +18895,12 @@ MonoBehaviour:
         and you''re going to answer them.
 
 '
-      LineInCebuano: "Maayong pag-abot sa Camp Lapu-Lapu,<PlayerName>.Aduna mi\u2019y
-        mga pangutana, ug kinahanglan nimo tubagon.\r\n"
+      LineInCebuano: 'Maayong pag-abot sa Camp Lapu-Lapu, <PlayerName>. Aduna mi''y
+        mga pangutana, ug kinahanglan nimo tubagon.
+
+'
       LineInFilipino: ' Maligayang pagdating sa Camp Lapu-lapu, <PlayerName>. May
-        mga tanong kami, at kailangan mong sagutin.'
+        mga tanong kami, at kailangan mo itong sagutin.'
     - character:
         name: Player
         icon: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
@@ -20526,8 +20532,8 @@ MonoBehaviour:
         name: Kit
         icon: {fileID: -1802578884, guid: b8797c5b3c3f4454b95f676f8a4b8778, type: 3}
       LineInEnglish: Name's Kit. We've been through a lot, but together, we endure.
-      LineInCebuano: "Ang akong ngalan si Kit. Daghan na mi\u2019g nasinati, pero
-        magkahiusa, makalahutay mi."
+      LineInCebuano: Ang akong ngalan si Kit. Daghan na mi'g nasinati, pero magkahiusa,
+        makalahutay mi.
       LineInFilipino: 'Kit ang pangalan ko. Marami na kaming pinagdaanan, pero sama-sama
         kaming nagpapatuloy.
 
@@ -27221,7 +27227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279080756449981579, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7908764384654353931, guid: 7661f013a14744cc0a491b968be62dff, type: 3}
       propertyPath: m_Enabled
@@ -27585,7 +27591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInCebuano
-      value: Unsa'y inyong gibuhat diri? Aduna ba koy sala nga nahimo?
+      value: Unsa'y gibuhat ninyo diri? Aduna ba koy sala nga nahimo?
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].LineInEnglish
@@ -27593,7 +27599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInCebuano
-      value: "Uban kanamo o kung dili\u2026"
+      value: Uban kanamo o kung dili...
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInEnglish
@@ -27623,7 +27629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].LineInFilipino
-      value: "Sumama ka na lang sa amin o kung hindi\u2026"
+      value: Sumama ka na lang sa amin o kung hindi...
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].character.icon

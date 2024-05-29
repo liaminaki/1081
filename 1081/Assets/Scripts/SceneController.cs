@@ -33,4 +33,9 @@ public class SceneController : MonoBehaviour
     }
 
 
+    public void WatchedPrologue()
+    {
+        PlayerPrefs.SetInt("HasWatchedPrologue", 1);
+    }
+
 }

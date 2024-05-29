@@ -109,8 +109,19 @@ public class MenuController : MonoBehaviour
         }
 
         if (!isCharCustomizationOpen)
-            GoToChapterSelection();
+        {
+            if (PlayerPrefs.GetInt("HasWatchedPrologue", 0) == 1)
+                GoToChapterSelection();
+            else
+                GoToPrologue();
+               
+        }
+            
         
+    }
+    
+    private void GoToPrologue() {
+        SceneManager.LoadScene("Prologue");
     }
 
     public void GoToChapterSelection () {

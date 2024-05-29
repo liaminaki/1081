@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class EnemyAI : MonoBehaviour
 {
     public List<GameObject> pathPoints; // List of waypoints defining the path
-    public float speed = 4f; // Speed of movement
+    private float speed = 3f; // Speed of movement
     public bool isRunning = false;
     public bool caughtPlayer {get; private set;}
 
@@ -41,6 +41,8 @@ public class EnemyAI : MonoBehaviour
     public Failed failed;
     public EndTrigger endTrigger;
     public GameObject QMark;
+
+    public AudioSource ShieldDeflect;
 
     void Start()
     {
@@ -92,6 +94,7 @@ public class EnemyAI : MonoBehaviour
                     deflectionDirection1.Normalize();
                     Vector2 deflectionDirection2 = new Vector2(dir.x, 0f);
                     deflectionDirection2.Normalize();
+                    ShieldDeflect.Play();
                     switch (CurrentDirection){
                         case Direction.Up:
                             rb.velocity = deflectionDirection1 * knockBackForce;
@@ -268,7 +271,7 @@ public class EnemyAI : MonoBehaviour
             if (!isRunning)
                 rb.velocity = direction * speed;
             else
-                rb.velocity = direction * (speed * 3);
+                rb.velocity = direction * (speed * 2);
 
             anim.SetFloat("X", direction.x);
             anim.SetFloat("Y", direction.y);
