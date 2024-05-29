@@ -7216,7 +7216,7 @@ MonoBehaviour:
         name: Player
         icon: {fileID: 1782400716, guid: daee30e56768c4c9ca92821e9e2a5aab, type: 3}
       LineInEnglish: Now free. But, the fight for freedom continues.
-      LineInCebuano: 'Gawas na ko. Apan, ang pakigbisog para sa kagawasan magpadayon.
+      LineInCebuano: 'Gawas na ko. Apan,ang pakigbisog para sa kagawasan magpadayon.
 
 '
       LineInFilipino: 'Ngayon, malaya na. Pero, ang laban para sa kalayaan ay nagpapatuloy.
@@ -63215,7 +63215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContinuous: 0
-  TypingSpeed: 0.04
   TextObjects:
   - {fileID: 212289441}
   - {fileID: 135979935}
@@ -63735,9 +63734,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInCebuano
-      value: "Kinahanglan nato mangita ug g laing paagi, usa nga dili magbutang sa
-        kinabuhi sa tanan sa peligro. Naa kita\u2019y utang sa atong kaugalingon
-        ug sa mga tawo nga nagatuo sa atong hinungdan.\r\n"
+      value: 'Kinahanglan nato mangita ug g laing paagi, usa nga dili magbutang sa
+        kinabuhi sa tanan sa peligro. Naa kita''y utang sa atong kaugalingon ug sa
+        mga tawo nga nagatuo sa atong hinungdan.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInEnglish
@@ -63746,7 +63747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].LineInCebuano
-      value: Pabilin dinha, talawan!
+      value: Pabilin dinha,talawan!
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].LineInEnglish
@@ -63795,7 +63796,7 @@ PrefabInstance:
       propertyPath: dialogue.dialogueLines.Array.data[3].LineInFilipino
       value: 'Sandali. Kailangan nating pag-isipan muli ito.
 
-        
+
 
 '
       objectReference: {fileID: 0}
@@ -63822,7 +63823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[5].LineInFilipino
-      value: 'Ano''ng sinasabi mo? Hindi na tayo puwedeng umatras ngayon!
+      value: 'Anong sinasabi mo? Hindi na tayo puwedeng umatras ngayon!
 
 '
       objectReference: {fileID: 0}
@@ -63852,7 +63853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[7].LineInFilipino
-      value: Kailangan nating humanap ng ibang paraan, isang paraan na hindi isasapanganib
+      value: Kailangan nating humanap ng ibang paraan,isang paraan na hindi isasapanganib
         ang buhay ng lahat. Utang natin ito sa ating sarili at sa mga naniniwala
         sa ating layunin.
       objectReference: {fileID: 0}
@@ -63866,7 +63867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].LineInFilipino
-      value: Manatili ka dito, duwag!
+      value: Manatili ka dito,duwag!
       objectReference: {fileID: 0}
     - target: {fileID: 7129068244419296321, guid: 515f80d9097774c549e79188fa131e8a, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[8].character.icon
