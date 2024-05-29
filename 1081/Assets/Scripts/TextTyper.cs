@@ -6,7 +6,7 @@ using UnityEngine;
 public class TextTyper : MonoBehaviour
 {   
     public bool isContinuous = false;
-    public float TypingSpeed = 0.05f; // Typing speed in seconds
+    private float TypingSpeed = 0.03f; // Typing speed in seconds
 
     // List to hold TextMeshPro components
     public List<TextMeshProUGUI> TextObjects = new List<TextMeshProUGUI>();

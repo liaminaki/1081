@@ -622,6 +622,10 @@ PlayableDirector:
     value: {fileID: 1733111047}
   - key: {fileID: -2255901511139216837, guid: c2f6d71a49a004532bf5c6c0c6a8f204, type: 2}
     value: {fileID: 728306951}
+  - key: {fileID: 8129688185455022248, guid: c2f6d71a49a004532bf5c6c0c6a8f204, type: 2}
+    value: {fileID: 6961765339337514528}
+  - key: {fileID: -7963759635479025498, guid: c2f6d71a49a004532bf5c6c0c6a8f204, type: 2}
+    value: {fileID: 8770541258797581933}
   m_ExposedReferences:
     m_References:
     - 6984e50ea52774c8fb581f8105972fae: {fileID: 8731193772073773255}
@@ -1443,6 +1447,7 @@ GameObject:
   - component: {fileID: 5075722048262466021}
   - component: {fileID: 5938919433807353409}
   - component: {fileID: 8770541258797581932}
+  - component: {fileID: 8770541258797581933}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1491,10 +1496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isContinuous: 1
-  TypingSpeed: 0.05
   TextObjects:
   - {fileID: 5724936056727845228}
-  - {fileID: 8770541258797581932}
   typingSound: {fileID: 8300000, guid: 97c7679746c9843ad8732edc980827d4, type: 3}
   audioSource: {fileID: 354869479379410103}
 --- !u!114 &8770541258797581932
@@ -1527,7 +1530,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285296495
+    rgba: 7106415
   m_fontColor: {r: 0.43529412, g: 0.43529412, b: 0.42352942, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1587,6 +1590,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &8770541258797581933
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961765339337514528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

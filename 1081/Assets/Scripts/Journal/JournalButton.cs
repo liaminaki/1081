@@ -15,8 +15,11 @@ public class JournalButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         toolTip.SetActive(false);
         UnityEngine.UI.Button buttonComponent = GetComponent<UnityEngine.UI.Button>();
 
+        int currentChapterScore = PlayerPrefs.GetInt("Chapter" + chapterNum + "Stars", 0);
+        
         // Unlock button if chapter finished playing 
-        if (PlayerPrefs.GetInt("ChaptersUnlocked", 0) > chapterNum)
+        // Chapter is finished if score is at least 1
+        if (currentChapterScore > 0)
         {
             unlocked = true;
             buttonComponent.interactable = true;
