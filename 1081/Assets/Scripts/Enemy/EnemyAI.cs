@@ -118,7 +118,7 @@ public class EnemyAI : MonoBehaviour
                     caughtPlayer = true;
                     rb.velocity = Vector2.zero;
                     // Freeze the y position
-                    rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+                    // rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                     playerMovement.animator.SetBool("isArrested", true);
                     // Debug.Log("GameOver!");
                     foundAnim.SetBool("found", false);
@@ -131,7 +131,7 @@ public class EnemyAI : MonoBehaviour
             if (fov.CanSeePlayer){
                 // Move towards player
                 if (endTrigger.Win == false){
-                    rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                    // rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
                     MoveTowardsPoint(playerMovement.center.position);
                     lastPosition = playerMovement.center.position;
                     anim.SetBool("isFound", true);
@@ -157,7 +157,7 @@ public class EnemyAI : MonoBehaviour
                     if (waitTime != null){
                         WaitTime();
                         if(waitTime == true){
-                            rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                            // rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
                             anim.SetBool("isIdle", false);
                             visitedLastPosition = false;
                             waitTime = null;
@@ -167,7 +167,7 @@ public class EnemyAI : MonoBehaviour
                         if (Vector2.Distance(transform.position, lastPosition) < 0.3f){
                             anim.SetBool("isIdle", true);
                             rb.velocity = Vector2.zero;
-                            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+                            // rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                             ZeroAnim();
                             CurrentDirection = LastDirection; 
                             switch (CurrentDirection){
@@ -213,7 +213,7 @@ public class EnemyAI : MonoBehaviour
             anim.SetBool("isIdle", true);
             rb.velocity = Vector2.zero;
             // Freeze the y position
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            // rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             if (playerManager != null){
                 PlayerMovement playerMovement = playerManager.playerPrefabs[playerManager.characterIndex].GetComponent<PlayerMovement>();
                 if (playerMovement != null){
