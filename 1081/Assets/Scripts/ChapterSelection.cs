@@ -27,6 +27,10 @@ public class ChapterSelection : MonoBehaviour {
            _chapterSelectionAnimator.Play("FromMenu");
         }
 
+        else if (SceneStateManager.PreviousScene == "Prologue") {
+            
+        }
+
         else {
             _chapterSelectionAnimator.Play("FromGame");
         }
