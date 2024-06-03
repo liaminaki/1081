@@ -105,6 +105,7 @@ public class ShopManager : MonoBehaviour
                     playerCoins -= amount;
                     // Success: Perform upgrade or other action
                     purchaseSuccess.SetActive(true);
+                    Debug.Log("purchased successfully");
                     PlayerPrefs.SetInt("PlayerCoins", playerCoins);
                     PlayerPrefs.SetInt("ShieldLevel", shieldLevel + 1);
                     PlayerPrefs.Save();
