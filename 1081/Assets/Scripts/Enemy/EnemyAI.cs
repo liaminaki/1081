@@ -132,10 +132,11 @@ public class EnemyAI : MonoBehaviour
                 // Move towards player
                 if (endTrigger.Win == false){
                     rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-                    MoveTowardsPoint(playerMovement.center.position);
-                    lastPosition = playerMovement.center.position;
+                    anim.SetBool("isIdle", false);
                     anim.SetBool("isFound", true);
                     foundAnim.SetBool("found", true);
+                    MoveTowardsPoint(playerMovement.center.position);
+                    lastPosition = playerMovement.center.position;
                     isRunning = true;
                     visitedLastPosition = true;
                     LastDirection = CurrentDirection;

@@ -17,10 +17,10 @@ public class Shop : MonoBehaviour
     private void Start()
     {
         //Load player coins from PlayerPrefs, defaulting to 200 if not found
-        playerCoins = PlayerPrefs.GetInt(playerCoinsKey, 200);
+        playerCoins = PlayerPrefs.GetInt(playerCoinsKey, 20);
         playerShieldLevel = PlayerPrefs.GetInt(playerShieldLevelKey, 1);
         playerStaminaLevel = PlayerPrefs.GetInt(playerStaminaLevelKey, 1);
-        playerShieldNumber = PlayerPrefs.GetInt(playerShieldNumberKey, 0);
+        playerShieldNumber = PlayerPrefs.GetInt(playerShieldNumberKey, 3);
         SavePlayerCoins();
         SaveShieldLevel();
         SaveStaminaLevel();
